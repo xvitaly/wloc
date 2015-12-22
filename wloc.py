@@ -11,5 +11,5 @@ NMDevices = NMClient.get_devices()
 for NMDevice in NMDevices:
     if NMDevice.get_device_type() == NetworkManager.DeviceType.WIFI:
         for AccessPoint in NMDevice.get_access_points():
-            print '%-30s (%s) %dMHz %d%%' % (AccessPoint.get_ssid(), AccessPoint.get_bssid(), AccessPoint.get_frequency(), AccessPoint.get_strength())
+            print('%-30s (%s) %dMHz %d%%' % (AccessPoint.get_ssid(), AccessPoint.get_bssid(), AccessPoint.get_frequency(), AccessPoint.get_strength()))
 
