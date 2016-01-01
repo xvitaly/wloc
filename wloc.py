@@ -1,12 +1,18 @@
 #!/usr/bin/env python2
 
+# Importing Network Manager from GI repository...
 import gi
 gi.require_version('NetworkManager', '1.0')
 gi.require_version('NMClient', '1.0')
 from gi.repository import NetworkManager, NMClient
-import xml.etree.cElementTree as ET
 
+# Importing other libs...
+import xml.etree.cElementTree as ET
+import requests, tempfile
+
+# Setting constants...
 APIKey = ''
+APIUri = 'http://api.lbs.yandex.net/geolocation'
 
 # Connecting to Network Manager...
 NMClient = NMClient.Client.new()
@@ -31,5 +37,16 @@ for NMDevice in NMDevices:
             ET.SubElement(network, "mac").text = AccessPoint.get_bssid()
             ET.SubElement(network, "signal_strength").text = str(int(AccessPoint.get_strength() / 2 - 100))
 
+# Generating temporary file name...
+xmlfile = tempfile.NamedTemporaryFile()
+
 # Saving XML...
-ET.ElementTree(xml).write('abc.xml', 'utf8')
+ET.ElementTree(xml).write(xmlfile.name, 'utf8')
+
+# Reading file...
+with open(xmlfile.name, 'r') as XMLFile:
+    mf=XMLFile.read().replace('\n', '')
+
+# Sending our XML file to API...
+r = requests.post(APIUri, data={'xml': mf})
+print(r.text)
