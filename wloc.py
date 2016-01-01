@@ -17,7 +17,7 @@ def fetch_networks():
     netlist = []
 
     # Ignoring warnings on new Python versions...
-    warnings.filterwarnings("ignore")
+    warnings.filterwarnings('ignore')
 
     # Connecting to Network Manager...
     NMClient = NMClient.Client.new()
@@ -43,21 +43,21 @@ def query_yandex():
     APIUri = 'http://api.lbs.yandex.net/geolocation'
 
     # Generating base XML structure...
-    xml = ET.Element("ya_lbs_request")
+    xml = ET.Element('ya_lbs_request')
 
     # Filling API Keys...
-    common = ET.SubElement(xml, "common")
-    ET.SubElement(common, "version").text = "1.0"
-    ET.SubElement(common, "api_key").text = APIKey
+    common = ET.SubElement(xml, 'common')
+    ET.SubElement(common, 'version').text = '1.0'
+    ET.SubElement(common, 'api_key').text = APIKey
 
     # Creating wifi_networks element...
-    networks = ET.SubElement(xml, "wifi_networks")
+    networks = ET.SubElement(xml, 'wifi_networks')
 
     # Retrieving available networks...
     for arr in fetch_networks():
-        network = ET.SubElement(networks, "network")
-        ET.SubElement(network, "mac").text = arr[0]
-        ET.SubElement(network, "signal_strength").text = arr[1]
+        network = ET.SubElement(networks, 'network')
+        ET.SubElement(network, 'mac').text = arr[0]
+        ET.SubElement(network, 'signal_strength').text = arr[1]
 
     try:
         # Sending our XML file to API...
