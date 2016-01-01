@@ -36,7 +36,7 @@ def fetch_networks():
 def query_yandex():
     # Importing required modules...
     import xml.etree.cElementTree as ET
-    import requests
+    import requests as RQ
 
     # Setting constants...
     APIKey = ''
@@ -61,7 +61,7 @@ def query_yandex():
 
     try:
         # Sending our XML file to API...
-        r = requests.post(APIUri, data={'xml': ET.tostring(xml, 'utf8')})
+        r = RQ.post(APIUri, data={'xml': ET.tostring(xml, 'utf8')})
 
         # Parsing XML response...
         result = ET.fromstring(r.content).findall('./position/')
