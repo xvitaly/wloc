@@ -37,6 +37,17 @@ for NMDevice in NMDevices:
             ET.SubElement(network, "mac").text = AccessPoint.get_bssid()
             ET.SubElement(network, "signal_strength").text = str(int(AccessPoint.get_strength() / 2 - 100))
 
-# Sending our XML file to API...
-r = requests.post(APIUri, data={'xml': ET.tostring(xml, 'utf8')})
-print(r.text)
+try:
+    # Sending our XML file to API...
+    r = requests.post(APIUri, data={'xml': ET.tostring(xml, 'utf8')})
+
+    # Parsing XML response...
+    result = ET.fromstring(r.content).findall('./position/')
+
+    # Showing result...
+    print('Latitude: %s\nLongitude: %s\n' % (result[0].text, result[1].text))
+
+except:
+    # Exception detected...
+    print('An error occured. Server returned code: %s.\n\nRaw output:\n%s\n' % (r.status_code, r.text))
+
