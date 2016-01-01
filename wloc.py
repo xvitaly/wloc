@@ -4,6 +4,7 @@ import gi
 gi.require_version('NetworkManager', '1.0')
 gi.require_version('NMClient', '1.0')
 from gi.repository import NetworkManager, NMClient
+import xml.etree.cElementTree as ET
 
 NMClient = NMClient.Client.new()
 NMDevices = NMClient.get_devices()
