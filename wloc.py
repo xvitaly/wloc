@@ -65,18 +65,24 @@ def query_yandex():
         # Parsing XML response...
         result = ET.fromstring(r.content).findall('./position/')
 
-        # Showing result...
-        print('Latitude: %s\nLongitude: %s\n' % (result[0].text, result[1].text))
+        # Returning result...
+        return [result[0].text, result[1].text]
 
     except:
         # Exception detected...
-        print('An error occured. Server returned code: %s.\n\nRaw output:\n%s\n' % (r.status_code, r.text))
+        print('Error. Server returned code: %s.\n\nRaw output:\n%s\n' % (r.status_code, r.text))
 
 
 def main():
     try:
-        query_yandex()
+        # Querying Yandex...
+        coords = query_yandex()
+
+        # Showing result...
+        print('Latitude: %s\nLongitude: %s\n' % (coords[0], coords[1]))
+
     except:
+        # Exception detected...
         print('An error occured while querying Yandex.')
 
 
