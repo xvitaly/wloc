@@ -3,7 +3,7 @@
 
 def conv_strength(stp):
     # Converting strength percents to RSSI (dBm)...
-    return str(int(stp / 2 - 100))
+    return str(int(round(stp / 2 - 100, 0)))
 
 
 def fetch_networks():
