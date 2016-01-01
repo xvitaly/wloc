@@ -2,6 +2,7 @@
 
 
 def conv_strength(stp):
+    # Converting strength percents to RSSI (dBm)...
     return str(int(stp / 2 - 100))
 
 
