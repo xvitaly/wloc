@@ -8,7 +8,7 @@ from gi.repository import NetworkManager, NMClient
 
 # Importing other libs...
 import xml.etree.cElementTree as ET
-import requests, tempfile
+import requests
 
 # Setting constants...
 APIKey = ''
@@ -37,16 +37,6 @@ for NMDevice in NMDevices:
             ET.SubElement(network, "mac").text = AccessPoint.get_bssid()
             ET.SubElement(network, "signal_strength").text = str(int(AccessPoint.get_strength() / 2 - 100))
 
-# Generating temporary file name...
-xmlfile = tempfile.NamedTemporaryFile()
-
-# Saving XML...
-ET.ElementTree(xml).write(xmlfile.name, 'utf8')
-
-# Reading file...
-with open(xmlfile.name, 'r') as XMLFile:
-    mf=XMLFile.read().replace('\n', '')
-
 # Sending our XML file to API...
-r = requests.post(APIUri, data={'xml': mf})
+r = requests.post(APIUri, data={'xml': ET.tostring(xml, 'utf8')})
 print(r.text)
