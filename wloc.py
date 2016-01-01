@@ -83,7 +83,7 @@ def main():
 
     except:
         # Exception detected...
-        print('An error occured while querying backend.')
+        print('An error occurred while querying backend.')
 
 
 if __name__ == '__main__':
