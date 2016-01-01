@@ -8,11 +8,14 @@ from gi.repository import NetworkManager, NMClient
 
 # Importing other libs...
 import xml.etree.cElementTree as ET
-import requests
+import requests, warnings
 
 # Setting constants...
 APIKey = ''
 APIUri = 'http://api.lbs.yandex.net/geolocation'
+
+# Ignoring warnings on new Python versions...
+warnings.filterwarnings("ignore")
 
 # Connecting to Network Manager...
 NMClient = NMClient.Client.new()
