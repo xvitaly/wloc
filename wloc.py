@@ -71,7 +71,7 @@ def query_yandex():
 
     except:
         # Exception detected...
-        print('Error. Server returned code: %s.\n\nRaw output:\n%s\n' % (r.status_code, r.text))
+        print('Server returned code: %s.\n\nRaw output:\n%s\n' % (r.status_code, r.text))
 
 
 def main():
