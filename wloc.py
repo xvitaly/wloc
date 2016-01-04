@@ -40,7 +40,7 @@ def query_yandex():
 
     # Setting constants...
     apikey = ''
-    apiuri = 'http://api.lbs.yandex.net/geolocation'
+    apiuri = 'https://api.lbs.yandex.net/geolocation'
 
     # Generating base XML structure...
     xml = et.Element('ya_lbs_request')
