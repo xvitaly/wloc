@@ -20,14 +20,14 @@ def fetch_networks():
     warnings.filterwarnings('ignore')
 
     # Connecting to Network Manager...
-    NMClient = NMClient.Client.new()
-    NMDevices = NMClient.get_devices()
+    nmclient = NMClient.Client.new()
+    nmdevices = nmclient.get_devices()
 
     # Retrieving available networks...
-    for NMDevice in NMDevices:
-        if NMDevice.get_device_type() == NetworkManager.DeviceType.WIFI:
-            for AccessPoint in NMDevice.get_access_points():
-                netlist.append([AccessPoint.get_bssid(), conv_strength(AccessPoint.get_strength())])
+    for nmdevice in nmdevices:
+        if nmdevice.get_device_type() == NetworkManager.DeviceType.WIFI:
+            for accesspoint in nmdevice.get_access_points():
+                netlist.append([accesspoint.get_bssid(), conv_strength(accesspoint.get_strength())])
 
     # Returning result...
     return netlist
