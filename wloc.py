@@ -35,36 +35,36 @@ def fetch_networks():
 
 def query_yandex():
     # Importing required modules...
-    import xml.etree.cElementTree as ET
-    import requests as RQ
+    import xml.etree.cElementTree as et
+    import requests as rq
 
     # Setting constants...
-    APIKey = ''
-    APIUri = 'http://api.lbs.yandex.net/geolocation'
+    apikey = ''
+    apiuri = 'http://api.lbs.yandex.net/geolocation'
 
     # Generating base XML structure...
-    xml = ET.Element('ya_lbs_request')
+    xml = et.Element('ya_lbs_request')
 
     # Filling API Keys...
-    common = ET.SubElement(xml, 'common')
-    ET.SubElement(common, 'version').text = '1.0'
-    ET.SubElement(common, 'api_key').text = APIKey
+    common = et.SubElement(xml, 'common')
+    et.SubElement(common, 'version').text = '1.0'
+    et.SubElement(common, 'api_key').text = apikey
 
     # Creating wifi_networks element...
-    networks = ET.SubElement(xml, 'wifi_networks')
+    networks = et.SubElement(xml, 'wifi_networks')
 
     # Retrieving available networks...
     for arr in fetch_networks():
-        network = ET.SubElement(networks, 'network')
-        ET.SubElement(network, 'mac').text = arr[0]
-        ET.SubElement(network, 'signal_strength').text = arr[1]
+        network = et.SubElement(networks, 'network')
+        et.SubElement(network, 'mac').text = arr[0]
+        et.SubElement(network, 'signal_strength').text = arr[1]
 
     try:
         # Sending our XML file to API...
-        r = RQ.post(APIUri, data={'xml': ET.tostring(xml, 'utf8')})
+        r = rq.post(apiuri, data={'xml': et.tostring(xml, 'utf8')})
 
         # Parsing XML response...
-        result = ET.fromstring(r.content).findall('./position/')
+        result = et.fromstring(r.content).findall('./position/')
 
         # Returning result...
         return [result[0].text, result[1].text]
