@@ -2,7 +2,7 @@
 Locate user coords by using global Wi-Fi database from Yandex or Google (not implemented yet).
 
 # License
-GNU GPL version 3. See COPYING file.
+GNU General Public License version 3. You can find it here: https://www.gnu.org/licenses/gpl.html. External libraries can use another licenses, compatible with GNU GPLv3.
 
 # Requirements
  * GNU/Linux;
