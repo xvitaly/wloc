@@ -11,13 +11,13 @@ GNU General Public License version 3. You can find it here: https://www.gnu.org/
  * python-lxml.
 
 # Installation
- * [Get API key](https://tech.yandex.ru/maps/keys/get/) from Yandex.
- * Download script from this repository:
+ # [Get API key](https://tech.yandex.ru/maps/keys/get/) from Yandex.
+ # Download script from this repository:
  ```
  wget https://github.com/xvitaly/wloc/raw/master/wloc.py -O wloc.py
  ```
- * Open downloaded `wloc.py` in any text editor and set your apikey.
- * Run:
+ # Open downloaded `wloc.py` in any text editor and set your apikey.
+ # Run:
  ```
  python wloc.py
  ```
