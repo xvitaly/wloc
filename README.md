@@ -16,8 +16,8 @@ GNU General Public License version 3. You can find it here: https://www.gnu.org/
  ```
  wget https://github.com/xvitaly/wloc/raw/master/wloc.py -O wloc.py
  ```
- * open downloaded `wloc.py` in any text editor and set your apikey;
- * run it:
+ * Open downloaded `wloc.py` in any text editor and set your apikey.
+ * Run:
  ```
  python wloc.py
  ```
