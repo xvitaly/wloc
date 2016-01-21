@@ -7,7 +7,7 @@ GNU General Public License version 3. You can find it here: https://www.gnu.org/
 # Requirements
  * GNU/Linux;
  * Network Manager;
- * Python 2;
+ * Python 2 (3.x is not supported);
  * python-lxml.
 
 # Installation
