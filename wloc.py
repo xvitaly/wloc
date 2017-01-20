@@ -19,6 +19,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+
 def conv_strength(stp):
     # Converting strength percents to RSSI (dBm)...
     return '%.0f' % (stp / 2 - 100)
