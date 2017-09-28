@@ -19,6 +19,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+from wloc.settings import consts
+
 
 class WFLoc:
     @staticmethod
@@ -83,8 +85,8 @@ class WFLoc:
 
     def __init__(self):
         # Setting constants...
-        self.apikey = ''
-        self.apiuri = 'https://api.lbs.yandex.net/geolocation'
+        self.apikey = consts['ya_apikey']
+        self.apiuri = consts['ya_apiuri']
 
         # Creating new list for networks...
         self.netlist = []
