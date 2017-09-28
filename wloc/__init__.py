@@ -28,7 +28,7 @@ class WFLoc:
         # Converting strength percents to RSSI (dBm)...
         return '%.0f' % (stp / 2 - 100)
 
-    def fetch_networks(self):
+    def __fetch_networks(self):
         # Importing Network Manager from GI repository and other modules...
         import gi, warnings
         gi.require_version('NetworkManager', '1.0')
@@ -46,7 +46,7 @@ class WFLoc:
         for nmdevice in nmdevices:
             if nmdevice.get_device_type() == NetworkManager.DeviceType.WIFI:
                 for accesspoint in nmdevice.get_access_points():
-                    self.netlist.append([accesspoint.get_bssid(), self.conv_strength(accesspoint.get_strength())])
+                    self.__netlist.append([accesspoint.get_bssid(), self.conv_strength(accesspoint.get_strength())])
 
     def query_yandex(self):
         # Importing required modules...
@@ -59,19 +59,19 @@ class WFLoc:
         # Filling API Keys...
         common = et.SubElement(xml, 'common')
         et.SubElement(common, 'version').text = '1.0'
-        et.SubElement(common, 'api_key').text = self.apikey
+        et.SubElement(common, 'api_key').text = self.__ya_apikey
 
         # Creating wifi_networks element...
         networks = et.SubElement(xml, 'wifi_networks')
 
         # Retrieving available networks...
-        for arr in self.netlist:
+        for arr in self.__netlist:
             network = et.SubElement(networks, 'network')
             et.SubElement(network, 'mac').text = arr[0]
             et.SubElement(network, 'signal_strength').text = arr[1]
 
         # Sending our XML file to API...
-        r = rq.post(self.apiuri, data={'xml': et.tostring(xml, 'utf8')})
+        r = rq.post(self.__ya_apiuri, data={'xml': et.tostring(xml, 'utf8')})
 
         # Checking return code...
         if r.status_code != 200:
@@ -85,11 +85,11 @@ class WFLoc:
 
     def __init__(self):
         # Setting constants...
-        self.apikey = consts['ya_apikey']
-        self.apiuri = consts['ya_apiuri']
+        self.__ya_apikey = consts['ya_apikey']
+        self.__ya_apiuri = consts['ya_apiuri']
 
-        # Creating new list for networks...
-        self.netlist = []
+        # Creating a new list for networks...
+        self.__netlist = []
 
-        # Retrieving available networks...
-        self.fetch_networks()
+        # Saving list of available networks...
+        self.__fetch_networks()
