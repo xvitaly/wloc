@@ -6,7 +6,7 @@ setup(
     packages=['wloc'],
     url='https://github.com/xvitaly/wloc',
     license='GPLv3',
-    install_requires=['requests'],
+    install_requires=['requests', 'lxml'],
     author='Vitaly Zaitsev',
     author_email='vitaly@easycoding.org',
     description='Simple Wi-Fi geolocation tool'
