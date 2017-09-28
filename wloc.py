@@ -19,18 +19,21 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+from wloc import WFLoc
+
 
 def main():
     try:
         # Querying Yandex...
-        coords = query_yandex()
+        locator = WFLoc()
+        coords = locator.query_yandex()
 
         # Showing result...
         print('Latitude: %s\nLongitude: %s\n' % (coords[0], coords[1]))
 
-    except:
+    except Exception as ex:
         # Exception detected...
-        print('An error occurred while querying backend.')
+        print('An error occurred while querying backend: %s' % ex.message)
 
 
 if __name__ == '__main__':
