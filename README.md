@@ -20,6 +20,5 @@ GNU General Public License version 3. You can find it here: https://www.gnu.org/
  3. Open `wloc/settings.py` in any text editor and set your API keys.
  4. Run:
  ```bash
- cd wloc
  ./wloc.py
  ```
