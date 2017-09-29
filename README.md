@@ -14,12 +14,12 @@ GNU General Public License version 3. You can find it here: https://www.gnu.org/
 # Installation
  1. [Get API key](https://tech.yandex.ru/maps/keys/get/) from Yandex.
  2. Clone this repository:
- ```
+ ```bash
  git clone https://github.com/xvitaly/wloc.git wloc
  ```
  3. Open `wloc/settings.py` in any text editor and set your API keys.
  4. Run:
- ```
+ ```bash
  cd wloc
  ./wloc.py
  ```
