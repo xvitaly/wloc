@@ -97,7 +97,7 @@ class WFLoc:
 
         # Sending our JSON to API...
         r = post(self.__gg_apiuri % self.__gg_apikey, data=dumps(jdata),
-                    headers={'content-type': 'application/json'})
+                 headers={'content-type': 'application/json'})
 
         # Checking return code...
         if r.status_code != 200:
