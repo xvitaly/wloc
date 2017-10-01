@@ -50,43 +50,43 @@ class WFLoc:
 
     def query_yandex(self):
         # Importing required modules...
-        import xml.etree.cElementTree as et
-        import requests as rq
+        from xml.etree.cElementTree import Element, SubElement, tostring, fromstring
+        from requests import post
 
         # Generating base XML structure...
-        xml = et.Element('ya_lbs_request')
+        xml = Element('ya_lbs_request')
 
         # Filling API Keys...
-        common = et.SubElement(xml, 'common')
-        et.SubElement(common, 'version').text = '1.0'
-        et.SubElement(common, 'api_key').text = self.__ya_apikey
+        common = SubElement(xml, 'common')
+        SubElement(common, 'version').text = '1.0'
+        SubElement(common, 'api_key').text = self.__ya_apikey
 
         # Creating wifi_networks element...
-        networks = et.SubElement(xml, 'wifi_networks')
+        networks = SubElement(xml, 'wifi_networks')
 
         # Retrieving available networks...
         for arr in self.__netlist:
-            network = et.SubElement(networks, 'network')
-            et.SubElement(network, 'mac').text = arr[0]
-            et.SubElement(network, 'signal_strength').text = arr[1]
+            network = SubElement(networks, 'network')
+            SubElement(network, 'mac').text = arr[0]
+            SubElement(network, 'signal_strength').text = arr[1]
 
         # Sending our XML file to API...
-        r = rq.post(self.__ya_apiuri, data={'xml': et.tostring(xml, 'utf8')})
+        r = post(self.__ya_apiuri, data={'xml': tostring(xml, 'utf8')})
 
         # Checking return code...
         if r.status_code != 200:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing XML response...
-        result = et.fromstring(r.content).findall('./position/')
+        result = fromstring(r.content).findall('./position/')
 
         # Returning result...
         return [result[0].text, result[1].text]
 
     def query_google(self):
         # Importing required modules...
-        import requests as rq
-        import json
+        from requests import post
+        from json import dumps, loads
 
         # Generating base JSON structure...
         jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
@@ -96,7 +96,7 @@ class WFLoc:
             jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
 
         # Sending our JSON to API...
-        r = rq.post(self.__gg_apiuri % self.__gg_apikey, data=json.dumps(jdata),
+        r = post(self.__gg_apiuri % self.__gg_apikey, data=dumps(jdata),
                     headers={'content-type': 'application/json'})
 
         # Checking return code...
@@ -104,7 +104,7 @@ class WFLoc:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing JSON response...
-        result = json.loads(r.content, encoding='UTF8')
+        result = loads(r.content, encoding='UTF8')
 
         # Returning result...
         return [result['location']['lat'], result['location']['lng']]
