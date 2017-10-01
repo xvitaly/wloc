@@ -104,7 +104,7 @@ class WFLoc:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing JSON response...
-        result = loads(r.content, encoding='UTF8')
+        result = loads(r.content, encoding='utf8')
 
         # Returning result...
         return [result['location']['lat'], result['location']['lng']]
