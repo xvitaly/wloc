@@ -19,7 +19,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from wloc.settings import consts
+from .settings import consts
 
 
 class WFLoc:
