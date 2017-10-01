@@ -81,7 +81,7 @@ class WFLoc:
         result = fromstring(r.content).findall('./position/')
 
         # Returning result...
-        return [result[0].text, result[1].text]
+        return [float(result[0].text), float(result[1].text)]
 
     def query_google(self):
         # Importing required modules...
