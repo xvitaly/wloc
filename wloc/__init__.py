@@ -50,7 +50,7 @@ class WFLoc:
 
     def query_yandex(self):
         # Importing required modules...
-        from xml.etree.cElementTree import Element, SubElement, tostring, fromstring
+        from xml.etree.cElementTree import Element, SubElement, tostring as XmlToString, fromstring as XMLFromString
         from requests import post
 
         # Generating base XML structure...
@@ -71,14 +71,14 @@ class WFLoc:
             SubElement(network, 'signal_strength').text = arr[1]
 
         # Sending our XML file to API...
-        r = post(self.__ya_apiuri, data={'xml': tostring(xml, 'utf8')})
+        r = post(self.__ya_apiuri, data={'xml': XmlToString(xml, 'utf8')})
 
         # Checking return code...
         if r.status_code != 200:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing XML response...
-        result = fromstring(r.content).findall('./position/')
+        result = XMLFromString(r.content).findall('./position/')
 
         # Returning result...
         return [float(result[0].text), float(result[1].text)]
