@@ -29,7 +29,7 @@ def main():
         coords = locator.query_yandex()
 
         # Showing result...
-        print('Latitude: %s\nLongitude: %s\n' % (coords[0], coords[1]))
+        print('Latitude: %.6f\nLongitude: %.6f\n' % (coords[0], coords[1]))
 
     except Exception as ex:
         # Exception detected...
