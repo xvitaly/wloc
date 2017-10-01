@@ -89,14 +89,25 @@ class WFLoc:
         import json
 
         # Generating base JSON structure...
-        data = {'considerIp': 'false', 'wifiAccessPoints': []}
+        jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
 
         # Retrieving available networks...
         for arr in self.__netlist:
-            data['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
+            jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
+
+        # Sending our JSON to API...
+        r = rq.post(self.__gg_apiuri % self.__gg_apikey, data=json.dumps(jdata),
+                    headers={'content-type': 'application/json'})
+
+        # Checking return code...
+        if r.status_code != 200:
+            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
+
+        # Parsing JSON response...
+        result = json.loads(r.content, encoding='UTF8')
 
         # Returning result...
-        print(json.dumps(data))
+        return [result['location']['lat'], result['location']['lng']]
 
     def __init__(self):
         # Setting constants...
