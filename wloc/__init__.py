@@ -84,7 +84,19 @@ class WFLoc:
         return [result[0].text, result[1].text]
 
     def query_google(self):
-        print('Not implemented yet.')
+        # Importing required modules...
+        import requests as rq
+        import json
+
+        # Generating base JSON structure...
+        data = {'considerIp': 'false', 'wifiAccessPoints': []}
+
+        # Retrieving available networks...
+        for arr in self.__netlist:
+            data['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
+
+        # Returning result...
+        print(json.dumps(data))
 
     def __init__(self):
         # Setting constants...
