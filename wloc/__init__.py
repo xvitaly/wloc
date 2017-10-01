@@ -83,10 +83,15 @@ class WFLoc:
         # Returning result...
         return [result[0].text, result[1].text]
 
+    def query_google(self):
+        print('Not implemented yet.')
+
     def __init__(self):
         # Setting constants...
         self.__ya_apikey = consts['ya_apikey']
         self.__ya_apiuri = consts['ya_apiuri']
+        self.__gg_apikey = consts['gg_apikey']
+        self.__gg_apiuri = consts['gg_apiuri']
 
         # Creating a new list for networks...
         self.__netlist = []
