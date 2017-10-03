@@ -121,3 +121,7 @@ class WFLoc:
 
         # Saving list of available networks...
         self.__fetch_networks()
+
+        # Checking number of networks...
+        if len(self.__netlist) < 1:
+            raise Exception('No wireless networks found. Check wireless adapter settings!')
