@@ -47,8 +47,8 @@ def main():
             show_result(locator.query_yandex(), 'Yandex')
 
         # Querying Google...
-        if params.yandex:
-            show_result(locator.query_yandex(), 'Google')
+        if params.google:
+            show_result(locator.query_google(), 'Google')
 
     except Exception as ex:
         # Exception detected...
