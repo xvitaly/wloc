@@ -34,6 +34,10 @@ def show_result(coords, service):
     print('%s results:\nLatitude: %.6f\nLongitude: %.6f\n' % (service, coords[0], coords[1]))
 
 
+def show_error(service, message):
+    print('An error occurred while querying %s backend: %s' % (service, message))
+
+
 def main():
     try:
         # Checking command-line options...
@@ -44,15 +48,21 @@ def main():
 
         # Querying Yandex...
         if params.yandex:
-            show_result(locator.query_yandex(), 'Yandex')
+            try:
+                show_result(locator.query_yandex(), 'Yandex')
+            except Exception as ex:
+                show_error('Yandex', ex)
 
         # Querying Google...
         if params.google:
-            show_result(locator.query_google(), 'Google')
+            try:
+                show_result(locator.query_google(), 'Google')
+            except Exception as ex:
+                show_error('Google', ex)
 
     except Exception as ex:
         # Exception detected...
-        print('An error occurred while querying backend: %s' % ex.message)
+        print('An error occurred while running application: %s' % ex)
 
 
 if __name__ == '__main__':
