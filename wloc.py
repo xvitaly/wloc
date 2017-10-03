@@ -20,6 +20,14 @@
 #
 
 from wloc import WFLoc
+from argparse import ArgumentParser
+
+
+def mkparser():
+    parser = ArgumentParser()
+    parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', required=False)
+    parser.add_argument('--google', '-g', help='Use Google Geolocation API.', required=False)
+    return parser
 
 
 def main():
