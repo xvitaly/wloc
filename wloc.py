@@ -19,8 +19,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from wloc import WFLoc
 from argparse import ArgumentParser
+from wloc import WFLoc
 
 
 def mkparser():
@@ -49,7 +49,6 @@ def main():
         # Querying Google...
         if params.yandex:
             show_result(locator.query_yandex(), 'Google')
-
 
     except Exception as ex:
         # Exception detected...
