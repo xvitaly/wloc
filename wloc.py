@@ -25,19 +25,27 @@ from argparse import ArgumentParser
 
 def mkparser():
     parser = ArgumentParser()
-    parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', required=False)
-    parser.add_argument('--google', '-g', help='Use Google Geolocation API.', required=False)
+    parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', action="store_true", required=False)
+    parser.add_argument('--google', '-g', help='Use Google Geolocation API.', action="store_true", required=False)
     return parser
+
+
+def show_result(coords, service):
+    print('%s results:\nLatitude: %.6f\nLongitude: %.6f\n' % (service, coords[0], coords[1]))
 
 
 def main():
     try:
-        # Querying Yandex...
-        locator = WFLoc()
-        coords = locator.query_yandex()
+        # Checking command-line options...
+        params = mkparser().parse_args()
 
-        # Showing result...
-        print('Latitude: %.6f\nLongitude: %.6f\n' % (coords[0], coords[1]))
+        # Creating object...
+        locator = WFLoc()
+
+        # Querying Yandex...
+        if params.yandex:
+            show_result(locator.query_yandex(), 'Yandex')
+
 
     except Exception as ex:
         # Exception detected...
