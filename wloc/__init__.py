@@ -57,6 +57,10 @@ class WFLoc:
                     self.__netlist.append([accesspoint.get_bssid(), self.conv_strength(accesspoint.get_strength())])
 
     def query_yandex(self):
+        """
+        Query Yandex Geolocation API.
+        :return: Coordinates (float).
+        """
         # Importing required modules...
         from xml.etree.cElementTree import Element, SubElement, tostring as XmlToString, fromstring as XMLFromString
         from requests import post
