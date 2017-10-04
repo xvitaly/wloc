@@ -23,6 +23,9 @@ from .settings import consts
 
 
 class WFLoc:
+    """
+    Wi-Fi simple geolocation class.
+    """
     @staticmethod
     def conv_strength(stp):
         """
