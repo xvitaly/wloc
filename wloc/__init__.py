@@ -25,7 +25,11 @@ from .settings import consts
 class WFLoc:
     @staticmethod
     def conv_strength(stp):
-        # Converting strength percents to RSSI (dBm)...
+        """
+        Converts Wi-Fi signal strength percents to RSSI (dBm)
+        :param stp: Signal strength in percents
+        :return: Signal strength in dBm
+        """
         return '%.0f' % (stp / 2 - 100)
 
     def __fetch_networks(self):
