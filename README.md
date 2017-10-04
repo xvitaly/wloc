@@ -1,24 +1,38 @@
 # Wi-Fi geolocation tool
-Locate user by using global Wi-Fi database from Yandex or/and Google (not implemented yet).
+Locate user by using global Wi-Fi database (no GPS required). Supported backends:
+ * Yandex Maps API;
+ * Google Geolocation API.
 
 # License
-GNU General Public License version 3. You can find it here: https://www.gnu.org/licenses/gpl.html. External libraries can use another licenses, compatible with GNU GPLv3.
+GNU General Public License version 3. You can find it here: [COPYING](COPYING). External libraries can use another licenses, compatible with GNU GPLv3.
 
 # Requirements
- * GNU/Linux;
- * Network Manager;
+ * GNU/Linux (any modern distribution);
+ * installed and enabled Network Manager;
  * Python 2.7 or 3.x;
  * python-networkmanager;
- * python-lxml.
+ * python-lxml;
+ * python-requests.
 
 # Installation
- 1. [Get API key](https://tech.yandex.ru/maps/keys/get/) from Yandex.
- 2. Clone this repository:
+No installation required. Just clone repository and set your own API keys:
+ 1. Clone this repository:
  ```bash
  git clone https://github.com/xvitaly/wloc.git wloc
  ```
- 3. Open `wloc/settings.py` in any text editor and set your API keys.
+ 2. Get API keys from [Yandex](https://tech.yandex.ru/maps/keys/get/) or/and [Google](https://developers.google.com/maps/documentation/geolocation/get-api-key);
+ 3. Open `wloc/settings.py` file in any text editor and set your API keys.
  4. Run:
  ```bash
- ./wloc.py
+ ./wloc.py -y -g
  ```
+
+# Available options
+```
+usage: wloc.py [-h] [--yandex] [--google]
+```
+
+Optional arguments:
+ * `-h` or `--help` - Show help message and exit;
+ * `-y` or `--yandex` - Use Yandex Geolocation API;
+ * `-g` or  `--google` - Use Google Geolocation API.
