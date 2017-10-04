@@ -33,6 +33,10 @@ class WFLoc:
         return '%.0f' % (stp / 2 - 100)
 
     def __fetch_networks(self):
+        """
+        Connects to Network Manager, fetching list of available networks
+        and stores them in private class property.
+        """
         # Importing Network Manager from GI repository and other modules...
         import gi, warnings
         gi.require_version('NetworkManager', '1.0')
