@@ -126,6 +126,9 @@ class WFLoc:
         return [result['location']['lat'], result['location']['lng']]
 
     def __init__(self):
+        """
+        Main constructor.
+        """
         # Setting constants...
         self.__ya_apikey = consts['ya_apikey']
         self.__ya_apiuri = consts['ya_apiuri']
