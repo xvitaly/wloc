@@ -20,8 +20,8 @@ No installation required. Just clone repository and set your own API keys:
  ```bash
  git clone https://github.com/xvitaly/wloc.git wloc
  ```
- 2. Get API keys from [Yandex](https://tech.yandex.ru/maps/keys/get/) or/and [Google](https://developers.google.com/maps/documentation/geolocation/get-api-key);
- 3. Open `wloc/settings.py` file in any text editor and set your API keys.
+ 2. Get API keys from [Yandex](https://tech.yandex.ru/maps/keys/get/) or/and [Google](https://developers.google.com/maps/documentation/geolocation/get-api-key).
+ 3. Open `wloc/settings.py` file in any text editor and set received API keys.
  4. Run:
  ```bash
  ./wloc.py -y -g
