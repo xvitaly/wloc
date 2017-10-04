@@ -96,6 +96,10 @@ class WFLoc:
         return [float(result[0].text), float(result[1].text)]
 
     def query_google(self):
+        """
+        Query Google Geolocation API.
+        :return: Coordinates (float).
+        """
         # Importing required modules...
         from requests import post
         from json import dumps, loads
