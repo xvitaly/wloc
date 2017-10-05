@@ -2,7 +2,7 @@
 # coding=utf-8
 
 #
-# Wi-Fi simple geolocation tool
+# Wi-Fi simple geolocation library
 # Copyright (c) 2015 - 2017 EasyCoding Team
 #
 # This program is free software: you can redistribute it and/or modify
