@@ -35,6 +35,13 @@ class WFLoc:
         """
         return '%.0f' % (stp / 2 - 100)
 
+    def __check_tokens(self):
+        """
+        Checks if API tokens set in configuration file.
+        :return: Check results
+        """
+        return self.__ya_apikey is not None or self.__gg_apikey is not None
+
     def __fetch_networks(self):
         """
         Connects to Network Manager, fetching list of available networks
