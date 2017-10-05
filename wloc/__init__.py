@@ -48,13 +48,14 @@ class WFLoc:
         and stores them in private class property.
         """
         # Importing Network Manager from GI repository and other modules...
-        import gi, warnings
-        gi.require_version('NetworkManager', '1.0')
-        gi.require_version('NMClient', '1.0')
+        from gi import require_version
+        require_version('NetworkManager', '1.0')
+        require_version('NMClient', '1.0')
         from gi.repository import NetworkManager, NMClient
+        from warnings import filterwarnings
 
         # Ignoring warnings on new Python versions...
-        warnings.filterwarnings('ignore')
+        filterwarnings('ignore')
 
         # Connecting to Network Manager...
         nmclient = NMClient.Client.new()
