@@ -40,7 +40,7 @@ class WFLoc:
         Checks if API tokens set in configuration file.
         :return: Check results
         """
-        return self.__ya_apikey is not None or self.__gg_apikey is not None
+        return not(self.__ya_apikey or self.__gg_apikey)
 
     def __fetch_networks(self):
         """
