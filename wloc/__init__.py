@@ -145,6 +145,10 @@ class WFLoc:
         self.__gg_apikey = consts['gg_apikey']
         self.__gg_apiuri = consts['gg_apiuri']
 
+        # Checking tokens...
+        if self.__check_tokens():
+            raise Exception('No API tokens entered. Please open settings.py file and set them.')
+
         # Creating a new list for networks...
         self.__netlist = []
 
