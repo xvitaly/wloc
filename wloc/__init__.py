@@ -29,7 +29,7 @@ class WFLoc:
     @staticmethod
     def conv_strength(stp):
         """
-        Converts Wi-Fi signal strength percents to RSSI (dBm)
+        Converts Wi-Fi signal strength percents to RSSI (dBm).
         :param stp: Signal strength in percents
         :return: Signal strength in dBm
         """
