@@ -1,4 +1,4 @@
-# Wi-Fi geolocation tool
+# Wi-Fi geolocation tool and library
 Locate user by using global Wi-Fi database (no GPS required). Supported backends:
  * Yandex Maps API;
  * Google Geolocation API.
