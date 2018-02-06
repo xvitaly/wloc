@@ -67,8 +67,11 @@ class WFLoc:
                 for accesspoint in nmdevice.get_access_points():
                     self.__netlist.append([accesspoint.get_bssid(), self.conv_strength(accesspoint.get_strength())])
 
-
     def __run_glike(self, auri, akey):
+        """
+        Fetches Google-based geolocation API.
+        :return: Coordinates (float).
+        """
         # Importing required modules...
         from requests import post
         from json import dumps, loads
@@ -95,7 +98,7 @@ class WFLoc:
 
     def query_yandex(self):
         """
-        Query Yandex Geolocation API.
+        Query Yandex geolocation API.
         :return: Coordinates (float).
         """
         # Importing required modules...
@@ -134,12 +137,16 @@ class WFLoc:
 
     def query_google(self):
         """
-        Query Google Geolocation API.
+        Query Google geolocation API.
         :return: Coordinates (float).
         """
         return self.__run_glike(self.__gg_apiuri, self.__gg_apikey)
 
     def query_mozilla(self):
+        """
+        Query Mozilla geolocation API.
+        :return: Coordinates (float).
+        """
         return self.__run_glike(self.__mm_apiuri, self.__mm_apikey)
 
     def __init__(self):
