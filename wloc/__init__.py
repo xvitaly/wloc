@@ -136,6 +136,9 @@ class WFLoc:
         # Returning result...
         return [result['location']['lat'], result['location']['lng']]
 
+    def query_mozilla(self):
+        return [0.0, 0.0]
+
     def __init__(self):
         """
         Main constructor.
