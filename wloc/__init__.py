@@ -67,6 +67,32 @@ class WFLoc:
                 for accesspoint in nmdevice.get_access_points():
                     self.__netlist.append([accesspoint.get_bssid(), self.conv_strength(accesspoint.get_strength())])
 
+
+    def __run_glike(self, auri, akey):
+        # Importing required modules...
+        from requests import post
+        from json import dumps, loads
+
+        # Generating base JSON structure...
+        jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
+
+        # Retrieving available networks...
+        for arr in self.__netlist:
+            jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
+
+        # Sending our JSON to API...
+        r = post(auri % akey, data=dumps(jdata), headers={'content-type': 'application/json'})
+
+        # Checking return code...
+        if r.status_code != 200:
+            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
+
+        # Parsing JSON response...
+        result = loads(r.content, encoding='utf8')
+
+        # Returning result...
+        return [result['location']['lat'], result['location']['lng']]
+
     def query_yandex(self):
         """
         Query Yandex Geolocation API.
@@ -111,56 +137,10 @@ class WFLoc:
         Query Google Geolocation API.
         :return: Coordinates (float).
         """
-        # Importing required modules...
-        from requests import post
-        from json import dumps, loads
-
-        # Generating base JSON structure...
-        jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
-
-        # Retrieving available networks...
-        for arr in self.__netlist:
-            jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
-
-        # Sending our JSON to API...
-        r = post(self.__gg_apiuri % self.__gg_apikey, data=dumps(jdata),
-                 headers={'content-type': 'application/json'})
-
-        # Checking return code...
-        if r.status_code != 200:
-            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
-
-        # Parsing JSON response...
-        result = loads(r.content, encoding='utf8')
-
-        # Returning result...
-        return [result['location']['lat'], result['location']['lng']]
+        return self.__run_glike(self.__gg_apiuri, self.__gg_apikey)
 
     def query_mozilla(self):
-        # Importing required modules...
-        from requests import post
-        from json import dumps, loads
-
-        # Generating base JSON structure...
-        jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
-
-        # Retrieving available networks...
-        for arr in self.__netlist:
-            jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
-
-        # Sending our JSON to API...
-        r = post(self.__mm_apiuri % self.__mm_apikey, data=dumps(jdata),
-                 headers={'content-type': 'application/json'})
-
-        # Checking return code...
-        if r.status_code != 200:
-            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
-
-        # Parsing JSON response...
-        result = loads(r.content, encoding='utf8')
-
-        # Returning result...
-        return [result['location']['lat'], result['location']['lng']]
+        return self.__run_glike(self.__mm_apiuri, self.__mm_apikey)
 
     def __init__(self):
         """
