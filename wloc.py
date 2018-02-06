@@ -27,6 +27,7 @@ def mkparser():
     parser = ArgumentParser()
     parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', action="store_true", required=False)
     parser.add_argument('--google', '-g', help='Use Google Geolocation API.', action="store_true", required=False)
+    parser.add_argument('--mozilla', '-m', help='Use Mozilla Geolocation API.', action="store_true", required=False)
     return parser
 
 
@@ -59,6 +60,13 @@ def main():
                 show_result(locator.query_google(), 'Google')
             except Exception as ex:
                 show_error('Google', ex)
+
+        # Querying Mozilla if selected...
+        if params.mozilla:
+            try:
+                show_result(locator.query_mozilla(), 'Mozilla')
+            except Exception as ex:
+                show_error('Mozilla', ex)
 
     except Exception as ex:
         # Exception detected...
