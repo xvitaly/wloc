@@ -137,7 +137,30 @@ class WFLoc:
         return [result['location']['lat'], result['location']['lng']]
 
     def query_mozilla(self):
-        return [0.0, 0.0]
+        # Importing required modules...
+        from requests import post
+        from json import dumps, loads
+
+        # Generating base JSON structure...
+        jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
+
+        # Retrieving available networks...
+        for arr in self.__netlist:
+            jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
+
+        # Sending our JSON to API...
+        r = post(self.__mm_apiuri % self.__mm_apikey, data=dumps(jdata),
+                 headers={'content-type': 'application/json'})
+
+        # Checking return code...
+        if r.status_code != 200:
+            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
+
+        # Parsing JSON response...
+        result = loads(r.content, encoding='utf8')
+
+        # Returning result...
+        return [result['location']['lat'], result['location']['lng']]
 
     def __init__(self):
         """
@@ -148,6 +171,8 @@ class WFLoc:
         self.__ya_apiuri = consts['ya_apiuri']
         self.__gg_apikey = consts['gg_apikey']
         self.__gg_apiuri = consts['gg_apiuri']
+        self.__mm_apikey = consts['mm_apikey']
+        self.__mm_apiuri = consts['mm_apiuri']
 
         # Checking tokens...
         if self.__check_tokens():
