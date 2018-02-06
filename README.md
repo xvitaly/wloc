@@ -24,7 +24,7 @@ No installation required. Just clone repository and set your own API keys:
  3. Open `wloc/settings.py` file in any text editor and set received API keys.
  4. Run:
  ```bash
- ./wloc.py -y -g
+ ./wloc.py -y -g -m
  ```
 
 # Available options
@@ -35,4 +35,5 @@ usage: wloc.py [-h] [--yandex] [--google]
 Optional arguments:
  * `-h` or `--help` - Show help message and exit;
  * `-y` or `--yandex` - Use Yandex Geolocation API;
- * `-g` or  `--google` - Use Google Geolocation API.
+ * `-g` or  `--google` - Use Google Geolocation API;
+ * `-m` or  `--mozilla` - Use Mozilla Geolocation API.
