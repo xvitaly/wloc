@@ -30,7 +30,7 @@ No installation required. Just clone repository and set your own API keys:
 
 # Available options
 ```
-usage: wloc.py [-h] [--yandex] [--google]
+usage: wloc.py [-h] [--yandex] [--google] [--mozilla]
 ```
 
 Optional arguments:
