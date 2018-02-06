@@ -1,7 +1,8 @@
 # Wi-Fi geolocation library and tool
 Locate user by using global Wi-Fi database (no GPS required). Supported backends:
- * Yandex Maps API;
- * Google Geolocation API.
+ * [Yandex Maps API](https://tech.yandex.ru/locator/doc/dg/api/json-docpage/);
+ * [Google Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro);
+ * [Mozilla Geolocation API](https://mozilla.github.io/ichnaea/api/index.html).
 
 # License
 GNU General Public License version 3. You can find it here: [COPYING](COPYING). External libraries can use another licenses, compatible with GNU GPLv3.
