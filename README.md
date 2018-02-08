@@ -5,7 +5,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
  * [Mozilla Geolocation API](https://mozilla.github.io/ichnaea/api/index.html).
 
 # License
-GNU General Public License version 3. You can find it here: [COPYING](COPYING). External libraries can use another licenses, compatible with GNU GPLv3.
+GNU General Public License version 3. You can find it [here](COPYING). External libraries can use another licenses, compatible with GNU GPLv3.
 
 # Requirements
  * GNU/Linux (any modern distribution);
