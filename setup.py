@@ -3,7 +3,7 @@
 
 #
 # Wi-Fi simple geolocation library
-# Copyright (c) 2015 - 2017 EasyCoding Team
+# Copyright (c) 2015 - 2018 EasyCoding Team
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
