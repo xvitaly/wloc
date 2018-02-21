@@ -30,5 +30,5 @@ setup(
     install_requires=['requests'],
     author='Vitaly Zaitsev',
     author_email='vitaly@easycoding.org',
-    description='Simple Wi-Fi geolocation tool'
+    description='Simple Wi-Fi geolocation library'
 )
