@@ -98,44 +98,37 @@ class WFLoc:
         # Returning result...
         return [result['location']['lat'], result['location']['lng']]
 
-    def query_yandex(self):
-        """
-        Query Yandex geolocation API.
-        :return: Coordinates (float).
-        """
+    def __run_yalike(self, auri, akey):
         # Importing required modules...
-        from xml.etree.cElementTree import Element, SubElement, tostring as XmlToString, fromstring as XMLFromString
         from requests import post
+        from json import dumps, loads
 
-        # Generating base XML structure...
-        xml = Element('ya_lbs_request')
-
-        # Filling API Keys...
-        common = SubElement(xml, 'common')
-        SubElement(common, 'version').text = '1.0'
-        SubElement(common, 'api_key').text = self.__ya_apikey
-
-        # Creating wifi_networks element...
-        networks = SubElement(xml, 'wifi_networks')
+        # Generating base JSON structure...
+        jdata = {'common': {'version': '1.0', 'api_key': akey}, 'wifi_networks': []}
 
         # Retrieving available networks...
         for arr in self.__netlist:
-            network = SubElement(networks, 'network')
-            SubElement(network, 'mac').text = arr[0]
-            SubElement(network, 'signal_strength').text = arr[1]
+            jdata['wifi_networks'].append({'mac': arr[0], 'signal_strength': arr[1], 'age': 0})
 
-        # Sending our XML file to API...
-        r = post(self.__ya_apiuri, data={'xml': XmlToString(xml, 'utf8')})
+        # Sending our JSON to API...
+        r = post(auri % akey, data=dumps(jdata), headers={'content-type': 'application/json'})
 
         # Checking return code...
         if r.status_code != 200:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
-        # Parsing XML response...
-        result = XMLFromString(r.content).findall('./position/')
+        # Parsing JSON response...
+        result = loads(r.content, encoding='utf8')
 
         # Returning result...
-        return [float(result[0].text), float(result[1].text)]
+        return [float(result['position']['latitude']), float(result['position']['longitude'])]
+
+    def query_yandex(self):
+        """
+        Query Yandex geolocation API.
+        :return: Coordinates (float).
+        """
+        return self.__run_yalike(self.__ya_apiuri, self.__ya_apikey)
 
     def query_google(self):
         """
