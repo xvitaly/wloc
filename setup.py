@@ -23,7 +23,7 @@ from distutils.core import setup
 
 setup(
     name='wloc',
-    version='0.2',
+    version='0.3',
     packages=['wloc'],
     url='https://github.com/xvitaly/wloc',
     license='GPLv3',
