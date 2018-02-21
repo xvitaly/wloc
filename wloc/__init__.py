@@ -117,7 +117,7 @@ class WFLoc:
             jdata['wifi_networks'].append({'mac': arr[0], 'signal_strength': arr[1], 'age': 0})
 
         # Sending our JSON to API...
-        r = post(auri % akey, data=dumps(jdata), headers={'content-type': 'application/json'})
+        r = post(auri, data={'json': dumps(jdata)}, headers={'content-type': 'application/json'})
 
         # Checking return code...
         if r.status_code != 200:
