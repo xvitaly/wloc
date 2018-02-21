@@ -70,6 +70,8 @@ class WFLoc:
     def __run_glike(self, auri, akey):
         """
         Internal inplementation of Google-like geolocation API fetcher.
+        :param auri: String with API URI
+        :param akey: String with API key
         :return: Coordinates (float).
         """
         # Importing required modules...
