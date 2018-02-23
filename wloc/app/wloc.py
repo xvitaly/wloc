@@ -20,7 +20,7 @@
 #
 
 from argparse import ArgumentParser
-from wloc import WFLoc
+from wloc import WiFiLocator
 
 
 def mkparser():
@@ -45,7 +45,7 @@ def main():
         params = mkparser().parse_args()
 
         # Creating WFLoc object...
-        locator = WFLoc()
+        locator = WiFiLocator()
 
         # Querying Yandex if selected...
         if params.yandex:

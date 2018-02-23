@@ -22,7 +22,7 @@
 from .settings import consts
 
 
-class WFLoc:
+class WiFiLocator:
     """
     Wi-Fi simple geolocation class.
     """
