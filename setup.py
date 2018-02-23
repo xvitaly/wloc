@@ -32,7 +32,7 @@ setup(
     license='GPLv3',
     entry_points={
         'console_scripts': [
-            'wloc = wloc.app.wloc:main',
+            'wloc = wloc.app.run:main',
         ],
     },
     install_requires=['requests'],
