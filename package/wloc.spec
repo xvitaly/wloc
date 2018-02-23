@@ -17,21 +17,18 @@ BuildArch: noarch
 BuildRequires: python2-devel
 BuildRequires: python3-devel
 
-BuildRequires: python2dist(pytelegrambotapi)
-BuildRequires: python3dist(pytelegrambotapi)
+BuildRequires: python2dist(networkmanager)
+BuildRequires: python3dist(networkmanager)
 BuildRequires: python2dist(requests)
 BuildRequires: python3dist(requests)
-BuildRequires: python2dist(six)
-BuildRequires: python3dist(six)
 
 %description
 %{appdesc}.
 
 %package -n python2-%{appname}
 Summary: %{appsum}
-Requires: python2dist(pytelegrambotapi)
+Requires: python2dist(networkmanager)
 Requires: python2dist(requests)
-Requires: python2dist(six)
 %{?python_provide:%python_provide python2-%{appname}}
 
 %description -n python2-%{appname}
@@ -39,9 +36,8 @@ Requires: python2dist(six)
 
 %package -n python3-%{appname}
 Summary: %{appsum}
-Requires: python3dist(pytelegrambotapi)
+Requires: python3dist(networkmanager)
 Requires: python3dist(requests)
-Requires: python3dist(six)
 %{?python_provide:%python_provide python3-%{appname}}
 
 %description -n python3-%{appname}
