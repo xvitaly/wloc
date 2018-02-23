@@ -17,8 +17,8 @@ BuildArch: noarch
 BuildRequires: python2-devel
 BuildRequires: python3-devel
 
-BuildRequires: python2dist(networkmanager)
-BuildRequires: python3dist(networkmanager)
+BuildRequires: python2-networkmanager
+BuildRequires: python3-networkmanager
 BuildRequires: python2dist(requests)
 BuildRequires: python3dist(requests)
 
@@ -27,7 +27,7 @@ BuildRequires: python3dist(requests)
 
 %package -n python2-%{appname}
 Summary: %{appsum}
-Requires: python2dist(networkmanager)
+Requires: python2-networkmanager
 Requires: python2dist(requests)
 %{?python_provide:%python_provide python2-%{appname}}
 
@@ -36,7 +36,7 @@ Requires: python2dist(requests)
 
 %package -n python3-%{appname}
 Summary: %{appsum}
-Requires: python3dist(networkmanager)
+Requires: python3-networkmanager
 Requires: python3dist(requests)
 %{?python_provide:%python_provide python3-%{appname}}
 
