@@ -41,32 +41,39 @@ def show_error(service, message):
 
 def main():
     try:
-        # Checking command-line options...
-        params = mkparser().parse_args()
+        # Creating parser instance and fetching command-line arguments...
+        aparse = mkparser()
+        params = aparse.parse_args()
 
-        # Creating WFLoc object...
-        locator = WiFiLocator()
+        # Checking selected options...
+        if params.yandex or params.google or params.mozilla:
 
-        # Querying Yandex if selected...
-        if params.yandex:
-            try:
-                show_result(locator.query_yandex(), 'Yandex')
-            except Exception as ex:
-                show_error('Yandex', ex)
+            # Creating WFLoc object...
+            locator = WiFiLocator()
 
-        # Querying Google if selected...
-        if params.google:
-            try:
-                show_result(locator.query_google(), 'Google')
-            except Exception as ex:
-                show_error('Google', ex)
+            # Querying Yandex if selected...
+            if params.yandex:
+                try:
+                    show_result(locator.query_yandex(), 'Yandex')
+                except Exception as ex:
+                    show_error('Yandex', ex)
 
-        # Querying Mozilla if selected...
-        if params.mozilla:
-            try:
-                show_result(locator.query_mozilla(), 'Mozilla')
-            except Exception as ex:
-                show_error('Mozilla', ex)
+            # Querying Google if selected...
+            if params.google:
+                try:
+                    show_result(locator.query_google(), 'Google')
+                except Exception as ex:
+                    show_error('Google', ex)
+
+            # Querying Mozilla if selected...
+            if params.mozilla:
+                try:
+                    show_result(locator.query_mozilla(), 'Mozilla')
+                except Exception as ex:
+                    show_error('Mozilla', ex)
+        else:
+            # No command-line arguments detected. Show small help...
+            aparse.print_help()
 
     except Exception as ex:
         # Exception detected...
