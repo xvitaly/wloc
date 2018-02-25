@@ -8,11 +8,9 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
 GNU General Public License version 3. You can find it [here](COPYING). External libraries can use another licenses, compatible with GNU GPLv3.
 
 # Requirements
- * GNU/Linux (any modern distribution);
- * installed and enabled Network Manager;
+ * GNU/Linux (any modern distribution) with installed and enabled Network Manager;
  * Python 2.7 or 3.x;
  * python-networkmanager;
- * python-lxml;
  * python-requests.
 
 # Installation
