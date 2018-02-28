@@ -20,9 +20,9 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
  ```
  2. Get API keys from [Yandex](https://tech.yandex.ru/maps/keys/get/) or/and [Google](https://developers.google.com/maps/documentation/geolocation/get-api-key).
  3. Open `wloc/settings.py` file in any text editor and set received API keys.
- 4. Install:
+ 4. Install (in Python virtual environment):
  ```bash
- python3 setup.py install
+ python setup.py install
  ```
  5. Run application:
  ```bash
@@ -31,7 +31,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
 
 # Available options
 ```
-usage: wloc.py [-h] [--yandex] [--google] [--mozilla]
+usage: wloc [-h] [--yandex] [--google] [--mozilla]
 ```
 
 Optional arguments:
