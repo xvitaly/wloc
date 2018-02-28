@@ -16,8 +16,8 @@ BuildArch: noarch
 
 BuildRequires: python2-devel
 BuildRequires: python3-devel
-BuildRequires: python2-gobject
-BuildRequires: python3-gobject
+BuildRequires: python2-networkmanager
+BuildRequires: python3-networkmanager
 BuildRequires: python2dist(requests)
 BuildRequires: python3dist(requests)
 
