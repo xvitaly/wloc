@@ -14,16 +14,19 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
  * python-requests.
 
 # Installation
-No installation required. Just clone repository and set your own API keys:
  1. Clone this repository:
  ```bash
  git clone https://github.com/xvitaly/wloc.git wloc
  ```
  2. Get API keys from [Yandex](https://tech.yandex.ru/maps/keys/get/) or/and [Google](https://developers.google.com/maps/documentation/geolocation/get-api-key).
  3. Open `wloc/settings.py` file in any text editor and set received API keys.
- 4. Run:
+ 4. Install:
  ```bash
- ./wloc.py -y -g -m
+ python3 setup.py install
+ ```
+ 5. Run application:
+ ```bash
+ wloc -y -g -m
  ```
 
 # Available options
