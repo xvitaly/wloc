@@ -47,25 +47,14 @@ class WiFiLocator:
         Connects to Network Manager, fetching list of available networks
         and stores them in private class property.
         """
-        # Importing Network Manager from GI repository and other modules...
-        from gi import require_version
-        require_version('NetworkManager', '1.0')
-        require_version('NMClient', '1.0')
-        from gi.repository import NetworkManager, NMClient
-        from warnings import filterwarnings
-
-        # Ignoring warnings on new Python versions...
-        filterwarnings('ignore')
-
-        # Connecting to Network Manager...
-        nmclient = NMClient.Client.new()
-        nmdevices = nmclient.get_devices()
+        # Importing Network Manager module...
+        from NetworkManager import NetworkManager, Wireless
 
         # Retrieving available networks...
-        for nmdevice in nmdevices:
-            if nmdevice.get_device_type() == NetworkManager.DeviceType.WIFI:
-                for accesspoint in nmdevice.get_access_points():
-                    self.__netlist.append([accesspoint.get_bssid(), self.conv_strength(accesspoint.get_strength())])
+        for nmdevice in NetworkManager.GetDevices():
+            if type(nmdevice) == Wireless:
+                for accesspoint in nmdevice.AccessPoints:
+                    self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
 
     def __run_glike(self, auri, akey):
         """
