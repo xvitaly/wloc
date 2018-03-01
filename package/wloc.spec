@@ -14,6 +14,7 @@ Source0: %{url}/archive/v%{version}.tar.gz#/%{appname}-%{version}.tar.gz
 Patch0: %{appname}-api-keys.patch
 BuildArch: noarch
 
+BuildRequires: doxygen
 BuildRequires: python2-devel
 BuildRequires: python3-devel
 BuildRequires: python2-networkmanager
@@ -46,6 +47,7 @@ Requires: python3dist(requests)
 %autosetup -n %{appname}-%{version} -p1
 
 %build
+doxygen
 %py2_build
 %py3_build
 
@@ -60,11 +62,13 @@ Requires: python3dist(requests)
 %files -n python2-%{appname}
 %license COPYING
 %doc README.md
+%doc docs/html/*
 %{python2_sitelib}/*
 
 %files -n python3-%{appname}
 %license COPYING
 %doc README.md
+%doc docs/html/*
 %{_bindir}/%{appname}
 %{python3_sitelib}/*
 
