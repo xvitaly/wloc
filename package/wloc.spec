@@ -62,13 +62,13 @@ doxygen
 %files -n python2-%{appname}
 %license COPYING
 %doc README.md
-%doc docs/html/*
+%doc docs/html
 %{python2_sitelib}/*
 
 %files -n python3-%{appname}
 %license COPYING
 %doc README.md
-%doc docs/html/*
+%doc docs/html
 %{_bindir}/%{appname}
 %{python3_sitelib}/*
 
