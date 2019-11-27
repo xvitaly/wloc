@@ -20,9 +20,6 @@
 
 consts = {
     'ya_apiuri': 'https://api.lbs.yandex.net/geolocation',
-    'ya_apikey': '',
     'gg_apiuri': 'https://www.googleapis.com/geolocation/v1/geolocate?key=%s',
-    'gg_apikey': '',
     'mm_apiuri': 'https://location.services.mozilla.com/v1/geolocate?key=%s',
-    'mm_apikey': ''
 }
