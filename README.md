@@ -9,7 +9,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
 
 # Requirements
  * GNU/Linux (any modern distribution) with installed and enabled Network Manager;
- * Python 2.7 or 3.x;
+ * Python 3.5+;
  * python-networkmanager;
  * python-requests.
 
@@ -22,7 +22,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
  3. Open `wloc/settings.py` file in any text editor and set received API keys.
  4. Install (in Python virtual environment):
  ```bash
- python setup.py install
+ python3 setup.py install
  ```
  5. Run application:
  ```bash
