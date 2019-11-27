@@ -138,17 +138,22 @@ class WiFiLocator:
         """
         return self.__run_glike(self.__mm_apiuri, self.__mm_apikey)
 
-    def __init__(self):
+    def __init__(self, gg_apikey: str = None, ya_apikey: str = None, mm_apikey: str = None):
         """
         Main constructor.
+        :param gg_apikey: Google Geolocation API token.
+        :param ya_apikey: Yandex Locator API token.
+        :param mm_apikey: Mozilla Geolocation API token.
         """
         # Setting constants...
-        self.__ya_apikey = consts['ya_apikey']
         self.__ya_apiuri = consts['ya_apiuri']
-        self.__gg_apikey = consts['gg_apikey']
         self.__gg_apiuri = consts['gg_apiuri']
-        self.__mm_apikey = consts['mm_apikey']
         self.__mm_apiuri = consts['mm_apiuri']
+
+        # Setting API tokens...
+        self.__ya_apikey = ya_apikey
+        self.__gg_apikey = gg_apikey
+        self.__mm_apikey = mm_apikey
 
         # Checking tokens...
         if self.__check_tokens():
