@@ -45,16 +45,28 @@ class WiFiLocator:
         """
         return not(self.__ya_apikey or self.__gg_apikey or self.__mm_apikey)
 
-    def __fetch_networks(self):
+    def __fetch_networks_nm(self):
         """
         Connects to Network Manager, fetching list of available networks
         and stores them in private class property.
         """
-        # Retrieving available networks...
+        # Using DBus to ask Network Manager for available networks...
         for nmdevice in NetworkManager.GetDevices():
             if type(nmdevice) == Wireless:
                 for accesspoint in nmdevice.AccessPoints:
                     self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
+
+    def __fetch_networks(self):
+        """
+        Receives list of available networks and stores them in a private
+        class property.
+        """
+        # Retrieving available networks...
+        self.__fetch_networks_nm()
+
+        # Checking the number of detected networks...
+        if len(self.__netlist) < 1:
+            raise Exception('No wireless networks found. Check wireless adapter settings!')
 
     def __run_glike(self, auri, akey):
         """
@@ -157,7 +169,3 @@ class WiFiLocator:
 
         # Saving list of available networks...
         self.__fetch_networks()
-
-        # Checking number of networks...
-        if len(self.__netlist) < 1:
-            raise Exception('No wireless networks found. Check wireless adapter settings!')
