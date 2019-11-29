@@ -18,6 +18,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+from json import dumps, loads
+from NetworkManager import NetworkManager, Wireless
+from requests import post
+
 from .settings import consts
 
 
@@ -46,9 +50,6 @@ class WiFiLocator:
         Connects to Network Manager, fetching list of available networks
         and stores them in private class property.
         """
-        # Importing Network Manager module...
-        from NetworkManager import NetworkManager, Wireless
-
         # Retrieving available networks...
         for nmdevice in NetworkManager.GetDevices():
             if type(nmdevice) == Wireless:
@@ -62,10 +63,6 @@ class WiFiLocator:
         :param akey: String with Google API key
         :return: Coordinates (float).
         """
-        # Importing required modules...
-        from requests import post
-        from json import dumps, loads
-
         # Generating base JSON structure...
         jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
 
@@ -93,10 +90,6 @@ class WiFiLocator:
         :param akey: String with Yandex API key
         :return: Coordinates (float).
         """
-        # Importing required modules...
-        from requests import post
-        from json import dumps, loads
-
         # Generating base JSON structure...
         jdata = {'common': {'version': '1.0', 'api_key': akey}, 'wifi_networks': []}
 
