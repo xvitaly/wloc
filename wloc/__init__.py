@@ -130,6 +130,14 @@ class WiFiLocator:
         """
         self.__fetch_networks()
 
+    def add_network(self, hwaddress: str, strength: int):
+        """
+        Adds a new network to list.
+        :param hwaddress: Station hardware address.
+        :param strength: Signal strength in percents.
+        """
+        self.__netlist.append([hwaddress, self.conv_strength(strength)])
+
     def query_yandex(self):
         """
         Query Yandex geolocation API.
