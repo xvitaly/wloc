@@ -124,6 +124,12 @@ class WiFiLocator:
         # Returning result...
         return [float(result['position']['latitude']), float(result['position']['longitude'])]
 
+    def fetch_networks(self):
+        """
+        Automatically gets list of available Wi-Fi networks.
+        """
+        self.__fetch_networks()
+
     def query_yandex(self):
         """
         Query Yandex geolocation API.
@@ -168,6 +174,3 @@ class WiFiLocator:
 
         # Creating a new list for networks...
         self.__netlist = []
-
-        # Saving list of available networks...
-        self.__fetch_networks()
