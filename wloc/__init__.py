@@ -18,8 +18,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from json import dumps, loads
-from requests import post
+import json
+import os
+import requests
 
 from .settings import consts
 
@@ -28,6 +29,7 @@ class WiFiLocator:
     """
     Wi-Fi simple geolocation class.
     """
+
     @staticmethod
     def conv_strength(stp):
         """
@@ -42,7 +44,7 @@ class WiFiLocator:
         Checks if API tokens set in configuration file.
         :return: Check results
         """
-        return not(self.__ya_apikey or self.__gg_apikey or self.__mm_apikey)
+        return not (self.__ya_apikey or self.__gg_apikey or self.__mm_apikey)
 
     def __fetch_networks_nm(self):
         """
@@ -64,7 +66,10 @@ class WiFiLocator:
         class property.
         """
         # Retrieving available networks...
-        self.__fetch_networks_nm()
+        if os.name == 'posix':
+            self.__fetch_networks_nm()
+        else:
+            raise Exception('Current platform is not supported.')
 
         # Checking the number of detected networks...
         if len(self.__netlist) < 1:
@@ -85,14 +90,14 @@ class WiFiLocator:
             jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
 
         # Sending our JSON to API...
-        r = post(auri % akey, data=dumps(jdata), headers={'content-type': 'application/json'})
+        r = requests.post(auri % akey, data=json.dumps(jdata), headers={'content-type': 'application/json'})
 
         # Checking return code...
         if r.status_code != 200:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing JSON response...
-        result = loads(r.content, encoding='utf8')
+        result = json.loads(r.content, encoding='utf8')
 
         # Returning result...
         return [result['location']['lat'], result['location']['lng']]
@@ -112,14 +117,14 @@ class WiFiLocator:
             jdata['wifi_networks'].append({'mac': arr[0], 'signal_strength': arr[1], 'age': 0})
 
         # Sending our JSON to API...
-        r = post(auri, data={'json': dumps(jdata)}, headers={'content-type': 'application/json'})
+        r = requests.post(auri, data={'json': json.dumps(jdata)}, headers={'content-type': 'application/json'})
 
         # Checking return code...
         if r.status_code != 200:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing JSON response...
-        result = loads(r.content, encoding='utf8')
+        result = json.loads(r.content, encoding='utf8')
 
         # Returning result...
         return [float(result['position']['latitude']), float(result['position']['longitude'])]
