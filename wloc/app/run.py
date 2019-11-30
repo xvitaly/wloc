@@ -18,12 +18,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from argparse import ArgumentParser
-from wloc import WiFiLocator
+import argparse
+import wloc
 
 
 def mkparser():
-    parser = ArgumentParser()
+    parser = argparse.ArgumentParser()
     parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', action="store_true", required=False)
     parser.add_argument('--google', '-g', help='Use Google Geolocation API.', action="store_true", required=False)
     parser.add_argument('--mozilla', '-m', help='Use Mozilla Geolocation API.', action="store_true", required=False)
@@ -48,7 +48,7 @@ def main():
         if params.yandex or params.google or params.mozilla:
 
             # Creating WFLoc object...
-            locator = WiFiLocator()
+            locator = wloc.WiFiLocator()
 
             # Querying Yandex if selected...
             if params.yandex:
