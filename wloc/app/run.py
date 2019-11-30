@@ -52,6 +52,9 @@ def main():
             locator = wloc.WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
                                        mm_apikey=os.getenv('APIKEY_MOZILLA'))
 
+            # Getting list of available Wi-Fi networks...
+            locator.fetch_networks()
+
             # Querying Yandex if selected...
             if params.yandex:
                 try:
