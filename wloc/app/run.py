@@ -19,6 +19,7 @@
 #
 
 import argparse
+import os
 import wloc
 
 
@@ -48,7 +49,8 @@ def main():
         if params.yandex or params.google or params.mozilla:
 
             # Creating WFLoc object...
-            locator = wloc.WiFiLocator()
+            locator = wloc.WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
+                                       mm_apikey=os.getenv('APIKEY_MOZILLA'))
 
             # Querying Yandex if selected...
             if params.yandex:
