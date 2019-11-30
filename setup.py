@@ -34,7 +34,7 @@ setup(
             'wloc = wloc.app.run:main',
         ],
     },
-    install_requires=['requests', 'python-networkmanager'],
+    install_requires=['requests'],
     author='Vitaly Zaitsev',
     author_email='vitaly@easycoding.org',
     description='Simple Wi-Fi geolocation library and tool'
