@@ -60,6 +60,13 @@ class WiFiLocator:
                 for accesspoint in nmdevice.AccessPoints:
                     self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
 
+    def __check_networks(self):
+        """
+        Checks the number of available wireless networks.
+        """
+        if len(self.__netlist) < 1:
+            raise Exception('No wireless networks found.')
+
     def __fetch_networks(self):
         """
         Receives list of available networks and stores them in a private
@@ -71,9 +78,8 @@ class WiFiLocator:
         else:
             raise Exception('Current platform is not supported.')
 
-        # Checking the number of detected networks...
-        if len(self.__netlist) < 1:
-            raise Exception('No wireless networks found. Check wireless adapter settings!')
+        # Checking the number of available networks...
+        self.__check_networks()
 
     def __run_glike(self, auri, akey):
         """
@@ -82,6 +88,9 @@ class WiFiLocator:
         :param akey: String with Google API key
         :return: Coordinates (float).
         """
+        # Checking the number of available networks...
+        self.__check_networks()
+
         # Generating base JSON structure...
         jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
 
@@ -109,6 +118,9 @@ class WiFiLocator:
         :param akey: String with Yandex API key
         :return: Coordinates (float).
         """
+        # Checking the number of available networks...
+        self.__check_networks()
+
         # Generating base JSON structure...
         jdata = {'common': {'version': '1.0', 'api_key': akey}, 'wifi_networks': []}
 
