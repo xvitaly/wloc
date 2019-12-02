@@ -42,6 +42,11 @@ class TestLibrary(unittest.TestCase):
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
         self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.00001)
 
+    def test_mozilla(self):
+        result = self.locator.query_mozilla()
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.001)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.001)
+
 
 if __name__ == '__main__':
     unittest.main()
