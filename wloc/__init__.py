@@ -60,6 +60,13 @@ class WiFiLocator:
                 for accesspoint in nmdevice.AccessPoints:
                     self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
 
+    def __fetch_networks_win(self):
+        """
+        Connects to WMI, fetching list of available networks and
+        stores them in private class property.
+        """
+        raise Exception('Current platform is not supported.')
+
     def __check_networks(self):
         """
         Checks the number of available wireless networks.
@@ -76,7 +83,7 @@ class WiFiLocator:
         if os.name == 'posix':
             self.__fetch_networks_nm()
         else:
-            raise Exception('Current platform is not supported.')
+            self.__fetch_networks_win()
 
         # Checking the number of available networks...
         self.__check_networks()
