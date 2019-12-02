@@ -2,7 +2,7 @@
 
 #
 # Wi-Fi simple geolocation tool
-# Copyright (c) 2015 - 2018 EasyCoding Team
+# Copyright (c) 2015 - 2019 EasyCoding Team
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
