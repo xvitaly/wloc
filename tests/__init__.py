@@ -17,26 +17,3 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-from setuptools import setup, find_packages
-
-setup(
-    name='wloc',
-    version='0.3',
-    packages=find_packages(),
-    package_dir={
-        'wloc': 'wloc',
-    },
-    url='https://github.com/xvitaly/wloc',
-    license='GPLv3',
-    entry_points={
-        'console_scripts': [
-            'wloc = wloc.app.run:main',
-        ],
-    },
-    install_requires=['requests'],
-    test_suite='tests',
-    author='Vitaly Zaitsev',
-    author_email='vitaly@easycoding.org',
-    description='Simple Wi-Fi geolocation library and tool'
-)
