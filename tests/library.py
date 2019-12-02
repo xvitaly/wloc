@@ -37,6 +37,11 @@ class TestLibrary(unittest.TestCase):
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
         self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.00001)
 
+    def test_google(self):
+        result = self.locator.query_google()
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.00001)
+
 
 if __name__ == '__main__':
     unittest.main()
