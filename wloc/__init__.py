@@ -29,36 +29,12 @@ class WiFiLocator:
     """
     Wi-Fi simple geolocation class.
     """
-
-    @staticmethod
-    def conv_strength(stp):
-        """
-        Converts Wi-Fi signal strength percents to RSSI (dBm).
-        :param stp: Signal strength in percents
-        :return: Signal strength in dBm
-        """
-        return '%.0f' % (stp / 2 - 100)
-
     def __check_tokens(self):
         """
         Checks if API tokens set in configuration file.
         :return: Check results
         """
         return not (self.__ya_apikey or self.__gg_apikey or self.__mm_apikey)
-
-    def __fetch_networks_nm(self):
-        """
-        Connects to Network Manager, fetching list of available networks
-        and stores them in private class property.
-        """
-        # Importing Network Manager module...
-        from NetworkManager import NetworkManager, Wireless
-
-        # Using DBus to ask Network Manager for available networks...
-        for nmdevice in NetworkManager.GetDevices():
-            if type(nmdevice) == Wireless:
-                for accesspoint in nmdevice.AccessPoints:
-                    self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
 
     def __fetch_networks_win(self):
         """
