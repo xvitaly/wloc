@@ -29,6 +29,14 @@ class Fetcher:
         """
         return '%.0f' % (stp / 2 - 100)
 
+    @property
+    def networks(self):
+        """
+        Gets list of available wireless networks.
+        :return: List of available wireless networks.
+        """
+        return self.__netlist
+
     def __init__(self):
         """
         Main constructor of Fetcher class.

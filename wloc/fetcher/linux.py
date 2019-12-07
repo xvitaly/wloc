@@ -36,11 +36,9 @@ class FetcherLinux(Fetcher):
                 for accesspoint in nmdevice.AccessPoints:
                     self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
 
-    @property
-    def networks(self):
+    def __init__(self):
         """
-        Gets list of available wireless networks.
-        :return: List of available wireless networks.
+        Constructor of FetcherLinux class.
         """
+        super().__init__()
         self.__fetch_networks()
-        return self.__netlist

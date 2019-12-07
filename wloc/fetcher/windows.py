@@ -29,11 +29,9 @@ class FetcherWindows(Fetcher):
         """
         raise Exception('Current platform is not supported.')
 
-    @property
-    def networks(self):
+    def __init__(self):
         """
-        Gets list of available wireless networks.
-        :return: List of available wireless networks.
+        Constructor of FetcherWindows class.
         """
+        super().__init__()
         self.__fetch_networks()
-        return self.__netlist
