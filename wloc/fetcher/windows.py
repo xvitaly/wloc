@@ -31,5 +31,9 @@ class FetcherWindows(Fetcher):
 
     @property
     def networks(self):
+        """
+        Gets list of available wireless networks.
+        :return: List of available wireless networks.
+        """
         self.__fetch_networks()
         return self.__netlist

@@ -24,10 +24,13 @@ class Fetcher:
     def conv_strength(stp):
         """
         Converts Wi-Fi signal strength percents to RSSI (dBm).
-        :param stp: Signal strength in percents
-        :return: Signal strength in dBm
+        :param stp: Signal strength in percents.
+        :return: Signal strength in dBm.
         """
         return '%.0f' % (stp / 2 - 100)
 
     def __init__(self):
+        """
+        Main constructor of Fetcher class.
+        """
         self.__netlist = []
