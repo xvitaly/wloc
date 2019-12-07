@@ -22,6 +22,9 @@ import json
 import os
 import requests
 
+from .fetcher.abstract import Fetcher
+from .fetcher.linux import FetcherLinux
+from .fetcher.windows import FetcherWindows
 from .settings import consts
 
 
@@ -29,19 +32,13 @@ class WiFiLocator:
     """
     Wi-Fi simple geolocation class.
     """
+
     def __check_tokens(self):
         """
         Checks if API tokens set in configuration file.
         :return: Check results
         """
         return not (self.__ya_apikey or self.__gg_apikey or self.__mm_apikey)
-
-    def __fetch_networks_win(self):
-        """
-        Connects to WMI, fetching list of available networks and
-        stores them in private class property.
-        """
-        raise Exception('Current platform is not supported.')
 
     def __check_networks(self):
         """
@@ -57,9 +54,9 @@ class WiFiLocator:
         """
         # Retrieving available networks...
         if os.name == 'posix':
-            self.__fetch_networks_nm()
+            self.__netlist = FetcherLinux().networks
         else:
-            self.__fetch_networks_win()
+            self.__netlist = FetcherWindows().networks
 
         # Checking the number of available networks...
         self.__check_networks()
@@ -136,7 +133,7 @@ class WiFiLocator:
         :param hwaddress: Station hardware address.
         :param strength: Signal strength in percents.
         """
-        self.__netlist.append([hwaddress, self.conv_strength(strength)])
+        self.__netlist.append([hwaddress, Fetcher.conv_strength(strength)])
 
     def query_yandex(self):
         """
