@@ -135,6 +135,15 @@ class WiFiLocator:
         """
         self.__netlist.append([hwaddress, Fetcher.conv_strength(strength)])
 
+    def remove_network(self, hwaddress: str):
+        """
+        Removes specified by hardware address network from list.
+        :param hwaddress: Station hardware address.
+        """
+        for network in self.__netlist:
+            if network[0] == hwaddress:
+                self.__netlist.remove(network)
+
     @property
     def networks(self):
         """
