@@ -26,6 +26,9 @@ import wloc
 
 class TestLibrary(unittest.TestCase):
     def setUp(self):
+        """
+        Loads test data from environment variables before each test.
+        """
         self.testdata = json.loads(os.getenv('TEST_DATA'))
         self.locator = wloc.WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
                                         mm_apikey=os.getenv('APIKEY_MOZILLA'))
@@ -33,30 +36,48 @@ class TestLibrary(unittest.TestCase):
             self.locator.add_network(network[0], network[1])
 
     def test_adding(self):
+        """
+        Tests adding new networks to list.
+        """
         test_element = 'AA:BB:CC:DD:EE:FF'
         self.locator.add_network(test_element, 50)
         self.assertIn(test_element, self.locator.networks)
 
     def test_removing(self):
+        """
+        Tests removing of existing network from list.
+        """
         test_element = 'AA:BB:CC:DD:EE:FF'
         self.locator.add_network(test_element, 90)
         self.locator.remove_network(test_element)
         self.assertNotIn(test_element, self.locator.networks)
 
     def test_network_getter(self):
+        """
+        Tests if public getter return anything useful.
+        """
         self.assertEqual(len(self.locator.networks), 2)
 
     def test_yandex(self):
+        """
+        Tests if Yandex Locator API works and return correct result.
+        """
         result = self.locator.query_yandex()
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
         self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.00001)
 
     def test_google(self):
+        """
+        Tests if Google geolocation API works and return correct result.
+        """
         result = self.locator.query_google()
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
         self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.00001)
 
     def test_mozilla(self):
+        """
+        Tests if Mozilla geolocation API works and return correct result.
+        """
         result = self.locator.query_mozilla()
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.001)
         self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.001)
