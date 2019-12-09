@@ -43,6 +43,9 @@ class TestLibrary(unittest.TestCase):
         self.locator.remove_network(test_element)
         self.assertNotIn(test_element, self.locator.networks)
 
+    def test_network_getter(self):
+        self.assertEqual(len(self.locator.networks), 2)
+
     def test_yandex(self):
         result = self.locator.query_yandex()
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
