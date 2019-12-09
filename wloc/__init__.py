@@ -135,6 +135,14 @@ class WiFiLocator:
         """
         self.__netlist.append([hwaddress, Fetcher.conv_strength(strength)])
 
+    @property
+    def networks(self):
+        """
+        Gets list of available networks.
+        :return: List of available networks.
+        """
+        return [network[0] for network in self.__netlist]
+
     def query_yandex(self):
         """
         Query Yandex geolocation API.
