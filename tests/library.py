@@ -32,6 +32,11 @@ class TestLibrary(unittest.TestCase):
         for network in self.testdata[0]:
             self.locator.add_network(network[0], network[1])
 
+    def test_adding(self):
+        test_element = 'AA:BB:CC:DD:EE:FF'
+        self.locator.add_network(test_element, 50)
+        self.assertIn(test_element, self.locator.networks)
+
     def test_yandex(self):
         result = self.locator.query_yandex()
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
