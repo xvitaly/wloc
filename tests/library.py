@@ -63,16 +63,16 @@ class TestLibrary(unittest.TestCase):
         Tests if Yandex Locator API works and return correct result.
         """
         result = self.locator.query_yandex()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.00001)
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.0001)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.0001)
 
     def test_google(self):
         """
         Tests if Google geolocation API works and return correct result.
         """
         result = self.locator.query_google()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.00001)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.00001)
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.0001)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.0001)
 
     def test_mozilla(self):
         """
