@@ -15,7 +15,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
 
 # Requirements
  * GNU/Linux (any modern distribution) with installed and enabled Network Manager;
- * Python 3.5+;
+ * Python 3.6+;
  * python-networkmanager;
  * python-requests.
 
