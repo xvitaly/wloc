@@ -3,9 +3,13 @@ python:
     - "3.5"
     - "3.6"
     - "pypy3"
-install: "pip install -r requirements.txt"
+before_install:
+    - "pip install -U pytest"
+install:
+    - "pip install -r requirements.txt"
 script:
-    - python setup.py install
+    - "python setup.py install"
+    - "pytest"
 env:
     global:
         secure: juFIhp2EfZoIl2OLv8XIARSw6YipTSISL1zFsPaaKslNRRTh8c20EOwpImyS+UrgpZH/O2gZvb1AYnjLxqGZL2Vve4igujcvmP5YUTPsT83HfylAzyvkBT+rGKNaY16ECxL/2mOKo70G6xA6goCQ62DWRE4b7EubI32DkSb7WqFQ6a1xh8bZVnha9o5objGKVf/X3oSXTmzIpGTjiLGPFxxkM6aZn3N/E4cjM8NnyNFHtiXHBSoBtfNCtLrHDpBl6to5oygchzVrCqzDpYtlPNqRcq+QM3lpzukfPWGN5Dw7zyfOMzerqi7Sy7FSacD5/z232mwW3tsV/6jcOz37PkigrEEEkxP3DfekPMoDtpGYb0LpmHHUt20Faj5Nx2yu7k7at68Ywv7v/jkThF9R88DYu5od7k6mg+W2qQkVE781KRPfzKZcyWxpjlUcOF27iEfgfrCGCtamw30dmWQRxeEJF9w64oANadeWFyTXAcFcAPFEsNr0ck145Rrx+o8ATss/TKcjanaDEEqSh6mMx6jyJqM5ylU/Ndqb4Fu/bfersSgVqxUfB1FphoNiibAYhk0N1pb0SSIu2H9Di651Z8iuepT4A17a9MBmtmOQPX9BAqEWohfeEMua1NcXM7Y5dxFiviUzrZRuWX/Sy7vYGv7wLnni1Nu6XLHB3KsD5Yc=
