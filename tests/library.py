@@ -25,6 +25,8 @@ import wloc
 
 
 class TestLibrary(unittest.TestCase):
+    __delta: float = 0.001
+
     def setUp(self):
         """
         Loads test data from environment variables before each test.
@@ -56,31 +58,31 @@ class TestLibrary(unittest.TestCase):
         """
         Tests if public getter return anything useful.
         """
-        self.assertEqual(len(self.locator.networks), 2)
+        self.assertEqual(len(self.locator.networks), 8)
 
     def test_yandex(self):
         """
         Tests if Yandex Locator API works and return correct result.
         """
         result = self.locator.query_yandex()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.0001)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.0001)
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
 
     def test_google(self):
         """
         Tests if Google geolocation API works and return correct result.
         """
         result = self.locator.query_google()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.0001)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.0001)
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
 
     def test_mozilla(self):
         """
         Tests if Mozilla geolocation API works and return correct result.
         """
         result = self.locator.query_mozilla()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=0.001)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=0.001)
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
 
 
 if __name__ == '__main__':
