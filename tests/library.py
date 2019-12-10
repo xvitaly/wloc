@@ -31,6 +31,7 @@ class TestLibrary(unittest.TestCase):
         """
         Loads test data from environment variables before each test.
         """
+        print(os.getenv('DATA'))
         self.testdata = json.loads(os.getenv('DATA'))
         self.locator = wloc.WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
                                         mm_apikey=os.getenv('APIKEY_MOZILLA'))
