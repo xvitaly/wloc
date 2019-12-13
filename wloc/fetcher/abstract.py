@@ -21,7 +21,7 @@
 
 class Fetcher:
     @staticmethod
-    def conv_strength(stp):
+    def conv_strength(stp: int) -> str:
         """
         Converts Wi-Fi signal strength percents to RSSI (dBm).
         :param stp: Signal strength in percents.
@@ -30,14 +30,14 @@ class Fetcher:
         return '%.0f' % (stp / 2 - 100)
 
     @property
-    def networks(self):
+    def networks(self) -> list:
         """
         Gets list of available wireless networks.
         :return: List of available wireless networks.
         """
         return self.__netlist
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Main constructor of Fetcher class.
         """

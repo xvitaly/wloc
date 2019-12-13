@@ -22,14 +22,14 @@ from .abstract import Fetcher
 
 
 class FetcherWindows(Fetcher):
-    def __fetch_networks(self):
+    def __fetch_networks(self) -> None:
         """
         Connects to WMI, fetching list of available networks and
         stores them in private class property.
         """
         raise Exception('Current platform is not supported.')
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Constructor of FetcherWindows class.
         """

@@ -22,7 +22,7 @@ from .abstract import Fetcher
 
 
 class FetcherLinux(Fetcher):
-    def __fetch_networks(self):
+    def __fetch_networks(self) -> None:
         """
         Connects to Network Manager, fetching list of available networks
         and stores them in private class property.
@@ -36,7 +36,7 @@ class FetcherLinux(Fetcher):
                 for accesspoint in nmdevice.AccessPoints:
                     self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Constructor of FetcherLinux class.
         """
