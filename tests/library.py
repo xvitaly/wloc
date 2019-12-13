@@ -29,7 +29,7 @@ class TestLibrary(unittest.TestCase):
     __add_element: str = 'AA:BB:CC:DD:EE:FF'
     __items_count: int = 8
 
-    def __checkcoords(self, result: list):
+    def __checkcoords(self, result: list) -> None:
         """
         Performs checks between master and received coordinates.
         :param result: API result.
@@ -37,7 +37,7 @@ class TestLibrary(unittest.TestCase):
         self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
         self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
 
-    def setUp(self):
+    def setUp(self) -> None:
         """
         Loads test data from environment variables before each test.
         """
@@ -48,14 +48,14 @@ class TestLibrary(unittest.TestCase):
         for network in self.testdata[0]:
             self.locator.add_network(network[0], network[1])
 
-    def test_adding(self):
+    def test_adding(self) -> None:
         """
         Tests adding new networks to list.
         """
         self.locator.add_network(self.__add_element, 50)
         self.assertIn(self.__add_element, self.locator.networks)
 
-    def test_removing(self):
+    def test_removing(self) -> None:
         """
         Tests removing of existing network from list.
         """
@@ -63,38 +63,38 @@ class TestLibrary(unittest.TestCase):
         self.locator.remove_network(self.__add_element)
         self.assertNotIn(self.__add_element, self.locator.networks)
 
-    def test_network_getter(self):
+    def test_network_getter(self) -> None:
         """
         Tests if public getter return anything useful.
         """
         self.assertEqual(len(self.locator.networks), self.__items_count)
 
-    def test_yandex(self):
+    def test_yandex(self) -> None:
         """
         Tests if Yandex Locator API works and return correct result.
         """
         self.__checkcoords(self.locator.query_yandex())
 
-    def test_google(self):
+    def test_google(self) -> None:
         """
         Tests if Google geolocation API works and return correct result.
         """
         self.__checkcoords(self.locator.query_google())
 
-    def test_mozilla(self):
+    def test_mozilla(self) -> None:
         """
         Tests if Mozilla geolocation API works and return correct result.
         """
         self.__checkcoords(self.locator.query_mozilla())
 
-    def test_export(self):
+    def test_export(self) -> None:
         """
         Tests network list JSON export to string.
         """
         new_netlist = json.loads(self.locator.to_json())
         self.assertEqual(len(new_netlist), self.__items_count)
 
-    def test_import(self):
+    def test_import(self) -> None:
         """
         Tests network list JSON import from string.
         """
