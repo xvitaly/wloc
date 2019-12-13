@@ -91,6 +91,13 @@ class TestLibrary(unittest.TestCase):
         new_netlist = json.loads(self.locator.to_json())
         self.assertEqual(len(new_netlist), self.__items_count)
 
+    def test_import(self):
+        """
+        Tests JSON import from string.
+        """
+        self.locator.from_json(self.locator.to_json())
+        self.assertEqual(len(self.locator.networks), self.__items_count)
+
 
 if __name__ == '__main__':
     unittest.main()
