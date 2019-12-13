@@ -27,6 +27,7 @@ import wloc
 class TestLibrary(unittest.TestCase):
     __delta: float = 0.001
     __add_element: str = 'AA:BB:CC:DD:EE:FF'
+    __items_count: int = 8
 
     def __checkcoords(self, result: list):
         """
@@ -66,7 +67,7 @@ class TestLibrary(unittest.TestCase):
         """
         Tests if public getter return anything useful.
         """
-        self.assertEqual(len(self.locator.networks), 8)
+        self.assertEqual(len(self.locator.networks), self.__items_count)
 
     def test_yandex(self):
         """
@@ -85,6 +86,10 @@ class TestLibrary(unittest.TestCase):
         Tests if Mozilla geolocation API works and return correct result.
         """
         self.__checkcoords(self.locator.query_mozilla())
+
+    def test_export(self):
+        new_netlist = json.loads(self.locator.to_json())
+        self.assertEqual(len(new_netlist), self.__items_count)
 
 
 if __name__ == '__main__':
