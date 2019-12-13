@@ -144,6 +144,13 @@ class WiFiLocator:
             if network[0] == hwaddress:
                 self.__netlist.remove(network)
 
+    def to_json(self) -> str:
+        """
+        Returns JSON based on list of available networks.
+        :return: String with JSON.
+        """
+        return json.dumps(self.__netlist)
+
     @property
     def networks(self):
         """
