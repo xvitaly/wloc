@@ -33,21 +33,21 @@ class WiFiLocator:
     Wi-Fi simple geolocation class.
     """
 
-    def __check_tokens(self):
+    def __check_tokens(self) -> bool:
         """
         Checks if API tokens set in configuration file.
         :return: Check results
         """
         return not (self.__ya_apikey or self.__gg_apikey or self.__mm_apikey)
 
-    def __check_networks(self):
+    def __check_networks(self) -> None:
         """
         Checks the number of available wireless networks.
         """
         if len(self.__netlist) < 1:
             raise Exception('No wireless networks found.')
 
-    def __fetch_networks(self):
+    def __fetch_networks(self) -> None:
         """
         Receives list of available networks and stores them in a private
         class property.
@@ -61,7 +61,7 @@ class WiFiLocator:
         # Checking the number of available networks...
         self.__check_networks()
 
-    def __run_glike(self, auri, akey):
+    def __run_glike(self, auri: str, akey: str) -> list:
         """
         Internal implementation of Google-like geolocation API fetcher.
         :param auri: String with Google API URI
@@ -91,7 +91,7 @@ class WiFiLocator:
         # Returning result...
         return [result['location']['lat'], result['location']['lng']]
 
-    def __run_yalike(self, auri, akey):
+    def __run_yalike(self, auri: str, akey: str) -> list:
         """
         Internal implementation of Yandex-like geolocation API fetcher.
         :param auri: String with Yandex API URI
@@ -121,13 +121,13 @@ class WiFiLocator:
         # Returning result...
         return [float(result['position']['latitude']), float(result['position']['longitude'])]
 
-    def fetch_networks(self):
+    def fetch_networks(self) -> None:
         """
         Automatically gets list of available Wi-Fi networks.
         """
         self.__fetch_networks()
 
-    def add_network(self, hwaddress: str, strength: int):
+    def add_network(self, hwaddress: str, strength: int) -> None:
         """
         Adds a new network to list.
         :param hwaddress: Station hardware address.
@@ -135,7 +135,7 @@ class WiFiLocator:
         """
         self.__netlist.append([hwaddress, Fetcher.conv_strength(strength)])
 
-    def remove_network(self, hwaddress: str):
+    def remove_network(self, hwaddress: str) -> None:
         """
         Removes specified by hardware address network from list.
         :param hwaddress: Station hardware address.
@@ -159,35 +159,35 @@ class WiFiLocator:
         self.__netlist = json.loads(new_list)
 
     @property
-    def networks(self):
+    def networks(self) -> list:
         """
         Gets list of available networks.
         :return: List of available networks.
         """
         return [network[0] for network in self.__netlist]
 
-    def query_yandex(self):
+    def query_yandex(self) -> list:
         """
         Query Yandex geolocation API.
         :return: Coordinates (float).
         """
         return self.__run_yalike(self.__ya_apiuri, self.__ya_apikey)
 
-    def query_google(self):
+    def query_google(self) -> list:
         """
         Query Google geolocation API.
         :return: Coordinates (float).
         """
         return self.__run_glike(self.__gg_apiuri, self.__gg_apikey)
 
-    def query_mozilla(self):
+    def query_mozilla(self) -> list:
         """
         Query Mozilla geolocation API.
         :return: Coordinates (float).
         """
         return self.__run_glike(self.__mm_apiuri, self.__mm_apikey)
 
-    def __init__(self, gg_apikey: str = None, ya_apikey: str = None, mm_apikey: str = None):
+    def __init__(self, gg_apikey: str = None, ya_apikey: str = None, mm_apikey: str = None) -> None:
         """
         Main constructor.
         :param gg_apikey: Google Geolocation API token.
