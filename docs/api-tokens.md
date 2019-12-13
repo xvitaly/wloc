@@ -22,7 +22,7 @@ Library need at least one token from supported providers, forwarded as parameter
   * `gg_apikey` - Google Geolocation;
   * `mm_apikey` - Mozilla Geolocation.
 
-# Forwarding API tokens to application
+# Forwarding API tokens to application and tests
 
 Application need at least one token from supported providers, forwarded as environment variables:
 
