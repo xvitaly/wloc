@@ -1,4 +1,4 @@
-# Installation
+# Virtual Environment Installation
 
  1. Clone this repository:
  ```bash
@@ -12,8 +12,8 @@
  ```bash
  source wloc/bin/activate
  ```
- 4. Install bot using Python 3 in Virtual Environment:
+ 4. Install using Python 3 in Virtual Environment:
  ```bash
- cd ecasbot
+ cd wloc
  python3 setup.py install
  ```
