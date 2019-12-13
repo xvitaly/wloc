@@ -10,38 +10,18 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
  * [Google Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro);
  * [Mozilla Geolocation API](https://mozilla.github.io/ichnaea/api/index.html).
 
+Warning! Do not use `dev` branch in production due to breaking changes. Use `master` instead.
+
 # License
 [GNU General Public License version 3](COPYING). External libraries can use another compatible licenses.
 
-# Requirements
- * GNU/Linux (any modern distribution) with installed and enabled Network Manager;
- * Python 3.6+;
- * python-networkmanager;
- * python-requests.
+# Documentation
 
-# Installation
- 1. Clone this repository:
- ```bash
- git clone https://github.com/xvitaly/wloc.git wloc
- ```
- 2. Get API keys from [Yandex](https://tech.yandex.ru/maps/keys/get/) or/and [Google](https://developers.google.com/maps/documentation/geolocation/get-api-key).
- 3. Open `wloc/settings.py` file in any text editor and set received API keys.
- 4. Install (in Python virtual environment):
- ```bash
- python3 setup.py install
- ```
- 5. Run application:
- ```bash
- wloc -y -g -m
- ```
-
-# Available options
-```
-usage: wloc [-h] [--yandex] [--google] [--mozilla]
-```
-
-Optional arguments:
- * `-h` or `--help` - Show help message and exit;
- * `-y` or `--yandex` - Use Yandex Geolocation API;
- * `-g` or  `--google` - Use Google Geolocation API;
- * `-m` or  `--mozilla` - Use Mozilla Geolocation API.
+  * [API tokens documentation](docs/api-tokens.md);
+  * [Virtual environment installation](docs/virtualenv-installation.md);
+  * [System installation](docs/system-installation.md);
+  * [Building Fedora package](docs/building-fedora-package.md);
+  * [Using application](docs/using-application.md);
+  * [Using library](docs/using-library.md);
+  * [Test suite file](docs/test-suite-file.md);
+  * [Running tests](docs/running-tests.md).
