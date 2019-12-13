@@ -26,6 +26,7 @@ import wloc
 
 class TestLibrary(unittest.TestCase):
     __delta: float = 0.001
+    __add_element: str = 'AA:BB:CC:DD:EE:FF'
 
     def __checkcoords(self, result: list):
         """
@@ -50,18 +51,16 @@ class TestLibrary(unittest.TestCase):
         """
         Tests adding new networks to list.
         """
-        test_element = 'AA:BB:CC:DD:EE:FF'
-        self.locator.add_network(test_element, 50)
-        self.assertIn(test_element, self.locator.networks)
+        self.locator.add_network(self.__add_element, 50)
+        self.assertIn(self.__add_element, self.locator.networks)
 
     def test_removing(self):
         """
         Tests removing of existing network from list.
         """
-        test_element = 'AA:BB:CC:DD:EE:FF'
-        self.locator.add_network(test_element, 90)
-        self.locator.remove_network(test_element)
-        self.assertNotIn(test_element, self.locator.networks)
+        self.locator.add_network(self.__add_element, 90)
+        self.locator.remove_network(self.__add_element)
+        self.assertNotIn(self.__add_element, self.locator.networks)
 
     def test_network_getter(self):
         """
