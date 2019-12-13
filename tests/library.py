@@ -27,6 +27,14 @@ import wloc
 class TestLibrary(unittest.TestCase):
     __delta: float = 0.001
 
+    def __checkcoords(self, result: list):
+        """
+        Performs checks between master and received coordinates.
+        :param result: API result.
+        """
+        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
+        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
+
     def setUp(self):
         """
         Loads test data from environment variables before each test.
@@ -65,25 +73,19 @@ class TestLibrary(unittest.TestCase):
         """
         Tests if Yandex Locator API works and return correct result.
         """
-        result = self.locator.query_yandex()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
+        self.__checkcoords(self.locator.query_yandex())
 
     def test_google(self):
         """
         Tests if Google geolocation API works and return correct result.
         """
-        result = self.locator.query_google()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
+        self.__checkcoords(self.locator.query_google())
 
     def test_mozilla(self):
         """
         Tests if Mozilla geolocation API works and return correct result.
         """
-        result = self.locator.query_mozilla()
-        self.assertAlmostEqual(result[0], self.testdata[1][0], delta=self.__delta)
-        self.assertAlmostEqual(result[1], self.testdata[1][1], delta=self.__delta)
+        self.__checkcoords(self.locator.query_mozilla())
 
 
 if __name__ == '__main__':
