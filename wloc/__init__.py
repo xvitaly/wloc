@@ -151,6 +151,13 @@ class WiFiLocator:
         """
         return json.dumps(self.__netlist)
 
+    def from_json(self, new_list: str) -> None:
+        """
+        Gets network list from JSON string.
+        :param new_list: String with JSON.
+        """
+        self.__netlist = json.loads(new_list)
+
     @property
     def networks(self):
         """
