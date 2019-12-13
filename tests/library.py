@@ -88,12 +88,15 @@ class TestLibrary(unittest.TestCase):
         self.__checkcoords(self.locator.query_mozilla())
 
     def test_export(self):
+        """
+        Tests network list JSON export to string.
+        """
         new_netlist = json.loads(self.locator.to_json())
         self.assertEqual(len(new_netlist), self.__items_count)
 
     def test_import(self):
         """
-        Tests JSON import from string.
+        Tests network list JSON import from string.
         """
         self.locator.from_json(self.locator.to_json())
         self.assertEqual(len(self.locator.networks), self.__items_count)
