@@ -10,7 +10,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
  * [Google Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro);
  * [Mozilla Geolocation API](https://mozilla.github.io/ichnaea/api/index.html).
 
-Warning! Do not use `dev` branch in production due to breaking changes. Use `master` instead.
+Warning! Do not use `dev` branch in production due to possible breaking changes. Use `master` instead.
 
 # License
 [GNU General Public License version 3](COPYING). External libraries can use another compatible licenses.
