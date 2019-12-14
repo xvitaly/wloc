@@ -23,6 +23,7 @@ BuildRequires: doxygen
 
 %package -n python3-%{appname}
 Summary: %{appsum}
+Requires: python3dist(python-networkmanager)
 %{?python_provide:%python_provide python3-%{appname}}
 
 %description -n python3-%{appname}
