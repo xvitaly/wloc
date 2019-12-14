@@ -7,15 +7,14 @@ Name: python-%{appname}
 Version: 0.4.0
 Release: 1%{?dist}
 
+BuildArch: noarch
 Summary: %{appsum}
 License: GPLv3+
 URL: https://github.com/xvitaly/%{appname}
-Source0: %{url}/archive/%{version}/%{appname}-%{version}.tar.gzy
-BuildArch: noarch
+Source0: %{url}/archive/%{version}/%{appname}-%{version}.tar.gz
 
 BuildRequires: python3dist(python-networkmanager)
 BuildRequires: python3dist(requests)
-
 BuildRequires: python3-devel
 BuildRequires: doxygen
 
