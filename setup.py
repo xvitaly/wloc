@@ -34,7 +34,7 @@ setup(
             'wloc = wloc.app.run:main',
         ],
     },
-    install_requires=['requests'],
+    install_requires=['requests', 'python-networkmanager'],
     test_suite='tests',
     author='Vitaly Zaitsev',
     author_email='vitaly@easycoding.org',
