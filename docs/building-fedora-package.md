@@ -35,7 +35,7 @@ rpmdev-setuptree
 Download sources:
 ```bash
 cd wloc
-spectool -g -R package/fedora/wloc.spec
+spectool -g -R packaging/fedora/wloc.spec
 ```
 
 ## Build package
@@ -45,7 +45,7 @@ spectool -g -R package/fedora/wloc.spec
 Generate SRPM package for mock:
 ```bash
 cd wloc
-rpmbuild -bs package/fedora/wloc.spec
+rpmbuild -bs packaging/fedora/wloc.spec
 ```
 
 ### Step 2
