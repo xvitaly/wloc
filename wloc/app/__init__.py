@@ -23,7 +23,7 @@ import logging
 import os
 import sys
 
-import wloc
+from wloc import WiFiLocator
 
 
 class WiFiLocatorApp:
@@ -53,8 +53,8 @@ class WiFiLocatorApp:
         return self.__arguments.yandex or self.__arguments.google or self.__arguments.mozilla
 
     def __set_backends(self):
-        self.__locator = wloc.WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
-                                          mm_apikey=os.getenv('APIKEY_MOZILLA'))
+        self.__locator = WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
+                                     mm_apikey=os.getenv('APIKEY_MOZILLA'))
         self.__selector = {
             'Yandex': self.__locator.query_yandex,
             'Google': self.__locator.query_google,
