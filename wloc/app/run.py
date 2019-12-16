@@ -18,12 +18,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from wloc.app import WiFiLocatorApp
+from wloc.app import App
 
 
 def main():
     try:
-        app = WiFiLocatorApp()
+        app = App()
         app.run()
     except Exception as ex:
         print('An error occurred while running application: %s' % ex)

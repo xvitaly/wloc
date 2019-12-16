@@ -24,14 +24,16 @@ import os
 import sys
 
 from wloc import WiFiLocator
+from .messages import Messages
+from .settings import Settings
 
 
-class WiFiLocatorApp:
+class App:
     def __setlogger(self):
         self.__logger = logging.getLogger(__name__)
-        self.__logger.setLevel('INFO')
+        self.__logger.setLevel(Settings.log_level)
         e_handler = logging.StreamHandler(sys.stdout)
-        e_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s'))
+        e_handler.setFormatter(logging.Formatter(Settings.log_format))
         self.__logger.addHandler(e_handler)
 
     def __parser_create(self):
@@ -39,11 +41,11 @@ class WiFiLocatorApp:
         self.__parser_add_arguments()
 
     def __parser_add_arguments(self):
-        self.__parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', action="store_true",
+        self.__parser.add_argument('--yandex', '-y', help=Messages.arg_desc_yandex, action="store_true",
                                    required=False)
-        self.__parser.add_argument('--google', '-g', help='Use Google Geolocation API.', action="store_true",
+        self.__parser.add_argument('--google', '-g', help=Messages.arg_desc_google, action="store_true",
                                    required=False)
-        self.__parser.add_argument('--mozilla', '-m', help='Use Mozilla Geolocation API.', action="store_true",
+        self.__parser.add_argument('--mozilla', '-m', help=Messages.arg_desc_mozilla, action="store_true",
                                    required=False)
 
     def __parse_arguments(self):
@@ -72,9 +74,9 @@ class WiFiLocatorApp:
     def __call_backend(self, name):
         try:
             coords = self.__selector[name]()
-            self.__logger.info('%s results:\nLatitude: %.6f\nLongitude: %.6f\n', name, coords[0], coords[1])
+            self.__logger.info(Messages.backend_result, name, coords[0], coords[1])
         except Exception:
-            self.__logger.exception('An error occurred while querying %s backend.'.format(name))
+            self.__logger.exception(Messages.backend_error.format(name))
 
     def run(self):
         if self.__check_arguments():
