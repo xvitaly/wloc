@@ -22,7 +22,7 @@ import json
 import os
 import requests
 
-from .fetcher.abstract import Fetcher
+from .fetcher import Fetcher
 from .fetcher.linux import FetcherLinux
 from .fetcher.windows import FetcherWindows
 from .settings import consts
