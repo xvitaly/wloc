@@ -17,11 +17,4 @@ Warning! Do not use `dev` branch in production due to possible breaking changes.
 
 # Documentation
 
-  * [API tokens documentation](docs/api-tokens.md);
-  * [Virtual environment installation](docs/virtualenv-installation.md);
-  * [System installation](docs/system-installation.md);
-  * [Building Fedora package](docs/building-fedora-package.md);
-  * [Using application](docs/using-application.md);
-  * [Using library](docs/using-library.md);
-  * [Test suite file](docs/test-suite-file.md);
-  * [Running tests](docs/running-tests.md).
+Documentation available [here](docs/README.md).
