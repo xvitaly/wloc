@@ -18,8 +18,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-consts = {
-    'ya_apiuri': 'https://api.lbs.yandex.net/geolocation',
-    'gg_apiuri': 'https://www.googleapis.com/geolocation/v1/geolocate?key=%s',
-    'mm_apiuri': 'https://location.services.mozilla.com/v1/geolocate?key=%s',
-}
+
+class Settings:
+    yandex_api_uri: str = 'https://api.lbs.yandex.net/geolocation'
+    google_api_uri: str = 'https://www.googleapis.com/geolocation/v1/geolocate?key=%s'
+    mozilla_api_uri: str = 'https://location.services.mozilla.com/v1/geolocate?key=%s'
