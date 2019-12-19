@@ -25,7 +25,7 @@ import requests
 from .fetcher import Fetcher
 from .fetcher.linux import FetcherLinux
 from .fetcher.windows import FetcherWindows
-from .settings import consts
+from .settings import Settings
 
 
 class WiFiLocator:
@@ -195,9 +195,9 @@ class WiFiLocator:
         :param mm_apikey: Mozilla Geolocation API token.
         """
         # Setting constants...
-        self.__ya_apiuri = consts['ya_apiuri']
-        self.__gg_apiuri = consts['gg_apiuri']
-        self.__mm_apiuri = consts['mm_apiuri']
+        self.__ya_apiuri = Settings.yandex_api_uri
+        self.__gg_apiuri = Settings.google_api_uri
+        self.__mm_apiuri = Settings.mozilla_api_uri
 
         # Setting API tokens...
         self.__ya_apikey = ya_apikey
