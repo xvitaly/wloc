@@ -206,7 +206,7 @@ class WiFiLocator:
 
         # Checking tokens...
         if self.__check_tokens():
-            raise Exception('No API tokens entered. Please open settings.py file and set them.')
+            raise Exception('No API tokens entered.')
 
         # Creating a new list for networks...
         self.__netlist = []
