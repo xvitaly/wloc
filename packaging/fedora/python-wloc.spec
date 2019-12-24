@@ -31,6 +31,7 @@ Requires: python3dist(python-networkmanager)
 
 %prep
 %autosetup -n %{appname}-%{version} -p1
+rm -f docs/README.md
 
 %build
 doxygen
