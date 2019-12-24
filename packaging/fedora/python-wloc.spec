@@ -47,5 +47,5 @@ doxygen
 %{python3_sitelib}/%{appname}-*.egg-info
 
 %changelog
-* Sat Dec 14 2019 Vitaly Zaitsev <vitaly@easycoding.org> - 0.4.0-1
+* Tue Dec 24 2019 Vitaly Zaitsev <vitaly@easycoding.org> - 0.4.0-1
 - Updated to version 0.4.0.
