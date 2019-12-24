@@ -27,7 +27,7 @@ class FetcherWindows(Fetcher):
         Connects to WMI, fetching list of available networks and
         stores them in private class property.
         """
-        raise Exception('Current platform is not supported.')
+        raise Exception('Current platform is not supported yet.')
 
     def __init__(self) -> None:
         """
