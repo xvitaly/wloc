@@ -11,7 +11,7 @@ BuildArch: noarch
 Summary: %{appsum}
 License: GPLv3+
 URL: https://github.com/xvitaly/%{appname}
-Source0: %{url}/archive/%{version}/%{appname}-%{version}.tar.gz
+Source0: %{url}/archive/v%{version}/%{appname}-%{version}.tar.gz
 
 BuildRequires: python3dist(python-networkmanager)
 BuildRequires: python3dist(requests)
