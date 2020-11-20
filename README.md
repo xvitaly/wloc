@@ -1,7 +1,6 @@
 # Wi-Fi geolocation library and tool
 
 [![GitHub version](https://badge.fury.io/gh/xvitaly%2Fwloc.svg)](https://github.com/xvitaly/wloc/releases)
-[![Build status](https://travis-ci.org/xvitaly/wloc.svg?branch=dev)](https://travis-ci.org/xvitaly/wloc)
 [![GitHub issues](https://img.shields.io/github/issues/xvitaly/wloc.svg?label=issues&maxAge=60)](https://github.com/xvitaly/wloc/issues)
 ---
 
