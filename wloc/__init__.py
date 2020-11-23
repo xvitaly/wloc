@@ -86,7 +86,7 @@ class WiFiLocator:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing JSON response...
-        result = json.loads(r.content, encoding='utf8')
+        result = json.loads(r.content)
 
         # Returning result...
         return [result['location']['lat'], result['location']['lng']]
@@ -116,7 +116,7 @@ class WiFiLocator:
             raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing JSON response...
-        result = json.loads(r.content, encoding='utf8')
+        result = json.loads(r.content)
 
         # Returning result...
         return [float(result['position']['latitude']), float(result['position']['longitude'])]
