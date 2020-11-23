@@ -28,3 +28,17 @@ jobs:
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Decrypting tests suite file
+      run: |
+        gpg --quiet --batch --yes --decrypt --passphrase="$SUITE_KEY" \
+        --output ".github/workflows/assets/wloc_tests.json" ".github/workflows/assets/wloc_tests.json.gpg"
+      env:
+        SUITE_KEY: ${{ secrets.SUITE_KEY }}
+    - name: Running tests
+      run: |
+        python3 setup.py test
+      env:
+        SUITE_FILENAME: .github/workflows/assets/wloc_tests.json
+        APIKEY_GOOGLE: ${{ secrets.APIKEY_GOOGLE }}
+        APIKEY_MOZILLA: ${{ secrets.APIKEY_MOZILLA }}
+        APIKEY_YANDEX: ${{ secrets.APIKEY_YANDEX }}
