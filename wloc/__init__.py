@@ -5,12 +5,10 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import json
-import os
 import requests
 
-from .fetcher import Fetcher
-from .fetcher.linux import FetcherLinux
-from .fetcher.windows import FetcherWindows
+from .fetcher import FetcherCommon
+from .fetcher.factory import FetcherFactory
 from .settings import Settings
 
 
@@ -39,10 +37,7 @@ class WiFiLocator:
         class property.
         """
         # Retrieving available networks...
-        if os.name == 'posix':
-            self.__netlist = FetcherLinux().networks
-        else:
-            self.__netlist = FetcherWindows().networks
+        self.__netlist = FetcherFactory.create().networks
 
         # Checking the number of available networks...
         self.__check_networks()
@@ -119,7 +114,7 @@ class WiFiLocator:
         :param hwaddress: Station hardware address.
         :param strength: Signal strength in percents.
         """
-        self.__netlist.append([hwaddress, Fetcher.conv_strength(strength)])
+        self.__netlist.append([hwaddress, FetcherCommon.conv_strength(strength)])
 
     def remove_network(self, hwaddress: str) -> None:
         """
