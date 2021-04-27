@@ -34,4 +34,4 @@ class FetcherLinux(FetcherCommon):
         for nmdevice in NetworkManager.GetDevices():
             if type(nmdevice) == Wireless:
                 for accesspoint in nmdevice.AccessPoints:
-                    self.__netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
+                    self._netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])

@@ -48,11 +48,11 @@ class FetcherCommon(metaclass=abc.ABCMeta):
         Gets list of available wireless networks.
         :return: List of available wireless networks.
         """
-        return self.__netlist
+        return self._netlist
 
     def __init__(self) -> None:
         """
         Main constructor of the Fetcher class.
         """
-        self.__netlist = []
+        self._netlist = []
         self._fetch_networks()
