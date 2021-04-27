@@ -18,17 +18,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from . import Fetcher
+from NetworkManager import NetworkManager, Wireless
+
+from ...fetcher import FetcherCommon
 
 
-class FetcherLinux(Fetcher):
+class FetcherLinux(FetcherCommon):
     def __fetch_networks(self) -> None:
         """
         Connects to Network Manager, fetching list of available networks
         and stores them in private class property.
         """
-        # Importing Network Manager module...
-        from NetworkManager import NetworkManager, Wireless
 
         # Using DBus to ask Network Manager for available networks...
         for nmdevice in NetworkManager.GetDevices():
