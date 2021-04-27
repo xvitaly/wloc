@@ -18,8 +18,21 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+import abc
 
-class Fetcher:
+
+class FetcherCommon(metaclass=abc.ABCMeta):
+    """
+    Abstract class for fetching the list of available Wi-Fi networks.
+    """
+
+    @abc.abstractmethod
+    def _fetch_networks(self) -> None:
+        """
+        Fetches the list of available networks and stores them to the
+        private class property.
+        """
+
     @staticmethod
     def conv_strength(stp: int) -> str:
         """
@@ -39,6 +52,7 @@ class Fetcher:
 
     def __init__(self) -> None:
         """
-        Main constructor of Fetcher class.
+        Main constructor of the Fetcher class.
         """
         self.__netlist = []
+        self._fetch_networks()
