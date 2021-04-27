@@ -22,16 +22,9 @@ from ...fetcher import FetcherCommon
 
 
 class FetcherWindows(FetcherCommon):
-    def __fetch_networks(self) -> None:
+    def _fetch_networks(self) -> None:
         """
         Connects to WMI, fetching list of available networks and
         stores them in private class property.
         """
         raise Exception('Current platform is not supported yet.')
-
-    def __init__(self) -> None:
-        """
-        Constructor of FetcherWindows class.
-        """
-        super().__init__()
-        self.__fetch_networks()
