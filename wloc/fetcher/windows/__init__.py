@@ -18,10 +18,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from . import Fetcher
+from ...fetcher import FetcherCommon
 
 
-class FetcherWindows(Fetcher):
+class FetcherWindows(FetcherCommon):
     def __fetch_networks(self) -> None:
         """
         Connects to WMI, fetching list of available networks and
