@@ -18,6 +18,6 @@ class FetcherLinux(FetcherCommon):
 
         # Using DBus to ask Network Manager for available networks...
         for nmdevice in NetworkManager.GetDevices():
-            if type(nmdevice) == Wireless:
+            if isinstance(nmdevice, Wireless):
                 for accesspoint in nmdevice.AccessPoints:
                     self._netlist.append([accesspoint.HwAddress, self.conv_strength(accesspoint.Strength)])
