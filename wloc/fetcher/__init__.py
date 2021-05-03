@@ -17,6 +17,8 @@ class FetcherCommon(metaclass=abc.ABCMeta):
         """
         Fetches the list of available networks and stores them to the
         private class property.
+
+        Abstract method. Must be overridden.
         """
 
     @staticmethod
@@ -36,9 +38,14 @@ class FetcherCommon(metaclass=abc.ABCMeta):
         """
         return self._netlist
 
+    def fetch(self) -> None:
+        """
+        Fetches the list of available networks.
+        """
+        self._fetch_networks()
+
     def __init__(self) -> None:
         """
         Main constructor of the Fetcher class.
         """
         self._netlist = []
-        self._fetch_networks()
