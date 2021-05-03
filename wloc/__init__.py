@@ -37,7 +37,9 @@ class WiFiLocator:
         class property.
         """
         # Retrieving available networks...
-        self.__netlist = FetcherFactory.create().networks
+        netfetcher = FetcherFactory.create()
+        netfetcher.fetch()
+        self.__netlist = netfetcher.networks
 
         # Checking the number of available networks...
         self.__check_networks()
