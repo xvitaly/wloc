@@ -42,6 +42,8 @@ class FetcherCommon(metaclass=abc.ABCMeta):
         """
         Fetches the list of available networks.
         """
+        if len(self._netlist) > 0:
+            self._netlist.clear()
         self._fetch_networks()
 
     def __init__(self) -> None:
