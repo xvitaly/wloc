@@ -38,12 +38,18 @@ class FetcherCommon(metaclass=abc.ABCMeta):
         """
         return self._netlist
 
+    def _clear_networks(self) -> None:
+        """
+        Clears the list of available networks if not empty.
+        """
+        if len(self._netlist) > 0:
+            self._netlist.clear()
+
     def fetch(self) -> None:
         """
         Fetches the list of available networks.
         """
-        if len(self._netlist) > 0:
-            self._netlist.clear()
+        self._clear_networks()
         self._fetch_networks()
 
     def __init__(self) -> None:
