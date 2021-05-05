@@ -6,6 +6,10 @@
 
 
 class Messages:
+    """
+    Class for working with project settings.
+    """
+
     arg_desc_yandex: str = 'Use Yandex Geolocation API.'
     arg_desc_google: str = 'Use Google Geolocation API.'
     arg_desc_mozilla: str = 'Use Mozilla Geolocation API.'
