@@ -6,5 +6,16 @@
 
 
 class Settings:
+    """
+    Class for working with project settings.
+    """
+
     log_level: str = 'INFO'
+    """
+    Returns current log level.
+    """
+
     log_format: str = '%(asctime)s - %(levelname)s - %(name)s - %(message)s'
+    """
+    Returns log format string.
+    """
