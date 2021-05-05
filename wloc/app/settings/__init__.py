@@ -7,7 +7,7 @@
 
 class Settings:
     """
-    Class for working with project settings.
+    Class for working with application settings.
     """
 
     log_level: str = 'INFO'

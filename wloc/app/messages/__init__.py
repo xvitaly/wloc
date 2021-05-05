@@ -7,7 +7,7 @@
 
 class Messages:
     """
-    Class for working with project settings.
+    Class for working with application settings.
     """
 
     arg_desc_yandex: str = 'Use Yandex Geolocation API.'
