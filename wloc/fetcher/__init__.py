@@ -54,6 +54,6 @@ class FetcherCommon(metaclass=abc.ABCMeta):
 
     def __init__(self) -> None:
         """
-        Main constructor of the Fetcher class.
+        Main constructor of the FetcherCommon class.
         """
         self._netlist = []

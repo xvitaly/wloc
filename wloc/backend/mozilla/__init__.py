@@ -8,6 +8,14 @@ from ..google import BackendGoogle
 
 
 class BackendMozilla(BackendGoogle):
-    def __init__(self, apikey):
+    """
+    Class for working with Mozilla Geolocation API.
+    """
+
+    def __init__(self, apikey: str):
+        """
+        Main constructor of the BackendMozilla class.
+        :param apikey: String with the API token (key).
+        """
         super().__init__(apikey)
-        self._endpoint = 'https://location.services.mozilla.com/v1/geolocate?key=%s'
+        self._endpoint: str = 'https://location.services.mozilla.com/v1/geolocate?key=%s'

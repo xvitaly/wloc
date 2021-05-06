@@ -11,9 +11,14 @@ from ...backend import BackendCommon
 
 
 class BackendGoogle(BackendCommon):
+    """
+    Class for working with Google Geolocation API.
+    """
+
     def _execute(self, netlist) -> list:
         """
         Internal implementation of Google-like geolocation API fetcher.
+        :param netlist: The list of available Wi-Fi networks.
         :return: Coordinates (float).
         """
         # Generating base JSON structure...
@@ -38,8 +43,16 @@ class BackendGoogle(BackendCommon):
 
     @property
     def _uri(self) -> str:
+        """
+        Gets fully-qualified geolocation API URI.
+        :return: Fully-qualified geolocation API URI.
+        """
         return self._endpoint % self._apikey
 
-    def __init__(self, apikey):
+    def __init__(self, apikey: str) -> None:
+        """
+        Main constructor of the BackendGoogle class.
+        :param apikey: String with the API token (key).
+        """
         super().__init__(apikey)
-        self._endpoint = 'https://www.googleapis.com/geolocation/v1/geolocate?key=%s'
+        self._endpoint: str = 'https://www.googleapis.com/geolocation/v1/geolocate?key=%s'
