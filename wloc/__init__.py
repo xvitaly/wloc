@@ -5,11 +5,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import json
-import requests
 
+from .backend.google import BackendGoogle
+from .backend.mozilla import BackendMozilla
+from .backend.yandex import BackendYandex
 from .fetcher import FetcherCommon
 from .fetcher.factory import FetcherFactory
-from .settings import Settings
 
 
 class WiFiLocator:
@@ -43,66 +44,6 @@ class WiFiLocator:
 
         # Checking the number of available networks...
         self.__check_networks()
-
-    def __run_glike(self, auri: str, akey: str) -> list:
-        """
-        Internal implementation of Google-like geolocation API fetcher.
-        :param auri: String with Google API URI
-        :param akey: String with Google API key
-        :return: Coordinates (float).
-        """
-        # Checking the number of available networks...
-        self.__check_networks()
-
-        # Generating base JSON structure...
-        jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
-
-        # Retrieving available networks...
-        for arr in self.__netlist:
-            jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
-
-        # Sending our JSON to API...
-        r = requests.post(auri % akey, data=json.dumps(jdata), headers={'content-type': 'application/json'})
-
-        # Checking return code...
-        if r.status_code != 200:
-            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
-
-        # Parsing JSON response...
-        result = json.loads(r.content)
-
-        # Returning result...
-        return [result['location']['lat'], result['location']['lng']]
-
-    def __run_yalike(self, auri: str, akey: str) -> list:
-        """
-        Internal implementation of Yandex-like geolocation API fetcher.
-        :param auri: String with Yandex API URI
-        :param akey: String with Yandex API key
-        :return: Coordinates (float).
-        """
-        # Checking the number of available networks...
-        self.__check_networks()
-
-        # Generating base JSON structure...
-        jdata = {'common': {'version': '1.0', 'api_key': akey}, 'wifi_networks': []}
-
-        # Retrieving available networks...
-        for arr in self.__netlist:
-            jdata['wifi_networks'].append({'mac': arr[0], 'signal_strength': arr[1], 'age': 0})
-
-        # Sending our JSON to API...
-        r = requests.post(auri, data={'json': json.dumps(jdata)}, headers={'content-type': 'application/json'})
-
-        # Checking return code...
-        if r.status_code != 200:
-            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
-
-        # Parsing JSON response...
-        result = json.loads(r.content)
-
-        # Returning result...
-        return [float(result['position']['latitude']), float(result['position']['longitude'])]
 
     def fetch_networks(self) -> None:
         """
@@ -154,21 +95,24 @@ class WiFiLocator:
         Query Yandex geolocation API.
         :return: Coordinates (float).
         """
-        return self.__run_yalike(self.__ya_apiuri, self.__ya_apikey)
+        self.__check_networks()
+        return BackendYandex(self.__ya_apikey).get_coords(self.__netlist)
 
     def query_google(self) -> list:
         """
         Query Google geolocation API.
         :return: Coordinates (float).
         """
-        return self.__run_glike(self.__gg_apiuri, self.__gg_apikey)
+        self.__check_networks()
+        return BackendGoogle(self.__gg_apikey).get_coords(self.__netlist)
 
     def query_mozilla(self) -> list:
         """
         Query Mozilla geolocation API.
         :return: Coordinates (float).
         """
-        return self.__run_glike(self.__mm_apiuri, self.__mm_apikey)
+        self.__check_networks()
+        return BackendMozilla(self.__mm_apikey).get_coords(self.__netlist)
 
     def __init__(self, gg_apikey: str = None, ya_apikey: str = None, mm_apikey: str = None) -> None:
         """
@@ -177,11 +121,6 @@ class WiFiLocator:
         :param ya_apikey: Yandex Locator API token.
         :param mm_apikey: Mozilla Geolocation API token.
         """
-        # Setting constants...
-        self.__ya_apiuri = Settings.yandex_api_uri
-        self.__gg_apiuri = Settings.google_api_uri
-        self.__mm_apiuri = Settings.mozilla_api_uri
-
         # Setting API tokens...
         self.__ya_apikey = ya_apikey
         self.__gg_apikey = gg_apikey
