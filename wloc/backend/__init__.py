@@ -22,6 +22,16 @@ class BackendCommon(metaclass=abc.ABCMeta):
         :return: Coordinates (float).
         """
 
+    @property
+    @abc.abstractmethod
+    def _uri(self) -> str:
+        """
+        Gets fully-qualified geolocation API URI.
+
+        Abstract property. Must be overridden.
+        :return: Fully-qualified geolocation API URI.
+        """
+
     def get_coords(self, netlist) -> list:
         """
         Calls the backend API and returns the coordinates.
@@ -35,4 +45,4 @@ class BackendCommon(metaclass=abc.ABCMeta):
         Main constructor of the BackendCommon class.
         :param apikey: String with the API token (key).
         """
-        self._apikey = apikey
+        self._apikey: str = apikey

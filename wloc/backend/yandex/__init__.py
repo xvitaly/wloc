@@ -41,10 +41,18 @@ class BackendYandex(BackendCommon):
         # Returning result...
         return [float(result['position']['latitude']), float(result['position']['longitude'])]
 
+    @property
+    def _uri(self) -> str:
+        """
+        Gets fully-qualified geolocation API URI.
+        :return: Fully-qualified geolocation API URI.
+        """
+        return self._endpoint
+
     def __init__(self, apikey: str):
         """
         Main constructor of the BackendYandex class.
         :param apikey: String with the API token (key).
         """
         super().__init__(apikey)
-        self._uri: str = 'https://api.lbs.yandex.net/geolocation'
+        self._endpoint: str = 'https://api.lbs.yandex.net/geolocation'
