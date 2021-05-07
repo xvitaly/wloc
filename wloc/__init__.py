@@ -9,8 +9,8 @@ import json
 from .backends.google import BackendGoogle
 from .backends.mozilla import BackendMozilla
 from .backends.yandex import BackendYandex
-from .fetcher import FetcherCommon
-from .fetcher.factory import FetcherFactory
+from .fetchers import FetcherCommon
+from .fetchers.factory import FetcherFactory
 
 
 class WiFiLocator:

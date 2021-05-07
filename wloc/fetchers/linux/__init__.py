@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from ...fetcher import FetcherCommon
+from ...fetchers import FetcherCommon
 
 
 class FetcherLinux(FetcherCommon):
