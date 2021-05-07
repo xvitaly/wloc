@@ -8,7 +8,7 @@ import json
 import requests
 
 from ...backends import BackendCommon
-from ...exception import BackendError
+from ...exceptions import BackendError
 
 
 class BackendYandex(BackendCommon):
