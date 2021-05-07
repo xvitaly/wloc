@@ -8,6 +8,7 @@ import json
 import requests
 
 from ...backend import BackendCommon
+from ...exception import BackendError
 
 
 class BackendGoogle(BackendCommon):
@@ -33,7 +34,7 @@ class BackendGoogle(BackendCommon):
 
         # Checking return code...
         if r.status_code != 200:
-            raise Exception('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
+            raise BackendError('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
 
         # Parsing JSON response...
         result = json.loads(r.content)
