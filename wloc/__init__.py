@@ -6,9 +6,9 @@
 
 import json
 
-from .backend.google import BackendGoogle
-from .backend.mozilla import BackendMozilla
-from .backend.yandex import BackendYandex
+from .backends.google import BackendGoogle
+from .backends.mozilla import BackendMozilla
+from .backends.yandex import BackendYandex
 from .fetcher import FetcherCommon
 from .fetcher.factory import FetcherFactory
 

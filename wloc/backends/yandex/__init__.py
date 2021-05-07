@@ -7,7 +7,7 @@
 import json
 import requests
 
-from ...backend import BackendCommon
+from ...backends import BackendCommon
 from ...exception import BackendError
 
 
