@@ -20,6 +20,7 @@ class BackendGoogle(BackendCommon):
         """
         Internal implementation of Google-like geolocation API fetcher.
         :param netlist: The list of available Wi-Fi networks.
+        :exception BackendError Raises on HTTP errors.
         :return: Coordinates (float).
         """
         # Generating base JSON structure...
