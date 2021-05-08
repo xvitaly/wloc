@@ -10,7 +10,10 @@ from ...fetchers import FetcherCommon
 class FetcherWindows(FetcherCommon):
     def _fetch_networks(self) -> None:
         """
-        Connects to WMI, fetching list of available networks and
-        stores them in private class property.
+        Uses Windows Native Wi-Fi API for fetching of available networks
+        and stores them in the private class property.
         """
-        raise Exception('Current platform is not supported yet.')
+        from .native import NativeWiFi
+        wifi = NativeWiFi()
+        for interface in wifi.get_interfaces():
+            self._netlist += wifi.get_networks(interface)
