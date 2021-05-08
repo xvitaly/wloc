@@ -11,7 +11,7 @@ import wloc
 
 
 class TestLibrary(unittest.TestCase):
-    __delta: float = 0.001
+    __delta: float = 0.002
     __add_element: str = 'AA:BB:CC:DD:EE:FF'
     __items_count: int = 8
 
