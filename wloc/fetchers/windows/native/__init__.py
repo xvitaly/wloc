@@ -123,7 +123,7 @@ class NativeWiFi:
                 bsses = ctypes.cast(bss_list.contents.wlanBssEntries, ctypes.POINTER(WLAN_BSS_ENTRY))
                 for j in range(bss_list.contents.dwNumberOfItems):
                     network_list.append(
-                        [":".join(["%02x" % bssid for bssid in bsses[j].dot11Bssid[0:6]]), bsses[j].lRssi])
+                        [':'.join([f'{bssid:02x}' for bssid in bsses[j].dot11Bssid[0:6]]), bsses[j].lRssi])
         return network_list
 
     def __init__(self):
