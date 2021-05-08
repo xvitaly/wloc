@@ -1,1 +1,2 @@
+comtypes; sys_platform == 'win32'
 requests
