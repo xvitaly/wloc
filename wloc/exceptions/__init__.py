@@ -9,4 +9,3 @@ class BackendError(Exception):
     """
     Base class for the API backend errors.
     """
-    pass
