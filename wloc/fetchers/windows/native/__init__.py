@@ -96,7 +96,7 @@ class NativeWiFi:
         :return: The list of available Wi-Fi physical network interfaces.
         """
         ifaces = []
-        self._wlan_open_handle(2, ctypes.byref(self._negotiated_version), ctypes.byref(self._handle))
+        self._wlan_open_handle(self._client_version, ctypes.byref(self._negotiated_version), ctypes.byref(self._handle))
         self._wlan_enum_interfaces(self._handle, ctypes.byref(self._ifaces))
         interfaces = ctypes.cast(self._ifaces.contents.InterfaceInfo, ctypes.POINTER(WLAN_INTERFACE_INFO))
         for i in range(0, self._ifaces.contents.dwNumberOfItems):
@@ -130,6 +130,7 @@ class NativeWiFi:
         """
         Main constructor of the NativeWiFi class.
         """
+        self._client_version = 2
         self._negotiated_version = ctypes.wintypes.DWORD()
         self._handle = ctypes.wintypes.HANDLE()
         self._ifaces = ctypes.pointer(WLAN_INTERFACE_INFO_LIST())
