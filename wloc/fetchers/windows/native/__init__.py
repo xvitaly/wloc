@@ -10,6 +10,7 @@
 
 import ctypes
 import ctypes.wintypes
+import comtypes
 
 from .structures import *
 

@@ -11,6 +11,9 @@
 import ctypes.wintypes
 import comtypes
 
+__all__ = ['DOT11_SSID', 'WLAN_RATE_SET', 'WLAN_AVAILABLE_NETWORK', 'WLAN_AVAILABLE_NETWORK_LIST', 'WLAN_BSS_ENTRY',
+           'WLAN_BSS_LIST', 'WLAN_INTERFACE_INFO', 'WLAN_INTERFACE_INFO_LIST']
+
 
 class DOT11_SSID(ctypes.Structure):
     """
