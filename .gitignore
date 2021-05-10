@@ -1,6 +1,5 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
 *$py.class
 
 # C extensions
@@ -57,8 +56,6 @@ docs/_build/
 # PyBuilder
 target/
 
-*.iml
-
 ## Directory-based project format:
 .idea/
 # if you remove the above rule, at least ignore the following:
@@ -106,3 +103,7 @@ fabric.properties
 
 # Doxygen generated files
 docs/html/
+
+# PyInstaller auto-generated files
+/packaging/windows/*.spec
+/packaging/windows/results/
