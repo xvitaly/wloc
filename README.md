@@ -19,6 +19,8 @@ Warning! Do not use `dev` branch in production due to possible breaking changes.
 # License
 [GNU General Public License version 3](COPYING). External libraries can use another compatible licenses.
 
+Icon for the Windows executable and installer from the [Noto Emoji](https://github.com/googlefonts/noto-emoji) font, licensed under the terms of the [Apache License 2.0](https://github.com/googlefonts/noto-emoji/blob/main/LICENSE).
+
 # Documentation
 
 Documentation available [here](docs/README.md).
