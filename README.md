@@ -3,6 +3,7 @@
 [![GitHub version](https://img.shields.io/github/v/release/xvitaly/wloc?sort=semver&color=brightgreen&logo=git&logoColor=white)](https://github.com/xvitaly/wloc/releases)
 [![PyPi Version](https://img.shields.io/pypi/v/wloc.svg?logo=pypi&logoColor=white)](https://pypi.org/project/wloc/)
 [![GitHub CI status](https://github.com/xvitaly/wloc/workflows/Python%20CI/badge.svg?branch=dev)](https://github.com/xvitaly/wloc/actions)
+[![AppVeyor CI status](https://ci.appveyor.com/api/projects/status/l7bmgfr9amvawty4?svg=true)](https://ci.appveyor.com/project/xvitaly/wloc)
 [![LGTM grade](https://img.shields.io/lgtm/grade/python/g/xvitaly/wloc.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xvitaly/wloc/context:python)
 [![LGTM alerts](https://img.shields.io/lgtm/alerts/g/xvitaly/wloc.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xvitaly/wloc/alerts/)
 [![CodeFactor](https://www.codefactor.io/repository/github/xvitaly/wloc/badge/dev)](https://www.codefactor.io/repository/github/xvitaly/wloc/overview/dev)
