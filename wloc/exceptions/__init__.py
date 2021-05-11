@@ -9,3 +9,15 @@ class BackendError(Exception):
     """
     Base class for the API backend errors.
     """
+
+
+class PlatformError(Exception):
+    """
+    Base class for the platform-dependent errors.
+    """
+
+
+class PlatformNotSupported(PlatformError):
+    """
+    Base class for the unsupported platform errors.
+    """
