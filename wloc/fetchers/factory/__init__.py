@@ -4,10 +4,11 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import os
+import sys
 
 from ..linux import FetcherLinux
 from ..windows import FetcherWindows
+from ...exceptions import PlatformNotSupported
 
 
 class FetcherFactory:
@@ -22,4 +23,9 @@ class FetcherFactory:
         :return: An instance of the desired class.
         :rtype: Any
         """
-        return FetcherLinux() if os.name == 'posix' else FetcherWindows()
+        if sys.platform.startswith('win32'):
+            return FetcherWindows()
+        elif sys.platform.startswith('linux'):
+            return FetcherLinux()
+        else:
+            raise PlatformNotSupported('Current platform is not supported!')
