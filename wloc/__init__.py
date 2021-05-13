@@ -9,7 +9,7 @@ import json
 from .backends.google import BackendGoogle
 from .backends.mozilla import BackendMozilla
 from .backends.yandex import BackendYandex
-from .exceptions import NetworksNotFoundError
+from .exceptions import MissingTokenError, NetworksNotFoundError
 from .fetchers import FetcherCommon
 from .fetchers.factory import FetcherFactory
 
@@ -129,7 +129,7 @@ class WiFiLocator:
 
         # Checking tokens...
         if self.__check_tokens():
-            raise Exception('No API tokens entered.')
+            raise MissingTokenError('No API tokens entered.')
 
         # Creating a new list for networks...
         self.__netlist = []
