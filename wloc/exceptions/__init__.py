@@ -25,5 +25,11 @@ class PlatformNotSupported(PlatformError):
 
 class NetworksNotFoundError(Exception):
     """
-    Base class for the missing wireless nerworks.
+    Base class for the missing wireless nerworks events.
+    """
+
+
+class MissingTokenError(Exception):
+    """
+    Base class for the missing API tokens events.
     """
