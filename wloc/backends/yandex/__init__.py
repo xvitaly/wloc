@@ -20,7 +20,7 @@ class BackendYandex(BackendCommon):
         """
         Internal implementation of Yandex-like geolocation API fetcher.
         :param netlist: The list of available Wi-Fi networks.
-        :exception BackendError Raises on HTTP errors.
+        :exception BackendError: An HTTP error has occurred.
         :return: Coordinates (float).
         """
         # Generating base JSON structure...

@@ -20,7 +20,7 @@ class FetcherFactory:
     def create():
         """
         Get the correct instance of the fetcher. Factory method.
-        :exception PlatformNotSupported Raises if current platform is not supported.
+        :exception PlatformNotSupported: Current platform is not supported.
         :return: An instance of the desired class.
         :rtype: Any
         """
