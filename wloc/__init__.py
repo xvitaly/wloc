@@ -29,6 +29,7 @@ class WiFiLocator:
     def __check_networks(self) -> None:
         """
         Checks the number of available wireless networks.
+        :exception NetworksNotFoundError: No wireless networks were found.
         """
         if len(self.__netlist) < 1:
             raise NetworksNotFoundError('No wireless networks found.')
@@ -121,6 +122,7 @@ class WiFiLocator:
         :param gg_apikey: Google Geolocation API token.
         :param ya_apikey: Yandex Locator API token.
         :param mm_apikey: Mozilla Geolocation API token.
+        :exception MissingTokenError: No API tokens were entered.
         """
         # Setting API tokens...
         self.__ya_apikey = ya_apikey
