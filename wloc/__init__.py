@@ -9,6 +9,7 @@ import json
 from .backends.google import BackendGoogle
 from .backends.mozilla import BackendMozilla
 from .backends.yandex import BackendYandex
+from .exceptions import NetworksNotFoundError
 from .fetchers import FetcherCommon
 from .fetchers.factory import FetcherFactory
 
@@ -30,7 +31,7 @@ class WiFiLocator:
         Checks the number of available wireless networks.
         """
         if len(self.__netlist) < 1:
-            raise Exception('No wireless networks found.')
+            raise NetworksNotFoundError('No wireless networks found.')
 
     def __fetch_networks(self) -> None:
         """
