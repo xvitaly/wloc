@@ -23,7 +23,7 @@ class NativeWiFi:
     """
 
     @staticmethod
-    def _wlan_open_handle(client_version, negotiated_version, handle):
+    def _wlan_open_handle(client_version, negotiated_version, handle) -> int:
         """
         Python implementation of the WlanOpenHandle function from the Windows Native Wi-Fi API.
 
@@ -40,7 +40,7 @@ class NativeWiFi:
         return func(client_version, None, negotiated_version, handle)
 
     @staticmethod
-    def _wlan_enum_interfaces(handle, ifaces):
+    def _wlan_enum_interfaces(handle, ifaces) -> int:
         """
         Python implementation of the WlanEnumInterfaces function from the Windows Native Wi-Fi API.
 
@@ -56,7 +56,7 @@ class NativeWiFi:
         return func(handle, None, ifaces)
 
     @staticmethod
-    def _wlan_get_available_network_list(handle, iface_guid, network_list):
+    def _wlan_get_available_network_list(handle, iface_guid, network_list) -> int:
         """
         Python implementation of the WlanGetAvailableNetworkList function from the Windows Native Wi-Fi API.
 
@@ -73,7 +73,7 @@ class NativeWiFi:
         return func(handle, iface_guid, 2, None, network_list)
 
     @staticmethod
-    def _wlan_get_network_bss_list(handle, iface_guid, bss_list, ssid=None, security=False):
+    def _wlan_get_network_bss_list(handle, iface_guid, bss_list, ssid=None, security=False) -> int:
         """
         Python implementation of the WlanGetNetworkBssList function from the Windows Native Wi-Fi API.
 
@@ -105,7 +105,7 @@ class NativeWiFi:
             ifaces.append(iface)
         return ifaces
 
-    def get_networks(self, interface):
+    def get_networks(self, interface) -> list:
         """
         Gets the list of available Wi-Fi networks with their BSSID and signal strength.
         :param interface: A physical network interface to use.
@@ -127,7 +127,7 @@ class NativeWiFi:
                         [':'.join([f'{bssid:02x}' for bssid in bsses[j].dot11Bssid[0:6]]), bsses[j].lRssi])
         return network_list
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Main constructor of the NativeWiFi class.
         """
