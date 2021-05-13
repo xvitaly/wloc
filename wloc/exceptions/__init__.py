@@ -21,3 +21,9 @@ class PlatformNotSupported(PlatformError):
     """
     Base class for the unsupported platform errors.
     """
+
+
+class NetworksNotFoundError(Exception):
+    """
+    Base class for the missing wireless nerworks.
+    """
