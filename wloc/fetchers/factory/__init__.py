@@ -28,5 +28,4 @@ class FetcherFactory:
             return FetcherWindows()
         elif sys.platform.startswith('linux'):
             return FetcherLinux()
-        else:
-            raise PlatformNotSupported('Current platform is not supported!')
+        raise PlatformNotSupported('Current platform is not supported!')
