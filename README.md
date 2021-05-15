@@ -11,9 +11,10 @@
 ---
 
 Locate user by using global Wi-Fi database (no GPS required). Supported backends:
- * [Yandex Maps API](https://tech.yandex.ru/locator/doc/dg/api/json-docpage/);
- * [Google Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro);
- * [Mozilla Geolocation API](https://mozilla.github.io/ichnaea/api/index.html).
+
+  * [Google Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro);
+  * [Mozilla Geolocation API](https://mozilla.github.io/ichnaea/api/index.html);
+  * [Yandex Locator API](https://tech.yandex.ru/locator/doc/dg/api/json-docpage/).
 
 Warning! Do not use `dev` branch in production due to possible breaking changes. Use `master` instead.
 

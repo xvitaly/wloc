@@ -4,6 +4,7 @@
 
   * [Virtual environment installation](virtualenv-installation.md)
   * [System installation](system-installation.md)
+  * [Windows installation](windows-installation.md)
 
 ## Usage
 
