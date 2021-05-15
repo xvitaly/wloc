@@ -1,5 +1,7 @@
 # Build using mock
+
 ## Prepare build environment
+
 ### Step 1
 
 Clone this repository with SPECs and patches to any directory:
