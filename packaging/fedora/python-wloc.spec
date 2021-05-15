@@ -4,19 +4,21 @@
 %global appdesc Simple Wi-Fi geolocation library and tool by EasyCoding Team
 
 Name: python-%{appname}
-Version: 0.4.0
+Version: 0.5.0
 Release: 1%{?dist}
 
-BuildArch: noarch
+License: GPLv3+ and MIT
 Summary: %{appsum}
-License: GPLv3+
 URL: https://github.com/xvitaly/%{appname}
 Source0: %{url}/archive/v%{version}/%{appname}-%{version}.tar.gz
 
 BuildRequires: python3dist(python-networkmanager)
 BuildRequires: python3dist(requests)
 BuildRequires: python3-devel
+BuildRequires: python3-setuptools
 BuildRequires: doxygen
+
+BuildArch: noarch
 
 %description
 %{appdesc}.
@@ -31,7 +33,6 @@ Requires: python3dist(python-networkmanager)
 
 %prep
 %autosetup -n %{appname}-%{version} -p1
-rm -f docs/README.md
 
 %build
 doxygen
@@ -41,12 +42,12 @@ doxygen
 %py3_install
 
 %files -n python3-%{appname}
-%license COPYING
-%doc README.md docs/*.md docs/html
+%doc docs/*
+%license COPYING licenses/*
 %{_bindir}/%{appname}
-%{python3_sitelib}/%{appname}
-%{python3_sitelib}/%{appname}-*.egg-info
+%{python3_sitelib}/%{appname}/
+%{python3_sitelib}/%{appname}-*.egg-info/
 
 %changelog
-* Tue Dec 24 2019 Vitaly Zaitsev <vitaly@easycoding.org> - 0.4.0-1
-- Updated to version 0.4.0.
+* Sat May 15 2021 Vitaly Zaitsev <vitaly@easycoding.org> - 0.5.0-1
+- Updated to version 0.5.0.

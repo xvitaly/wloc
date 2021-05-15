@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='wloc',
-    version='0.4.0',
+    version='0.5.0',
     packages=find_packages(exclude=['tests']),
     package_dir={
         'wloc': 'wloc',
