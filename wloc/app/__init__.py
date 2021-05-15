@@ -26,14 +26,14 @@ class App:
 
     def __parser_create(self) -> None:
         """
-        Creates instance of command-line arguments parser.
+        Creates an instance of the command-line arguments parser.
         """
         self.__parser = argparse.ArgumentParser()
         self.__parser_add_arguments()
 
     def __parser_add_arguments(self) -> None:
         """
-        Adds new supported options to command-line arguments parser.
+        Adds new options to the command-line arguments parser.
         """
         self.__parser.add_argument('--google', '-g', help='Use Google Geolocation API.', action='store_true',
                                    required=False)
@@ -51,14 +51,14 @@ class App:
 
     def __check_arguments(self) -> bool:
         """
-        Checks if at least one of optional command-line arguments present.
+        Checks if at least one of the optional command-line arguments present.
         :return: Availability of any optional command-line arguments.
         """
         return self.__arguments.yandex or self.__arguments.google or self.__arguments.mozilla
 
     def __set_backends(self) -> None:
         """
-        Creates instance of WiFiLocator class and special switch surrogate.
+        Creates an instance of the WiFiLocator class and special switch surrogate.
         """
         self.__locator = WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
                                      mm_apikey=os.getenv('APIKEY_MOZILLA'))
@@ -81,7 +81,7 @@ class App:
 
     def __call_backend(self, name: str) -> None:
         """
-        Directly calls one of supported geolocation backend.
+        Directly calls one of the supported geolocation backend.
         :param name:
         """
         try:
@@ -92,7 +92,7 @@ class App:
 
     def run(self) -> None:
         """
-        Run application.
+        Run the application.
         """
         if self.__check_arguments():
             self.__locator.fetch_networks()
@@ -102,7 +102,7 @@ class App:
 
     def __init__(self) -> None:
         """
-        Main constructor of App class.
+        Main constructor of the App class.
         """
         self.__setlogger()
         self.__parser_create()

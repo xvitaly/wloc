@@ -13,12 +13,12 @@ from ...exceptions import BackendError
 
 class BackendGoogle(BackendCommon):
     """
-    Class for working with Google Geolocation API.
+    Class for working with the Google Geolocation API.
     """
 
     def _execute(self, netlist) -> list:
         """
-        Internal implementation of Google-like geolocation API fetcher.
+        Internal implementation of the Google Geolocation API fetcher.
         :param netlist: The list of available Wi-Fi networks.
         :exception BackendError: An HTTP error has occurred.
         :return: Coordinates (float).

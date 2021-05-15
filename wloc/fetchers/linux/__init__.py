@@ -10,13 +10,13 @@ from ...fetchers import FetcherCommon
 class FetcherLinux(FetcherCommon):
     def _fetch_networks(self) -> None:
         """
-        Connects to Network Manager, fetching list of available networks
-        and stores them in private class property.
+        Connects to the Network Manager. Fetches the list of available
+        networks and stores them in a private class field.
         """
         # Importing Network Manager module...
         from NetworkManager import NetworkManager, Wireless
 
-        # Using DBus to ask Network Manager for available networks...
+        # Using DBus to fetch the list of available networks...
         for nmdevice in NetworkManager.GetDevices():
             if isinstance(nmdevice, Wireless):
                 for accesspoint in nmdevice.AccessPoints:

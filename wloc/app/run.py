@@ -8,6 +8,9 @@ from wloc.app import App
 
 
 def main():
+    """
+    The main entry point of the application.
+    """
     try:
         app = App()
         app.run()

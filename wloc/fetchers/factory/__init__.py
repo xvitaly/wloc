@@ -19,7 +19,7 @@ class FetcherFactory:
     @staticmethod
     def create():
         """
-        Get the correct instance of the fetcher. Factory method.
+        Returns the correct instance of the fetcher. Factory method.
         :exception PlatformNotSupported: Current platform is not supported.
         :return: An instance of the desired class.
         :rtype: Any

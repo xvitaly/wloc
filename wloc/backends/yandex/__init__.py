@@ -13,12 +13,12 @@ from ...exceptions import BackendError
 
 class BackendYandex(BackendCommon):
     """
-    Class for working with Yandex Locator API.
+    Class for working with the Yandex Locator API.
     """
 
     def _execute(self, netlist) -> list:
         """
-        Internal implementation of Yandex-like geolocation API fetcher.
+        Internal implementation of Yandex Locator API fetcher.
         :param netlist: The list of available Wi-Fi networks.
         :exception BackendError: An HTTP error has occurred.
         :return: Coordinates (float).
