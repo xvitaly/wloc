@@ -10,7 +10,6 @@ import os
 import sys
 
 from wloc import WiFiLocator
-from .messages import Messages
 from .settings import Settings
 
 
@@ -36,11 +35,11 @@ class App:
         """
         Adds new supported options to command-line arguments parser.
         """
-        self.__parser.add_argument('--yandex', '-y', help=Messages.arg_desc_yandex, action="store_true",
+        self.__parser.add_argument('--google', '-g', help='Use Google Geolocation API.', action='store_true',
                                    required=False)
-        self.__parser.add_argument('--google', '-g', help=Messages.arg_desc_google, action="store_true",
+        self.__parser.add_argument('--mozilla', '-m', help='Use Mozilla Geolocation API.', action='store_true',
                                    required=False)
-        self.__parser.add_argument('--mozilla', '-m', help=Messages.arg_desc_mozilla, action="store_true",
+        self.__parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', action='store_true',
                                    required=False)
 
     def __parse_arguments(self) -> None:
@@ -64,21 +63,21 @@ class App:
         self.__locator = WiFiLocator(gg_apikey=os.getenv('APIKEY_GOOGLE'), ya_apikey=os.getenv('APIKEY_YANDEX'),
                                      mm_apikey=os.getenv('APIKEY_MOZILLA'))
         self.__selector = {
-            'Yandex': self.__locator.query_yandex,
             'Google': self.__locator.query_google,
-            'Mozilla': self.__locator.query_mozilla
+            'Mozilla': self.__locator.query_mozilla,
+            'Yandex': self.__locator.query_yandex
         }
 
     def __get_results(self) -> None:
         """
         Calls enabled by user backends.
         """
-        if self.__arguments.yandex:
-            self.__call_backend('Yandex')
         if self.__arguments.google:
             self.__call_backend('Google')
         if self.__arguments.mozilla:
             self.__call_backend('Mozilla')
+        if self.__arguments.yandex:
+            self.__call_backend('Yandex')
 
     def __call_backend(self, name: str) -> None:
         """
@@ -87,9 +86,9 @@ class App:
         """
         try:
             coords = self.__selector[name]()
-            self.__logger.info(Messages.backend_result, name, coords[0], coords[1])
+            self.__logger.info('%s results:\nLatitude: %.6f\nLongitude: %.6f\n', name, coords[0], coords[1])
         except Exception:
-            self.__logger.exception(Messages.backend_error.format(name))
+            self.__logger.exception('An error occurred while querying %s backend!', name)
 
     def run(self) -> None:
         """
