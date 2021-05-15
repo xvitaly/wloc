@@ -2,8 +2,9 @@
 
 ## Installation
 
-  * [Virtual environment installation](virtualenv-installation.md)
+  * [Fedora installation](fedora-installation.md)
   * [System installation](system-installation.md)
+  * [Virtual environment installation](virtualenv-installation.md)
   * [Windows installation](windows-installation.md)
 
 ## Usage
