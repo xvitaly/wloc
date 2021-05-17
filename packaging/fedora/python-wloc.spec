@@ -7,7 +7,7 @@ Name: python-%{appname}
 Version: 0.5.0
 Release: 1%{?dist}
 
-License: GPLv3+ and MIT
+License: GPLv3+ and MIT and ASL 2.0
 Summary: %{appsum}
 URL: https://github.com/xvitaly/%{appname}
 Source0: %{url}/archive/v%{version}/%{appname}-%{version}.tar.gz
