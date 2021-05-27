@@ -1,14 +1,15 @@
 %global appname wloc
 
-%global appsum Simple Wi-Fi geolocation library and tool
-%global appdesc Simple Wi-Fi geolocation library and tool by EasyCoding Team
+%global _description %{expand:
+WLoc is a simple command-line Wi-Fi geolocation tool, which can be used to
+locate user by using global Wi-Fi database (no GPS required).}
 
 Name: python-%{appname}
 Version: 0.5.0
 Release: 1%{?dist}
 
 License: GPLv3+ and MIT and ASL 2.0
-Summary: %{appsum}
+Summary: Simple Wi-Fi geolocation library and tool
 URL: https://github.com/xvitaly/%{appname}
 Source0: %{url}/archive/v%{version}/%{appname}-%{version}.tar.gz
 
@@ -20,15 +21,13 @@ BuildRequires: %{py3_dist python-networkmanager}
 
 BuildArch: noarch
 
-%description
-%{appdesc}.
+%description %_description
 
 %package -n python3-%{appname}
-Summary: %{appsum}
+Summary: %{summary}
 %{?python_provide:%python_provide python3-%{appname}}
 
-%description -n python3-%{appname}
-%{appdesc}.
+%description -n python3-%{appname} %_description
 
 %prep
 %autosetup -n %{appname}-%{version} -p1
