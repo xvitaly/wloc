@@ -18,9 +18,9 @@ Source0: %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 
 BuildRequires: doxygen
 BuildRequires: python3-devel
-BuildRequires: %{py3_dist setuptools}
-BuildRequires: %{py3_dist requests}
 BuildRequires: %{py3_dist python-networkmanager}
+BuildRequires: %{py3_dist requests}
+BuildRequires: %{py3_dist setuptools}
 
 BuildArch: noarch
 
@@ -36,11 +36,20 @@ Summary: %{summary}
 %autosetup -n %{srcname}-%{version} -p1
 
 %build
-doxygen
 %py3_build
+
+# Buidling documentation...
+doxygen
+
+# Building manpage...
+pandoc packaging/assets/manpage.md -s -t man > packaging/assets/%{name}.1
 
 %install
 %py3_install
+
+# Installing manpage...
+install -d %{buildroot}%{_mandir}/man1/
+install -m 0644 -p packaging/assets/%{name}.1 %{buildroot}%{_mandir}/man1/
 
 %files -n python3-%{srcname}
 %doc docs/*
@@ -48,6 +57,7 @@ doxygen
 %{_bindir}/%{srcname}
 %{python3_sitelib}/%{srcname}/
 %{python3_sitelib}/%{srcname}-*.egg-info/
+%{_mandir}/man1/%{name}.1*
 
 %changelog
 * Sat May 15 2021 Vitaly Zaitsev <vitaly@easycoding.org> - 0.5.0-1
