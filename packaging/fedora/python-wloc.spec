@@ -50,14 +50,14 @@ the %{name} package.
 doxygen
 
 # Building manpage...
-pandoc packaging/assets/manpage.md -s -t man > packaging/assets/%{name}.1
+pandoc packaging/assets/manpage.md -s -t man > packaging/assets/%{srcname}.1
 
 %install
 %py3_install
 
 # Installing manpage...
 install -d %{buildroot}%{_mandir}/man1/
-install -m 0644 -p packaging/assets/%{name}.1 %{buildroot}%{_mandir}/man1/
+install -m 0644 -p packaging/assets/%{srcname}.1 %{buildroot}%{_mandir}/man1/
 
 %files -n python3-%{srcname}
 %doc README.md
@@ -65,7 +65,7 @@ install -m 0644 -p packaging/assets/%{name}.1 %{buildroot}%{_mandir}/man1/
 %{_bindir}/%{srcname}
 %{python3_sitelib}/%{srcname}/
 %{python3_sitelib}/%{srcname}-*.egg-info/
-%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/%{srcname}.1*
 
 %files doc
 %doc docs/*
