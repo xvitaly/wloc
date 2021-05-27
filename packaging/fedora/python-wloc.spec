@@ -8,6 +8,9 @@ Name: python-%{srcname}
 Version: 0.5.0
 Release: 1%{?dist}
 
+# Main code - GPLv3+.
+# pywifi - MIT.
+# Icon - Apache 2.0.
 License: GPLv3+ and MIT and ASL 2.0
 Summary: Simple Wi-Fi geolocation library and tool
 URL: https://github.com/xvitaly/%{srcname}
