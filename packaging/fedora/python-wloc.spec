@@ -12,11 +12,11 @@ Summary: %{appsum}
 URL: https://github.com/xvitaly/%{appname}
 Source0: %{url}/archive/v%{version}/%{appname}-%{version}.tar.gz
 
-BuildRequires: python3dist(python-networkmanager)
-BuildRequires: python3dist(requests)
-BuildRequires: python3-devel
-BuildRequires: python3-setuptools
 BuildRequires: doxygen
+BuildRequires: python3-devel
+BuildRequires: %{py3_dist setuptools}
+BuildRequires: %{py3_dist requests}
+BuildRequires: %{py3_dist python-networkmanager}
 
 BuildArch: noarch
 
