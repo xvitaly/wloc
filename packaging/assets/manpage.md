@@ -49,7 +49,7 @@ export APIKEY_YANDEX=ABCDEFG123
 Start the application with all available backends:
 
 ```
-sudo zswap-cli -g -m -y
+sudo wloc -g -m -y
 ```
 
 # EXIT STATUS
