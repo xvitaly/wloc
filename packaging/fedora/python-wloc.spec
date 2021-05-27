@@ -1,8 +1,12 @@
 %global srcname wloc
 
 %global _description %{expand:
+This package provides a Wi-Fi geolocation library and tool.
+
 WLoc is a simple command-line Wi-Fi geolocation tool, which can be used to
-locate user by using global Wi-Fi database (no GPS required).}
+locate user by using global Wi-Fi database (no GPS required).
+
+It supports different geolocation backends.}
 
 Name: python-%{srcname}
 Version: 0.5.0
