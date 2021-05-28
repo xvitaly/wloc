@@ -6,10 +6,10 @@
 
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
+with open('README.md', 'r') as fh:
     long_description = fh.read()
 
-with open('requirements.txt') as fr:
+with open('requirements.txt', 'r') as fr:
     requirements = fr.read().splitlines()
 
 setup(
@@ -34,9 +34,9 @@ setup(
     long_description_content_type='text/markdown',
     description='Simple Wi-Fi geolocation library and tool',
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-        "Operating System :: OS Independent",
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Operating System :: OS Independent',
     ],
     python_requires='>=3.6'
 )
