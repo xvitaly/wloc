@@ -9,6 +9,9 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+with open('requirements.txt') as fr:
+    requirements = fr.read().splitlines()
+
 setup(
     name='wloc',
     version='0.5.0',
@@ -23,7 +26,7 @@ setup(
             'wloc = wloc.app.run:main',
         ],
     },
-    install_requires=['requests'],
+    install_requires=requirements,
     test_suite='tests',
     author='Vitaly Zaitsev',
     author_email='vitaly@easycoding.org',
