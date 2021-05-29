@@ -15,6 +15,10 @@ class FetcherLinux(FetcherCommon):
         """
         # Importing Network Manager module...
         from NetworkManager import NetworkManager, Wireless
+        
+        # Applying workaround to python-networkmanager#84...
+        from dbus.mainloop.glib import DBusGMainLoop
+        DBusGMainLoop(set_as_default=True)
 
         # Using DBus to fetch the list of available networks...
         for nmdevice in NetworkManager.GetDevices():
