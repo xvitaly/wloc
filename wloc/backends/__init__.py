@@ -6,6 +6,8 @@
 
 import abc
 
+from ..exceptions import MissingTokenError
+
 
 class BackendCommon(metaclass=abc.ABCMeta):
     """
@@ -36,8 +38,11 @@ class BackendCommon(metaclass=abc.ABCMeta):
         """
         Calls the backend API and returns the coordinates.
         :param netlist: The list of available Wi-Fi networks.
+        :exception MissingTokenError: API token not entered or is not valid.
         :return: Coordinates (float).
         """
+        if not self._apikey:
+            raise MissingTokenError('API token not entered or is not valid!')
         return self._execute(netlist)
 
     def __init__(self, apikey: str):
