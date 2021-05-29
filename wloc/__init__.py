@@ -9,7 +9,7 @@ import json
 from .backends.google import BackendGoogle
 from .backends.mozilla import BackendMozilla
 from .backends.yandex import BackendYandex
-from .exceptions import MissingTokenError, NetworksNotFoundError
+from .exceptions import NetworksNotFoundError
 from .fetchers import FetcherCommon
 from .fetchers.factory import FetcherFactory
 
@@ -18,13 +18,6 @@ class WiFiLocator:
     """
     Wi-Fi simple geolocation class.
     """
-
-    def __check_tokens(self) -> bool:
-        """
-        Checks if API tokens set in configuration file.
-        :return: Check results
-        """
-        return not (self.__ya_apikey or self.__gg_apikey or self.__mm_apikey)
 
     def __check_networks(self) -> None:
         """
@@ -122,16 +115,11 @@ class WiFiLocator:
         :param gg_apikey: Google Geolocation API token.
         :param ya_apikey: Yandex Locator API token.
         :param mm_apikey: Mozilla Geolocation API token.
-        :exception MissingTokenError: No API tokens were entered.
         """
         # Setting API tokens...
         self.__gg_apikey = gg_apikey
         self.__mm_apikey = mm_apikey
         self.__ya_apikey = ya_apikey
-
-        # Checking tokens...
-        if self.__check_tokens():
-            raise MissingTokenError('No API tokens entered.')
 
         # Creating a new list for networks...
         self.__netlist = []
