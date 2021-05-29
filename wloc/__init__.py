@@ -92,14 +92,6 @@ class WiFiLocator:
         """
         return [network[0] for network in self.__netlist]
 
-    def query_yandex(self) -> list:
-        """
-        Query Yandex geolocation API.
-        :return: Coordinates (float).
-        """
-        self.__check_networks()
-        return BackendYandex(self.__ya_apikey).get_coords(self.__netlist)
-
     def query_google(self) -> list:
         """
         Query Google geolocation API.
@@ -115,6 +107,14 @@ class WiFiLocator:
         """
         self.__check_networks()
         return BackendMozilla(self.__mm_apikey).get_coords(self.__netlist)
+
+    def query_yandex(self) -> list:
+        """
+        Query Yandex geolocation API.
+        :return: Coordinates (float).
+        """
+        self.__check_networks()
+        return BackendYandex(self.__ya_apikey).get_coords(self.__netlist)
 
     def __init__(self, gg_apikey: str = None, ya_apikey: str = None, mm_apikey: str = None) -> None:
         """
