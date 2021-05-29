@@ -32,19 +32,16 @@ class WiFiLocator:
         Receives list of available networks and stores them in a private
         class property.
         """
-        # Retrieving available networks...
         netfetcher = FetcherFactory.create()
         netfetcher.fetch()
         self.__netlist = netfetcher.networks
-
-        # Checking the number of available networks...
-        self.__check_networks()
 
     def fetch_networks(self) -> None:
         """
         Automatically gets list of available Wi-Fi networks.
         """
         self.__fetch_networks()
+        self.__check_networks()
 
     def add_network(self, hwaddress: str, strength: int) -> None:
         """
@@ -90,7 +87,6 @@ class WiFiLocator:
         Query Google geolocation API.
         :return: Coordinates (float).
         """
-        self.__check_networks()
         return BackendGoogle(self.__gg_apikey).get_coords(self.__netlist)
 
     def query_mozilla(self) -> list:
@@ -98,7 +94,6 @@ class WiFiLocator:
         Query Mozilla geolocation API.
         :return: Coordinates (float).
         """
-        self.__check_networks()
         return BackendMozilla(self.__mm_apikey).get_coords(self.__netlist)
 
     def query_yandex(self) -> list:
@@ -106,7 +101,6 @@ class WiFiLocator:
         Query Yandex geolocation API.
         :return: Coordinates (float).
         """
-        self.__check_networks()
         return BackendYandex(self.__ya_apikey).get_coords(self.__netlist)
 
     def __init__(self, gg_apikey: str = None, ya_apikey: str = None, mm_apikey: str = None) -> None:

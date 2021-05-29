@@ -6,7 +6,7 @@
 
 import abc
 
-from ..exceptions import MissingTokenError
+from ..exceptions import MissingTokenError, NetworksNotFoundError
 
 
 class BackendCommon(metaclass=abc.ABCMeta):
@@ -39,10 +39,13 @@ class BackendCommon(metaclass=abc.ABCMeta):
         Calls the backend API and returns the coordinates.
         :param netlist: The list of available Wi-Fi networks.
         :exception MissingTokenError: API token not entered or is not valid.
+        :exception NetworksNotFoundError: The wireless networks list is empty.
         :return: Coordinates (float).
         """
         if not self._apikey:
             raise MissingTokenError('API token not entered or is not valid!')
+        if len(netlist) < 1:
+            raise NetworksNotFoundError('The wireless networks list is empty!')
         return self._execute(netlist)
 
     def __init__(self, apikey: str):
