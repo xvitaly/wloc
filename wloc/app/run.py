@@ -15,7 +15,7 @@ def main():
         app = App()
         app.run()
     except Exception as ex:
-        print('An error occurred while running application: %s' % ex)
+        print(f'An error occurred while running application: {ex}')
 
 
 if __name__ == '__main__':
