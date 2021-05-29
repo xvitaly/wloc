@@ -32,6 +32,8 @@ WLoc supports of getting API tokens for the third-party geolocation backends wit
 
 ## Supported options
 
+In order to use this application, you need to forward at least one API token:
+
   * **APIKEY_GOOGLE** - Google Geolocation.
   * **APIKEY_MOZILLA** - Mozilla Geolocation.
   * **APIKEY_YANDEX** - Yandex.Locator.
@@ -49,8 +51,26 @@ export APIKEY_YANDEX=ABCDEFG123
 Start the application with all available backends:
 
 ```
-sudo wloc -g -m -y
+wloc -g -m -y
 ```
+
+# BACKENDS
+
+## Supported backends
+
+This application can use the following third-party geolocation providers:
+
+  * Google Geolocation;
+  * Mozilla Geolocation;
+  * Yandex.Locator.
+
+## API tokens
+
+You can obtain API tokens from these sources:
+
+  * **Google**: https://developers.google.com/maps/documentation/geolocation/get-api-key
+  * **Mozilla**: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+  * **Yandex**: https://tech.yandex.ru/maps/keys/get/
 
 # EXIT STATUS
 
