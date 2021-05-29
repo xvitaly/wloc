@@ -97,6 +97,8 @@ class WiFiLocator:
         Query Google geolocation API.
         :return: Coordinates (float).
         """
+        if not self.__gg_apikey:
+            raise MissingTokenError('Google API token not entered!')
         self.__check_networks()
         return BackendGoogle(self.__gg_apikey).get_coords(self.__netlist)
 
@@ -105,6 +107,8 @@ class WiFiLocator:
         Query Mozilla geolocation API.
         :return: Coordinates (float).
         """
+        if not self.__mm_apikey:
+            raise MissingTokenError('Mozilla API token not entered!')
         self.__check_networks()
         return BackendMozilla(self.__mm_apikey).get_coords(self.__netlist)
 
@@ -113,6 +117,8 @@ class WiFiLocator:
         Query Yandex geolocation API.
         :return: Coordinates (float).
         """
+        if not self.__ya_apikey:
+            raise MissingTokenError('Yandex API token not entered!')
         self.__check_networks()
         return BackendYandex(self.__ya_apikey).get_coords(self.__netlist)
 
@@ -125,9 +131,9 @@ class WiFiLocator:
         :exception MissingTokenError: No API tokens were entered.
         """
         # Setting API tokens...
-        self.__ya_apikey = ya_apikey
         self.__gg_apikey = gg_apikey
         self.__mm_apikey = mm_apikey
+        self.__ya_apikey = ya_apikey
 
         # Checking tokens...
         if self.__check_tokens():
