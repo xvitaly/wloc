@@ -9,7 +9,7 @@ locate user by using global Wi-Fi database (no GPS required).
 It supports different geolocation backends.}
 
 Name: python-%{srcname}
-Version: 0.5.0
+Version: 0.6.0
 Release: 1%{?dist}
 
 # Main code - GPLv3+.
@@ -75,5 +75,5 @@ install -m 0644 -p packaging/assets/%{srcname}.1 %{buildroot}%{_mandir}/man1/
 %doc docs/*
 
 %changelog
-* Sat May 15 2021 Vitaly Zaitsev <vitaly@easycoding.org> - 0.5.0-1
-- Updated to version 0.5.0.
+* Sun May 30 2021 Vitaly Zaitsev <vitaly@easycoding.org> - 0.6.0-1
+- Updated to version 0.6.0.

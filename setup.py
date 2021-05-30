@@ -14,7 +14,7 @@ with open('requirements.txt', 'r') as fr:
 
 setup(
     name='wloc',
-    version='0.5.0',
+    version='0.6.0',
     packages=find_packages(exclude=['tests']),
     package_dir={
         'wloc': 'wloc',
