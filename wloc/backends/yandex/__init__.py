@@ -35,7 +35,8 @@ class BackendYandex(BackendCommon):
 
         # Checking return code...
         if r.status_code != 200:
-            raise BackendError('Server returned code: %s. Text message: %s' % (r.status_code, r.text))
+            raise BackendError(
+                f'Status code: {r.status_code}. Error message: {json.loads(r.content)["error"]["message"]}')
 
         # Parsing JSON response...
         result = json.loads(r.content)
