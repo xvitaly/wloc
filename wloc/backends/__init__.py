@@ -5,8 +5,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import abc
+import json
 
-from ..exceptions import MissingTokenError, NetworksNotFoundError
+from ..exceptions import BackendError, MissingTokenError, NetworksNotFoundError
 
 
 class BackendCommon(metaclass=abc.ABCMeta):
@@ -33,6 +34,17 @@ class BackendCommon(metaclass=abc.ABCMeta):
         Abstract property. Must be overridden.
         :return: Fully-qualified geolocation API URI.
         """
+
+    @staticmethod
+    def _check_response(r) -> None:
+        """
+        Checks the API response for errors.
+        :param r: An instance of the Response class.
+        :exception BackendError: An HTTP error has occurred.
+        """
+        if r.status_code != 200:
+            raise BackendError(
+                f'Status code: {r.status_code}. Error message: {json.loads(r.content)["error"]["message"]}')
 
     def get_coords(self, netlist) -> list:
         """

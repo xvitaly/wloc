@@ -8,7 +8,6 @@ import json
 import requests
 
 from ...backends import BackendCommon
-from ...exceptions import BackendError
 
 
 class BackendGoogle(BackendCommon):
@@ -20,7 +19,6 @@ class BackendGoogle(BackendCommon):
         """
         Internal implementation of the Google Geolocation API fetcher.
         :param netlist: The list of available Wi-Fi networks.
-        :exception BackendError: An HTTP error has occurred.
         :return: Coordinates (float).
         """
         # Generating base JSON structure...
@@ -34,9 +32,7 @@ class BackendGoogle(BackendCommon):
         r = requests.post(self._uri, data=json.dumps(jdata), headers={'content-type': 'application/json'})
 
         # Checking return code...
-        if r.status_code != 200:
-            raise BackendError(
-                f'Status code: {r.status_code}. Error message: {json.loads(r.content)["error"]["message"]}')
+        self._check_response(r)
 
         # Parsing JSON response...
         result = json.loads(r.content)
