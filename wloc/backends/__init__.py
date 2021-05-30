@@ -16,7 +16,7 @@ class BackendCommon(metaclass=abc.ABCMeta):
     """
 
     @abc.abstractmethod
-    def _execute(self, netlist) -> list:
+    def _execute(self, netlist: list) -> list:
         """
         Calls the backend API and returns the coordinates.
 
@@ -46,7 +46,7 @@ class BackendCommon(metaclass=abc.ABCMeta):
             raise BackendError(
                 f'Status code: {r.status_code}. Error message: {json.loads(r.content)["error"]["message"]}')
 
-    def get_coords(self, netlist) -> list:
+    def get_coords(self, netlist: list) -> list:
         """
         Calls the backend API and returns the coordinates.
         :param netlist: The list of available Wi-Fi networks.

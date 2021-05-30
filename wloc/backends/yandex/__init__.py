@@ -15,7 +15,7 @@ class BackendYandex(BackendCommon):
     Class for working with the Yandex Locator API.
     """
 
-    def _execute(self, netlist) -> list:
+    def _execute(self, netlist: list) -> list:
         """
         Internal implementation of Yandex Locator API fetcher.
         :param netlist: The list of available Wi-Fi networks.

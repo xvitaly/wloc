@@ -15,7 +15,7 @@ class BackendGoogle(BackendCommon):
     Class for working with the Google Geolocation API.
     """
 
-    def _execute(self, netlist) -> list:
+    def _execute(self, netlist: list) -> list:
         """
         Internal implementation of the Google Geolocation API fetcher.
         :param netlist: The list of available Wi-Fi networks.
