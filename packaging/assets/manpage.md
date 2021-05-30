@@ -69,8 +69,8 @@ This application can use the following third-party geolocation providers:
 You can obtain API tokens from these sources:
 
   * **Google**: https://developers.google.com/maps/documentation/geolocation/get-api-key
-  * **Mozilla**: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
-  * **Yandex**: https://tech.yandex.ru/maps/keys/get/
+  * **Mozilla**: https://ichnaea.readthedocs.io/en/latest/api/index.html
+  * **Yandex**: https://yandex.ru/dev/locator/doc/dg/api/geolocation-api.html
 
 # EXIT STATUS
 

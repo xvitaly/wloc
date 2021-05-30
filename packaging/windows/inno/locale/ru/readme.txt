@@ -7,5 +7,5 @@ Wi-Fi geolocation tool поддерживает следующие способ�
 
 Персональные токены можно получить здесь:
   * https://developers.google.com/maps/documentation/geolocation/intro;
-  * https://mozilla.github.io/ichnaea/api/index.html;
-  * https://tech.yandex.ru/locator/doc/dg/api/json-docpage/.
+  * https://ichnaea.readthedocs.io/en/latest/api/index.html;
+  * https://yandex.ru/dev/locator/doc/dg/api/geolocation-api.html.
