@@ -111,9 +111,9 @@ class WiFiLocator:
         :param mm_apikey: Mozilla Geolocation API token.
         """
         # Setting API tokens...
-        self.__gg_apikey = gg_apikey
-        self.__mm_apikey = mm_apikey
-        self.__ya_apikey = ya_apikey
+        self.__gg_apikey: str = gg_apikey
+        self.__mm_apikey: str = mm_apikey
+        self.__ya_apikey: str = ya_apikey
 
         # Creating a new list for networks...
-        self.__netlist = []
+        self.__netlist: list = []
