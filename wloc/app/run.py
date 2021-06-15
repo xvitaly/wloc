@@ -4,7 +4,22 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import logging
+import sys
+
 from wloc.app import App
+from wloc.app.settings import Settings
+
+
+def setup_log() -> None:
+    """
+    Setup root logger of the application.
+    """
+    root = logging.getLogger()
+    root.setLevel(Settings.log_level)
+    e_handler = logging.StreamHandler(sys.stdout)
+    e_handler.setFormatter(logging.Formatter(Settings.log_format))
+    root.addHandler(e_handler)
 
 
 def main():
@@ -12,8 +27,8 @@ def main():
     The main entry point of the application.
     """
     try:
-        app = App()
-        app.run()
+        setup_log()
+        App().run()
     except Exception as ex:
         print(f'An error occurred while running application: {ex}')
 

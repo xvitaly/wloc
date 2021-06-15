@@ -7,10 +7,8 @@
 import argparse
 import logging
 import os
-import sys
 
 from wloc import WiFiLocator
-from .settings import Settings
 
 
 class App:
@@ -19,10 +17,7 @@ class App:
         Configures logger for internal use.
         """
         self.__logger = logging.getLogger(__name__)
-        self.__logger.setLevel(Settings.log_level)
-        e_handler = logging.StreamHandler(sys.stdout)
-        e_handler.setFormatter(logging.Formatter(Settings.log_format))
-        self.__logger.addHandler(e_handler)
+        self.__logger.setLevel(logging.INFO)
 
     def __parser_create(self) -> None:
         """
