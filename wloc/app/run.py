@@ -7,8 +7,8 @@
 import logging
 import sys
 
-from wloc.app import App
-from wloc.app.settings import Settings
+from .settings import Settings
+from ..app import App
 
 
 def setup_log() -> None:
