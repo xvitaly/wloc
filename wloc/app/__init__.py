@@ -8,7 +8,8 @@ import argparse
 import logging
 import os
 
-from wloc import WiFiLocator
+from .. import WiFiLocator
+from ..exceptions import *
 
 
 class App:
@@ -44,12 +45,13 @@ class App:
         """
         self.__arguments = self.__parser.parse_args()
 
-    def __check_arguments(self) -> bool:
+    def __check_arguments(self) -> None:
         """
         Checks if at least one of the optional command-line arguments present.
-        :return: Availability of any optional command-line arguments.
+        :exception MissingArgumentError: No backends were selected.
         """
-        return self.__arguments.yandex or self.__arguments.google or self.__arguments.mozilla
+        if not (self.__arguments.yandex or self.__arguments.google or self.__arguments.mozilla):
+            raise MissingArgumentError('No backends selected.')
 
     def __set_backends(self) -> None:
         """
@@ -82,18 +84,25 @@ class App:
         try:
             coords = self.__selector[name]()
             self.__logger.info('%s results:\nLatitude: %.6f\nLongitude: %.6f\n', name, coords[0], coords[1])
-        except Exception:
+        except MissingTokenError:
+            self.__logger.error('API token for the %s backend not entered!', name)
+        except (BackendError, Exception):
             self.__logger.exception('An error occurred while querying %s backend!', name)
 
     def run(self) -> None:
         """
         Run the application.
         """
-        if self.__check_arguments():
+        try:
+            self.__check_arguments()
             self.__locator.fetch_networks()
             self.__get_results()
-        else:
-            self.__parser.print_help()
+        except MissingArgumentError:
+            self.__logger.error('No backends selected! Please select at least one.')
+        except NetworksNotFoundError:
+            self.__logger.error('No wireless networks found! Please check Wi-Fi device status.')
+        except (Exception, BaseException):
+            self.__logger.exception('An error occurred while running application.')
 
     def __init__(self) -> None:
         """
