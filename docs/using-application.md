@@ -18,6 +18,6 @@ usage: wloc [-h] [--yandex] [--google] [--mozilla]
 Optional arguments:
 
   * `-h` or `--help` - show this help message and exit;
-  * `-g` or  `--google` - use Google Geolocation API;
-  * `-m` or  `--mozilla` - use Mozilla Geolocation API;
-  * `-y` or `--yandex` - use Yandex.Locator API.
+  * `-g` or  `--google` - use the Google Geolocation API;
+  * `-m` or  `--mozilla` - use the Mozilla Geolocation API;
+  * `-y` or `--yandex` - use the Yandex.Locator API.

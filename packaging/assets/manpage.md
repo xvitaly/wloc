@@ -6,7 +6,7 @@ wloc - command-line Wi-Fi geolocation tool
 
 # SYNOPSIS
 
-**wloc** [**OPTION**...]
+**wloc** \[-h\] \[--google\] \[--mozilla\] \[--yandex\]
 
 # DESCRIPTION
 
@@ -18,10 +18,10 @@ WLoc is a simple command-line Wi-Fi geolocation tool, which can be used to locat
 Use the Google Geolocation API.
 
 #### -m, \-\-mozilla
-Use Mozilla Geolocation API.
+Use the Mozilla Geolocation API.
 
 #### -y, \-\-yandex
-Use Yandex.Locator API.
+Use the Yandex.Locator API.
 
 #### -h, \-\-help
 Print help message and exit.
@@ -71,11 +71,6 @@ You can obtain API tokens from these sources:
   * **Google**: https://developers.google.com/maps/documentation/geolocation/get-api-key
   * **Mozilla**: https://ichnaea.readthedocs.io/en/latest/api/index.html
   * **Yandex**: https://yandex.ru/dev/locator/doc/dg/api/geolocation-api.html
-
-# EXIT STATUS
-
-  * **0** - Successful exit.
-  * **1** - An error occured (mode useful information can be found in stderr).
 
 # AUTHORS
 
