@@ -4,7 +4,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-__all__ = ['BackendError', 'MissingTokenError', 'NetworksNotFoundError', 'PlatformError', 'PlatformNotSupported']
+__all__ = ['BackendError', 'MissingTokenError', 'MissingArgumentError', 'NetworksNotFoundError', 'PlatformError',
+           'PlatformNotSupported']
 
 
 class BackendError(Exception):
@@ -16,6 +17,12 @@ class BackendError(Exception):
 class MissingTokenError(Exception):
     """
     Base class for the missing API tokens events.
+    """
+
+
+class MissingArgumentError(Exception):
+    """
+    Base class for the missing required arguments events.
     """
 
 
