@@ -1,7 +1,7 @@
 # Fedora installation
 
-Install the `python-wloc` package:
+Install the `python3-wloc` package:
 
 ```
-sudo dnf install python-wloc
+sudo dnf install python3-wloc
 ```
