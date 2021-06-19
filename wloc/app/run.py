@@ -7,8 +7,7 @@
 import logging
 import sys
 
-from .settings import Settings
-from ..app import App
+from wloc.app import App
 
 
 def setup_log() -> None:
@@ -16,9 +15,9 @@ def setup_log() -> None:
     Setup root logger of the application.
     """
     root = logging.getLogger()
-    root.setLevel(Settings.log_level)
+    root.setLevel(logging.INFO)
     e_handler = logging.StreamHandler(sys.stdout)
-    e_handler.setFormatter(logging.Formatter(Settings.log_format))
+    e_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s'))
     root.addHandler(e_handler)
 
 
