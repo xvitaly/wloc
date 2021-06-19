@@ -10,7 +10,7 @@
 
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = wloc
-PROJECT_NUMBER         = 0.6.0
+PROJECT_NUMBER         = 0.7.0
 PROJECT_BRIEF          = "Simple Wi-Fi geolocation library and tool"
 PROJECT_LOGO           = "packaging/windows/assets/wloc.png"
 OUTPUT_DIRECTORY       = docs
