@@ -99,6 +99,7 @@ class App:
             self.__get_results()
         except MissingArgumentError:
             self.__logger.error('No backends selected! Please select at least one.')
+            self.__parser.print_usage()
         except NetworksNotFoundError:
             self.__logger.error('No wireless networks found! Please check Wi-Fi device status.')
         except (Exception, BaseException):
