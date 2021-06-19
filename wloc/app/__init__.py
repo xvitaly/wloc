@@ -79,7 +79,7 @@ class App:
     def __call_backend(self, name: str) -> None:
         """
         Directly calls one of the supported geolocation backend.
-        :param name:
+        :param name: Backend name.
         """
         try:
             coords = self.__selector[name]()
