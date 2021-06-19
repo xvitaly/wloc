@@ -34,7 +34,7 @@ class App:
                                    required=False)
         self.__parser.add_argument('--mozilla', '-m', help='Use Mozilla Geolocation API.', action='store_true',
                                    required=False)
-        self.__parser.add_argument('--yandex', '-y', help='Use Yandex Geolocation API.', action='store_true',
+        self.__parser.add_argument('--yandex', '-y', help='Use Yandex.Locator API.', action='store_true',
                                    required=False)
 
     def __parse_arguments(self) -> None:
