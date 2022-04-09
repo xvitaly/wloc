@@ -1,4 +1,8 @@
-﻿[CustomMessages]
+﻿; SPDX-FileCopyrightText: 2015-2022 EasyCoding Team
+;
+; SPDX-License-Identifier: GPL-3.0-or-later
+
+[CustomMessages]
 APIKeyPageCaption=Токены API
 APIKeyPageDescription=Ввод токенов API для сервисов геолокации.
 APIKeyPageAdditionalText=Пожалуйста, введите на этой странице действительные API-токены для внешних сервисов геолокации.

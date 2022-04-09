@@ -4,8 +4,8 @@
 
 #define VERSION GetVersionNumbersString("..\results\dist\wloc.exe")
 #define BASEDIR "..\results\dist"
-#define CI_COMMIT GetEnv('CI_HASH')
-#if CI_COMMIT == ''
+
+#if GetEnv('CI_HASH') == ''
 #define _RELEASE 1
 #endif
 
@@ -23,11 +23,7 @@ DefaultGroupName=Wi-Fi geolocation tool
 AllowNoIcons=yes
 LicenseFile=..\..\..\COPYING
 OutputDir=..\results
-#ifdef _RELEASE
-OutputBaseFilename=wloc_{#GetEnv('RELVER')}
-#else
-OutputBaseFilename=snapshot_{#CI_COMMIT}
-#endif
+OutputBaseFilename={#GetEnv('PREFIX')}_setup
 SetupIconFile=..\assets\wloc.ico
 UninstallDisplayIcon={app}\wloc.exe
 Compression=lzma2
@@ -40,7 +36,7 @@ ArchitecturesInstallIn64BitMode=x64
 MinVersion=6.1sp1
 VersionInfoVersion={#VERSION}
 VersionInfoDescription=Wi-Fi geolocation tool
-VersionInfoCopyright=(c) 2005-2021 EasyCoding Team. All rights reserved.
+VersionInfoCopyright=(c) 2015-2022 EasyCoding Team. All rights reserved.
 VersionInfoCompany=EasyCoding Team
 
 [Messages]
@@ -132,7 +128,7 @@ begin
     Result := WizardIsComponentSelected('apikey\nokeys')
 end;
 
-function GenerateBotLauncher(FileName: String): Boolean;
+function GenerateLauncher(FileName: String): Boolean;
 var
     Contents: TArrayOfString;
 begin
@@ -171,7 +167,7 @@ begin
                 end
             else
                 begin
-                    Result := GenerateBotLauncher(ExpandConstant('{tmp}\wlocc.cmd'));
+                    Result := GenerateLauncher(ExpandConstant('{tmp}\wlocc.cmd'));
                 end
         end
     else
