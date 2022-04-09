@@ -1,32 +1,37 @@
-version: 1.0.0.{build}
+# SPDX-FileCopyrightText: 2015-2022 EasyCoding Team
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+version: '{build}'
 pull_requests:
   do_not_increment_build_number: true
+branches:
+  only:
+  - master
+  - dev
+max_jobs: 1
 image: Visual Studio 2019
 clone_depth: 1
 init:
 - cmd: git config --global core.autocrlf true
 install:
 - cmd: >-
-    set PATH=C:\Python38-x64;C:\Python38-x64\Scripts;%PATH%
+    set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
 
     pip3 install -r requirements.txt
 
     pip3 install pyinstaller
 build_script:
 - cmd: >-
-    set PATH=C:\Python38-x64;C:\Python38-x64\Scripts;%PATH%
+    set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
 
     set CI_HASH=%APPVEYOR_REPO_COMMIT:~0,7%
 
-    set PYTHONOPTIMIZE=1
-
     cd packaging\windows
 
-    pyinstaller --log-level=INFO --distpath=results\dist --workpath=results\build --clean --noconfirm --onefile --noupx --name=wloc --version-file=assets\version.txt --manifest=assets\wloc.manifest --icon=assets\wloc.ico ..\..\wloc\app\run.py
-
-    "%ProgramFiles(x86)%\Inno Setup 6\ISCC.exe" inno\wloc.iss
+    call build.cmd
 test: off
 artifacts:
 - path: packaging\windows\results\snapshot_*.exe
-  name: innosetup
+  name: installer
 deploy: off
