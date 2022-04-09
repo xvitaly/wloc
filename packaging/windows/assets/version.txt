@@ -1,6 +1,6 @@
 # coding=utf-8
 
-# SPDX-FileCopyrightText: 2015-2021 EasyCoding Team
+# SPDX-FileCopyrightText: 2015-2022 EasyCoding Team
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -26,7 +26,7 @@ VSVersionInfo(
         StringStruct(u'FileDescription', u'Wi-Fi geolocation tool'),
         StringStruct(u'FileVersion', u'0.7.0.0'),
         StringStruct(u'InternalName', u'wloc.exe'),
-        StringStruct(u'LegalCopyright', u'(c) 2015-2021 EasyCoding Team. All rights reserved.'),
+        StringStruct(u'LegalCopyright', u'(c) 2015-2022 EasyCoding Team. All rights reserved.'),
         StringStruct(u'LegalTrademarks', u'EasyCoding, EasyCoding Software Group and EasyCoding Team are trademarks of EasyCoding Team.'),
         StringStruct(u'OriginalFilename', u'wloc.exe'),
         StringStruct(u'ProductName', u'Wi-Fi geolocation tool'),
