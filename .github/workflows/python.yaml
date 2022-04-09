@@ -1,24 +1,39 @@
+# SPDX-FileCopyrightText: 2015-2022 EasyCoding Team
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 name: Python CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - 'master'
+      - 'dev'
+  pull_request:
+    branches:
+      - 'master'
+      - 'dev'
 
 jobs:
   build:
-
+    name: Build project
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9]
+        python-version: ['3.9', '3.10']
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Fetching sources
+      uses: actions/checkout@v3
     - name: Setting up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Updating apt package metadata
+      run: |
+        sudo apt-get update
     - name: Installing development packages
       run: |
-        sudo apt update
         sudo apt install build-essential libdbus-1-dev
     - name: Installing dependencies
       run: |
