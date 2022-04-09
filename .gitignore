@@ -109,5 +109,5 @@ fabric.properties
 docs/html/
 
 # PyInstaller auto-generated files
-/packaging/windows/*.spec
-/packaging/windows/results/
+packaging/windows/*.spec
+packaging/windows/results/
