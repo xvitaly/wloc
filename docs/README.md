@@ -17,7 +17,3 @@
 
   * [Test suite file](test-suite-file.md)
   * [Running tests](running-tests.md)
-
-# Packaging
-
-  * [Building Fedora package](building-fedora-package.md)
