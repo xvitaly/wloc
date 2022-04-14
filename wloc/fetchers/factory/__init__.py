@@ -6,6 +6,7 @@
 
 import sys
 
+from ..android import FetcherAndroid
 from ..linux import FetcherLinux
 from ..windows import FetcherWindows
 from ...exceptions import PlatformNotSupported
@@ -24,8 +25,10 @@ class FetcherFactory:
         :return: An instance of the desired class.
         :rtype: Any
         """
-        if sys.platform.startswith('win32'):
-            return FetcherWindows()
+        if hasattr(sys, 'getandroidapilevel'):
+            return FetcherAndroid()
         elif sys.platform.startswith('linux'):
             return FetcherLinux()
+        elif sys.platform.startswith('win32'):
+            return FetcherWindows()
         raise PlatformNotSupported('Current platform is not supported!')
