@@ -13,4 +13,9 @@ class FetcherAndroid(FetcherCommon):
         Works with the Termux API. Fetches the list of available
         networks and stores them in a private class field.
         """
-        pass
+        # Importing Termux API wrapper...
+        from .tmux import TermuxAPI
+
+        # Using TermuxAPI to fetch the list of available networks...
+        wifi = TermuxAPI()
+        self._netlist += wifi.get_networks()
