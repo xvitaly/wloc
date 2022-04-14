@@ -8,6 +8,11 @@ from ...fetchers import FetcherCommon
 
 
 class FetcherWindows(FetcherCommon):
+    """
+    Class for fetching the list of available Wi-Fi networks
+    on Microsoft Windows operating system.
+    """
+
     def _fetch_networks(self) -> None:
         """
         Uses Windows Native Wi-Fi API for fetching of available networks

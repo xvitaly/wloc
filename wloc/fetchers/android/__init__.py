@@ -8,6 +8,11 @@ from ...fetchers import FetcherCommon
 
 
 class FetcherAndroid(FetcherCommon):
+    """
+    Class for fetching the list of available Wi-Fi networks
+    on Android operating system.
+    """
+
     def _fetch_networks(self) -> None:
         """
         Works with the Termux API. Fetches the list of available

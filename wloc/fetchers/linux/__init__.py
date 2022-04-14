@@ -8,6 +8,11 @@ from ...fetchers import FetcherCommon
 
 
 class FetcherLinux(FetcherCommon):
+    """
+    Class for fetching the list of available Wi-Fi networks
+    on GNU/Linux operating system.
+    """
+
     def _fetch_networks(self) -> None:
         """
         Connects to the Network Manager. Fetches the list of available
