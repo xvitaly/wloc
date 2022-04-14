@@ -4,13 +4,19 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-__all__ = ['BackendError', 'MissingTokenError', 'MissingArgumentError', 'NetworksNotFoundError', 'PlatformError',
-           'PlatformNotSupported']
+__all__ = ['BackendError', 'FetcherError', 'MissingTokenError', 'MissingArgumentError', 'NetworksNotFoundError',
+           'PlatformError', 'PlatformNotSupported']
 
 
 class BackendError(Exception):
     """
     Base class for the API backend errors.
+    """
+
+
+class FetcherError(Exception):
+    """
+    Base class for the fetcher errors.
     """
 
 
