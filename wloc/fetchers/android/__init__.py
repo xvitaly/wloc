@@ -4,6 +4,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from .tmux import TermuxAPI
 from ...fetchers import FetcherCommon
 
 
@@ -18,9 +19,4 @@ class FetcherAndroid(FetcherCommon):
         Works with the Termux API. Fetches the list of available
         networks and stores them in a private class field.
         """
-        # Importing Termux API wrapper...
-        from .tmux import TermuxAPI
-
-        # Using TermuxAPI to fetch the list of available networks...
-        wifi = TermuxAPI()
-        self._netlist += wifi.get_networks()
+        self._netlist = TermuxAPI().get_networks()
