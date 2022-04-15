@@ -39,8 +39,6 @@ class TermuxAPI:
         Gets the list of available Wi-Fi networks with their BSSID and signal strength.
         :return: The list of available Wi-Fi networks.
         """
-        self._fetch_json()
-        self._parse_json()
         return self._network_list
 
     def __init__(self) -> None:
@@ -49,3 +47,5 @@ class TermuxAPI:
         """
         self._json: str = ''
         self._network_list: list = []
+        self._fetch_json()
+        self._parse_json()
