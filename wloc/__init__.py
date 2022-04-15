@@ -10,8 +10,8 @@ from .backends.google import BackendGoogle
 from .backends.mozilla import BackendMozilla
 from .backends.yandex import BackendYandex
 from .exceptions import NetworksNotFoundError
-from .fetchers import FetcherCommon
 from .fetchers.factory import FetcherFactory
+from .fetchers.helpers import Helpers
 
 
 class WiFiLocator:
@@ -49,7 +49,7 @@ class WiFiLocator:
         :param hwaddress: Station hardware address.
         :param strength: Signal strength in percents.
         """
-        self.__netlist.append([hwaddress, FetcherCommon.conv_strength(strength)])
+        self.__netlist.append([hwaddress, Helpers.percents2dbm(strength)])
 
     def remove_network(self, hwaddress: str) -> None:
         """

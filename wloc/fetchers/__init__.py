@@ -21,15 +21,6 @@ class FetcherCommon(metaclass=abc.ABCMeta):
         Abstract method. Must be overridden.
         """
 
-    @staticmethod
-    def conv_strength(stp: int) -> str:
-        """
-        Converts Wi-Fi signal strength percents to RSSI (dBm).
-        :param stp: Signal strength in percents.
-        :return: Signal strength in dBm.
-        """
-        return '%.0f' % (stp / 2 - 100)
-
     @property
     def networks(self) -> list:
         """
