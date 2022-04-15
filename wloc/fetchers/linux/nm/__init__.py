@@ -11,7 +11,16 @@ from ...helpers import Helpers
 
 
 class NetworkManagerAPI:
+    """
+    Class for working with Network Manager API using public D-Bus
+    methods.
+    """
+
     def _fetch_list(self):
+        """
+        Fetches the list of available Wi-Fi networks using public
+        D-Bus methods.
+        """
         # Applying workaround to python-networkmanager#84...
         DBusGMainLoop(set_as_default=True)
 
@@ -22,8 +31,16 @@ class NetworkManagerAPI:
                     self._network_list.append([accesspoint.HwAddress, Helpers.percents2dbm(accesspoint.Strength)])
 
     def get_networks(self) -> list:
+        """
+        Gets the list of available Wi-Fi networks with their BSSID and signal
+        strength.
+        :return: The list of available Wi-Fi networks.
+        """
         return self._network_list
 
     def __init__(self) -> None:
+        """
+        Main constructor of the NetworkManagerAPI class.
+        """
         self._network_list: list = []
         self._fetch_list()
