@@ -11,7 +11,7 @@ from .backends.mozilla import BackendMozilla
 from .backends.yandex import BackendYandex
 from .exceptions import NetworksNotFoundError
 from .fetchers.factory import FetcherFactory
-from .fetchers.helpers import Helpers
+from .helpers import Helpers
 
 
 class WiFiLocator:
