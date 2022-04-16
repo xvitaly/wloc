@@ -31,7 +31,7 @@ class TermuxNativeAPI(NativeBackendCommon):
         """
         networks = json.loads(self._json)
         if not isinstance(networks, list):
-            raise FetcherError(networks['error'])
+            raise FetcherError(next(iter(networks.values())))
         for network in networks:
             self._network_list.append([network['bssid'], network['rssi']])
 
