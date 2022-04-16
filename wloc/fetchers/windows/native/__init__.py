@@ -13,9 +13,10 @@ import ctypes.wintypes
 import comtypes
 
 from .structures import *
+from ...common import FetcherBackendCommon
 
 
-class NativeWiFi:
+class NativeWiFi(FetcherBackendCommon):
     """
     Special class for working with the Windows Native Wi-Fi API.
 
@@ -136,14 +137,6 @@ class NativeWiFi:
         for interface in self._get_interfaces():
             self._network_list += self._get_networks(interface)
 
-    def get_networks(self) -> list:
-        """
-        Gets the list of available Wi-Fi networks with their BSSID and signal
-        strength.
-        :return: The list of available Wi-Fi networks.
-        """
-        return self._network_list
-
     def __init__(self) -> None:
         """
         Main constructor of the NativeWiFi class.
@@ -152,5 +145,4 @@ class NativeWiFi:
         self._negotiated_version = ctypes.wintypes.DWORD()
         self._handle = ctypes.wintypes.HANDLE()
         self._ifaces = ctypes.pointer(WLAN_INTERFACE_INFO_LIST())
-        self._network_list: list = []
-        self._fetch_list()
+        super().__init__()

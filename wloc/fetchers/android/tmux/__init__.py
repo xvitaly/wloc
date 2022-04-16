@@ -7,10 +7,11 @@
 import json
 import subprocess
 
+from ...common import FetcherBackendCommon
 from ....exceptions import FetcherError
 
 
-class TermuxAPI:
+class TermuxAPI(FetcherBackendCommon):
     """
     Class for working with Termux API.
     """
@@ -34,18 +35,17 @@ class TermuxAPI:
         for network in networks:
             self._network_list.append([network['bssid'], network['rssi']])
 
-    def get_networks(self) -> list:
+    def _fetch_list(self):
         """
-        Gets the list of available Wi-Fi networks with their BSSID and signal strength.
-        :return: The list of available Wi-Fi networks.
+        Fetches the list of available Wi-Fi networks using public
+        D-Bus methods.
         """
-        return self._network_list
+        self._fetch_json()
+        self._parse_json()
 
     def __init__(self) -> None:
         """
         Main constructor of the TermuxAPI class.
         """
         self._json: str = ''
-        self._network_list: list = []
-        self._fetch_json()
-        self._parse_json()
+        super().__init__()

@@ -7,10 +7,11 @@
 from NetworkManager import NetworkManager, Wireless
 from dbus.mainloop.glib import DBusGMainLoop
 
+from ...common import FetcherBackendCommon
 from ...helpers import Helpers
 
 
-class NetworkManagerAPI:
+class NetworkManagerAPI(FetcherBackendCommon):
     """
     Class for working with Network Manager API using public D-Bus
     methods.
@@ -29,18 +30,3 @@ class NetworkManagerAPI:
             if isinstance(nmdevice, Wireless):
                 for accesspoint in nmdevice.AccessPoints:
                     self._network_list.append([accesspoint.HwAddress, Helpers.percents2dbm(accesspoint.Strength)])
-
-    def get_networks(self) -> list:
-        """
-        Gets the list of available Wi-Fi networks with their BSSID and signal
-        strength.
-        :return: The list of available Wi-Fi networks.
-        """
-        return self._network_list
-
-    def __init__(self) -> None:
-        """
-        Main constructor of the NetworkManagerAPI class.
-        """
-        self._network_list: list = []
-        self._fetch_list()
