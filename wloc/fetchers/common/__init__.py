@@ -7,7 +7,7 @@
 import abc
 
 
-class FetcherBackendCommon(metaclass=abc.ABCMeta):
+class NativeBackendCommon(metaclass=abc.ABCMeta):
     """
     Abstract class used for platform-dependent fetching the list
     of available Wi-Fi networks.
