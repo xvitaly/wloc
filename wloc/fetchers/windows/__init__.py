@@ -19,6 +19,4 @@ class FetcherWindows(FetcherCommon):
         Uses Windows Native Wi-Fi API for fetching of available networks
         and stores them in the private class property.
         """
-        wifi = NativeWiFi()
-        for interface in wifi.get_interfaces():
-            self._netlist += wifi.get_networks(interface)
+        self._netlist = NativeWiFi().get_networks()
