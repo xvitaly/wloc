@@ -7,11 +7,11 @@
 from NetworkManager import NetworkManager, Wireless
 from dbus.mainloop.glib import DBusGMainLoop
 
-from ...common import NativeBackendCommon
+from ...native import NativeBackendCommon
 from ...helpers import Helpers
 
 
-class NetworkManagerAPI(NativeBackendCommon):
+class NetworkManagerNativeAPI(NativeBackendCommon):
     """
     Class for working with Network Manager API using public D-Bus
     methods.

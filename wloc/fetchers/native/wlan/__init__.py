@@ -13,10 +13,10 @@ import ctypes.wintypes
 import comtypes
 
 from .structures import *
-from ...common import NativeBackendCommon
+from ...native import NativeBackendCommon
 
 
-class NativeWiFi(NativeBackendCommon):
+class WlanNativeAPI(NativeBackendCommon):
     """
     Special class for working with the Windows Native Wi-Fi API.
 

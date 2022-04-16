@@ -7,11 +7,11 @@
 import json
 import subprocess
 
-from ...common import NativeBackendCommon
+from ...native import NativeBackendCommon
 from ....exceptions import FetcherError
 
 
-class TermuxAPI(NativeBackendCommon):
+class TermuxNativeAPI(NativeBackendCommon):
     """
     Class for working with Termux API.
     """

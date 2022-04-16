@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from .nm import NetworkManagerAPI
+from ..native.netman import NetworkManagerNativeAPI
 from ...fetchers import FetcherCommon
 
 
@@ -19,4 +19,4 @@ class FetcherLinux(FetcherCommon):
         Connects to the Network Manager. Fetches the list of available
         networks and stores them in a private class field.
         """
-        self._netlist = NetworkManagerAPI().get_networks()
+        self._netlist = NetworkManagerNativeAPI().get_networks()

@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from .native import NativeWiFi
+from ..native.wlan import WlanNativeAPI
 from ...fetchers import FetcherCommon
 
 
@@ -19,4 +19,4 @@ class FetcherWindows(FetcherCommon):
         Uses Windows Native Wi-Fi API for fetching of available networks
         and stores them in the private class property.
         """
-        self._netlist = NativeWiFi().get_networks()
+        self._netlist = WlanNativeAPI().get_networks()
