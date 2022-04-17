@@ -34,6 +34,13 @@ class TestLibrary(unittest.TestCase):
         for network in self.testdata[0]:
             self.locator.add_network(network[0], network[1])
 
+    def test_strength_converter(self) -> None:
+        """
+        Tests strength converting from percents to dBm.
+        """
+        self.assertEqual('-75', wloc.Helpers.fix_strength(50))
+        self.assertEqual('-75', wloc.Helpers.fix_strength(-75))
+
     def test_adding_percents(self) -> None:
         """
         Tests adding new networks to list using strength in percents.
