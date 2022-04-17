@@ -47,9 +47,10 @@ class WiFiLocator:
         """
         Adds a new network to list.
         :param hwaddress: Station hardware address.
-        :param strength: Signal strength in percents.
+        :param strength: Signal strength in percents (positive number) or
+        dBm (negative number).
         """
-        self.__netlist.append([hwaddress, Helpers.percents2dbm(strength)])
+        self.__netlist.append([hwaddress, Helpers.fix_strength(strength)])
 
     def remove_network(self, hwaddress: str) -> None:
         """
