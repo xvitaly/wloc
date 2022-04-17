@@ -6,6 +6,7 @@
 [![AppVeyor CI status](https://ci.appveyor.com/api/projects/status/l7bmgfr9amvawty4?svg=true)](https://ci.appveyor.com/project/xvitaly/wloc)
 [![LGTM grade](https://img.shields.io/lgtm/grade/python/g/xvitaly/wloc.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xvitaly/wloc/context:python)
 [![LGTM alerts](https://img.shields.io/lgtm/alerts/g/xvitaly/wloc.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xvitaly/wloc/alerts/)
+[![Codacy](https://app.codacy.com/project/badge/Grade/cfe76043f5c248e8b7c365bf9b49975d)](https://www.codacy.com/gh/xvitaly/wloc/dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/xvitaly/wloc/badge/dev)](https://www.codefactor.io/repository/github/xvitaly/wloc/overview/dev)
 [![GitHub issues](https://img.shields.io/github/issues/xvitaly/wloc.svg?label=issues)](https://github.com/xvitaly/wloc/issues)
 ---
