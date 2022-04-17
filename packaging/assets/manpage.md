@@ -74,4 +74,4 @@ You can obtain API tokens from these sources:
 
 # AUTHORS
 
-Copyright (c) 2021 EasyCoding Team and contributors.
+Copyright (c) 2015-2022 EasyCoding Team.
