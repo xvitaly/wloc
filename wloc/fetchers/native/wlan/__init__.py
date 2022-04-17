@@ -12,7 +12,7 @@ import ctypes
 import ctypes.wintypes
 import comtypes
 
-from .structures import *
+from . import structures
 from ...native import NativeBackendCommon
 
 
@@ -52,7 +52,7 @@ class WlanNativeAPI(NativeBackendCommon):
         """
         func = ctypes.windll.wlanapi.WlanEnumInterfaces
         func.argtypes = [ctypes.wintypes.HANDLE, ctypes.c_void_p,
-                         ctypes.POINTER(ctypes.POINTER(WLAN_INTERFACE_INFO_LIST))]
+                         ctypes.POINTER(ctypes.POINTER(structures.WLAN_INTERFACE_INFO_LIST))]
         func.restypes = [ctypes.wintypes.DWORD]
         return func(handle, None, ifaces)
 
@@ -69,7 +69,7 @@ class WlanNativeAPI(NativeBackendCommon):
         """
         func = ctypes.windll.wlanapi.WlanGetAvailableNetworkList
         func.argtypes = [ctypes.wintypes.HANDLE, ctypes.POINTER(comtypes.GUID), ctypes.wintypes.DWORD, ctypes.c_void_p,
-                         ctypes.POINTER(ctypes.POINTER(WLAN_AVAILABLE_NETWORK_LIST))]
+                         ctypes.POINTER(ctypes.POINTER(structures.WLAN_AVAILABLE_NETWORK_LIST))]
         func.restypes = [ctypes.wintypes.DWORD]
         return func(handle, iface_guid, 2, None, network_list)
 
@@ -87,8 +87,9 @@ class WlanNativeAPI(NativeBackendCommon):
         :return: Return ERROR_SUCCESS on success.
         """
         func = ctypes.windll.wlanapi.WlanGetNetworkBssList
-        func.argtypes = [ctypes.wintypes.HANDLE, ctypes.POINTER(comtypes.GUID), ctypes.POINTER(DOT11_SSID),
-                         ctypes.c_uint, ctypes.c_bool, ctypes.c_void_p, ctypes.POINTER(ctypes.POINTER(WLAN_BSS_LIST))]
+        func.argtypes = [ctypes.wintypes.HANDLE, ctypes.POINTER(comtypes.GUID), ctypes.POINTER(structures.DOT11_SSID),
+                         ctypes.c_uint, ctypes.c_bool, ctypes.c_void_p,
+                         ctypes.POINTER(ctypes.POINTER(structures.WLAN_BSS_LIST))]
         func.restypes = [ctypes.wintypes.DWORD]
         return func(handle, iface_guid, ssid, 1, security, None, bss_list)
 
@@ -100,7 +101,7 @@ class WlanNativeAPI(NativeBackendCommon):
         ifaces = []
         self._wlan_open_handle(self._client_version, ctypes.byref(self._negotiated_version), ctypes.byref(self._handle))
         self._wlan_enum_interfaces(self._handle, ctypes.byref(self._ifaces))
-        interfaces = ctypes.cast(self._ifaces.contents.InterfaceInfo, ctypes.POINTER(WLAN_INTERFACE_INFO))
+        interfaces = ctypes.cast(self._ifaces.contents.InterfaceInfo, ctypes.POINTER(structures.WLAN_INTERFACE_INFO))
         for i in range(0, self._ifaces.contents.dwNumberOfItems):
             iface = {'guid': interfaces[i].InterfaceGuid, 'name': interfaces[i].strInterfaceDescription}
             ifaces.append(iface)
@@ -114,16 +115,16 @@ class WlanNativeAPI(NativeBackendCommon):
         :return: The list of available Wi-Fi networks.
         """
         network_list = []
-        avail_network_list = ctypes.pointer(WLAN_AVAILABLE_NETWORK_LIST())
+        avail_network_list = ctypes.pointer(structures.WLAN_AVAILABLE_NETWORK_LIST())
         self._wlan_get_available_network_list(self._handle, ctypes.byref(interface['guid']),
                                               ctypes.byref(avail_network_list))
-        networks = ctypes.cast(avail_network_list.contents.Network, ctypes.POINTER(WLAN_AVAILABLE_NETWORK))
+        networks = ctypes.cast(avail_network_list.contents.Network, ctypes.POINTER(structures.WLAN_AVAILABLE_NETWORK))
         for i in range(avail_network_list.contents.dwNumberOfItems):
             if networks[i].dot11BssType == 1 and networks[i].bNetworkConnectable:
-                bss_list = ctypes.pointer(WLAN_BSS_LIST())
+                bss_list = ctypes.pointer(structures.WLAN_BSS_LIST())
                 self._wlan_get_network_bss_list(self._handle, ctypes.byref(interface['guid']), ctypes.byref(bss_list),
                                                 networks[i].dot11Ssid, networks[i].bSecurityEnabled)
-                bsses = ctypes.cast(bss_list.contents.wlanBssEntries, ctypes.POINTER(WLAN_BSS_ENTRY))
+                bsses = ctypes.cast(bss_list.contents.wlanBssEntries, ctypes.POINTER(structures.WLAN_BSS_ENTRY))
                 for j in range(bss_list.contents.dwNumberOfItems):
                     network_list.append(
                         [':'.join([f'{bssid:02x}' for bssid in bsses[j].dot11Bssid[0:6]]), bsses[j].lRssi])
@@ -144,5 +145,5 @@ class WlanNativeAPI(NativeBackendCommon):
         self._client_version = 2
         self._negotiated_version = ctypes.wintypes.DWORD()
         self._handle = ctypes.wintypes.HANDLE()
-        self._ifaces = ctypes.pointer(WLAN_INTERFACE_INFO_LIST())
+        self._ifaces = ctypes.pointer(structures.WLAN_INTERFACE_INFO_LIST())
         super().__init__()

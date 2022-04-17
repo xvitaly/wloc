@@ -9,7 +9,7 @@ import logging
 import os
 
 from .. import WiFiLocator
-from ..exceptions import *
+from ..exceptions import MissingTokenError, BackendError, MissingArgumentError, NetworksNotFoundError
 
 
 class App:
