@@ -1,5 +1,7 @@
 # Test suite file
 
+## Example
+
 JSON file example:
 
 ```json
@@ -12,9 +14,9 @@ JSON file example:
 ]
 ```
 
-# Format description
+## Format specification
 
-## First list
+### First list
 
 Each list entry must contains BSSID (Wi-Fi station hardware address) and signal strength in percents.
 
@@ -23,7 +25,7 @@ Example:
   * `AA:BB:CC:DD:EE:FF` - BSSID (station hardware address);
   * `90` - signal strength in percents (90%).
 
-## Second list
+### Second list
 
 Second list contains master coordinates. Received from API data will be compared with them.
 

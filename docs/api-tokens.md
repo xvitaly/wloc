@@ -1,4 +1,6 @@
-# About API tokens
+# API tokens
+
+## About API tokens
 
 This library use API tokens from following third-party geolocation providers:
 
@@ -6,7 +8,7 @@ This library use API tokens from following third-party geolocation providers:
   * Mozilla Geolocation;
   * Yandex.Locator.
 
-# Getting API tokens
+## Getting API tokens
 
 In order to use this library, you need to receive API tokens:
 
@@ -14,7 +16,7 @@ In order to use this library, you need to receive API tokens:
   * [Mozilla](https://ichnaea.readthedocs.io/en/latest/api/index.html);
   * [Yandex](https://yandex.ru/dev/locator/doc/dg/api/geolocation-api.html).
 
-# Forwarding API tokens to library
+## Forwarding API tokens to library
 
 Library need at least one token from supported providers, forwarded as parameter:
 
@@ -22,7 +24,7 @@ Library need at least one token from supported providers, forwarded as parameter
   * `mm_apikey` - Mozilla Geolocation;
   * `ya_apikey` - Yandex.Locator.
 
-# Forwarding API tokens to application and tests
+## Forwarding API tokens to application and tests
 
 Application need at least one token from supported providers, forwarded as environment variables:
 

@@ -1,5 +1,7 @@
 # Using application
 
+## Running application
+
 Forward [API tokens](api-tokens.md) as environment variables, then run application:
 
 ```bash
@@ -9,7 +11,7 @@ export APIKEY_MOZILLA=SAMPLE
 wloc -y -g -m
 ```
 
-# Command-line options
+## Command-line options
 
 ```
 usage: wloc [-h] [--yandex] [--google] [--mozilla]
