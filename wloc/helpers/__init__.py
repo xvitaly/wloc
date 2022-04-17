@@ -20,11 +20,11 @@ class Helpers:
         return '%.0f' % (stp / 2 - 100)
 
     @staticmethod
-    def fix_strength(strength: int) -> int:
+    def fix_strength(strength: int) -> str:
         """
         Checks and returns strength in the required RSSI (dBm) format.
         Automatically converts percents to dBm.
         :param strength: Signal strength in any format.
         :return: Signal strength in dBm.
         """
-        return strength if strength < 0 else Helpers.percents2dbm(strength)
+        return str(strength) if strength < 0 else Helpers.percents2dbm(strength)
