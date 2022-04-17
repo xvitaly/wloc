@@ -34,11 +34,18 @@ class TestLibrary(unittest.TestCase):
         for network in self.testdata[0]:
             self.locator.add_network(network[0], network[1])
 
-    def test_adding(self) -> None:
+    def test_adding_percents(self) -> None:
         """
-        Tests adding new networks to list.
+        Tests adding new networks to list using strength in percents.
         """
         self.locator.add_network(self.__add_element, 50)
+        self.assertIn(self.__add_element, self.locator.networks)
+
+    def test_adding_dbm(self) -> None:
+        """
+        Tests adding new networks to list using strength in dBm.
+        """
+        self.locator.add_network(self.__add_element, -75)
         self.assertIn(self.__add_element, self.locator.networks)
 
     def test_removing(self) -> None:
