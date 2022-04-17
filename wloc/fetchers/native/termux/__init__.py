@@ -47,5 +47,5 @@ class TermuxNativeAPI(NativeBackendCommon):
         """
         Main constructor of the TermuxAPI class.
         """
-        self._json: str = ''
         super().__init__()
+        self._json: str = ''

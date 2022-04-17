@@ -142,8 +142,8 @@ class WlanNativeAPI(NativeBackendCommon):
         """
         Main constructor of the NativeWiFi class.
         """
+        super().__init__()
         self._client_version = 2
         self._negotiated_version = ctypes.wintypes.DWORD()
         self._handle = ctypes.wintypes.HANDLE()
         self._ifaces = ctypes.pointer(structures.WLAN_INTERFACE_INFO_LIST())
-        super().__init__()
