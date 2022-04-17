@@ -5,6 +5,7 @@
   * [PyPI installation](pypi-installation.md)
   * [System installation](system-installation.md)
   * [Virtual environment installation](virtualenv-installation.md)
+  * [Android installation](android-installation.md)
   * [Fedora installation](fedora-installation.md)
   * [Windows installation](windows-installation.md)
 
