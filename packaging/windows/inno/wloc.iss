@@ -120,7 +120,7 @@ end;
 
 function VerifyAPICredentials(): Boolean;
 begin
-    Result := (Length(GetAPITokenGoogleInternal()) < 10) or (Length(GetAPITokenMozillaInternal()) < 4) or (Length(GetAPITokenYandexInternal()) < 10)
+    Result := (Length(GetAPITokenGoogleInternal()) < 10) and (Length(GetAPITokenMozillaInternal()) < 4) and (Length(GetAPITokenYandexInternal()) < 10)
 end;
 
 function IsKeylessInstallation(): Boolean;
