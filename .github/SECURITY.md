@@ -6,8 +6,9 @@ Only specified versions supported:
 
 | Version | Support status     |
 | ------- | ------------------ |
-| 0.3.0    | :white_check_mark: |
-| < 0.3.0  | :x:                |
+| master   | :white_check_mark: |
+| 0.8.0    | :white_check_mark: |
+| < 0.8.0  | :x:                |
 
 ## Reporting a Vulnerability
 
