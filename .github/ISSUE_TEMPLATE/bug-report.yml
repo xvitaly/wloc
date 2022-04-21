@@ -50,10 +50,10 @@ body:
       label: Platform
       multiple: false
       options:
-        - GNU/Linux
+        - Android
         - BSD (any variant)
+        - GNU/Linux
         - Microsoft Windows
-        - MacOS
         - Other
     validations:
       required: true
