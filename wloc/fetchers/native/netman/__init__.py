@@ -4,6 +4,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import time
+
 from NetworkManager import NetworkManager, Wireless
 from dbus.mainloop.glib import DBusGMainLoop
 
@@ -28,5 +30,8 @@ class NetworkManagerNativeAPI(NativeBackendCommon):
         # Using DBus to fetch the list of available networks...
         for nmdevice in NetworkManager.GetDevices():
             if isinstance(nmdevice, Wireless):
+                if len(nmdevice.AccessPoints) < 2:
+                    nmdevice.RequestScan({})
+                    time.sleep(3)
                 for accesspoint in nmdevice.AccessPoints:
                     self._network_list.append([accesspoint.HwAddress, Helpers.percents2dbm(accesspoint.Strength)])
