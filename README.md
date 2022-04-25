@@ -19,7 +19,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
   * [Mozilla Geolocation API](https://mozilla.github.io/ichnaea/api/index.html);
   * [Yandex Locator API](https://tech.yandex.ru/locator/doc/dg/api/json-docpage/).
 
-Warning! Do not use `dev` branch in production due to possible breaking changes. Use `master` instead.
+Warning! Do not use `master` branch in production due to possible breaking changes. Always use [tagged versions](https://github.com/xvitaly/wloc/releases) instead.
 
 ## License
 [GNU General Public License version 3](COPYING). External libraries can use another compatible licenses.
