@@ -11,6 +11,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/xvitaly/wloc.svg?label=issues)](https://github.com/xvitaly/wloc/issues)
 ---
 
+## About
+
 Locate user by using global Wi-Fi database (no GPS required). Supported backends:
 
   * [Google Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro);
@@ -19,11 +21,11 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
 
 Warning! Do not use `dev` branch in production due to possible breaking changes. Use `master` instead.
 
-# License
+## License
 [GNU General Public License version 3](COPYING). External libraries can use another compatible licenses.
 
 Icon for the Windows executable and installer from the [Noto Emoji](https://github.com/googlefonts/noto-emoji) font, licensed under the terms of the [Apache License 2.0](https://github.com/googlefonts/noto-emoji/blob/main/LICENSE).
 
-# Documentation
+## Documentation
 
 Documentation available [here](docs/README.md).
