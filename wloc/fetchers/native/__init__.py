@@ -36,3 +36,4 @@ class NativeBackendCommon(metaclass=abc.ABCMeta):
         Main constructor of the FetcherBackendCommon class.
         """
         self._network_list: list = []
+        self._sleep_seconds: int = 3
