@@ -32,6 +32,6 @@ class NetworkManagerNativeAPI(NativeBackendCommon):
             if isinstance(nmdevice, Wireless):
                 if len(nmdevice.AccessPoints) < 2:
                     nmdevice.RequestScan({})
-                    time.sleep(3)
+                    time.sleep(self._sleep_seconds)
                 for accesspoint in nmdevice.AccessPoints:
                     self._network_list.append([accesspoint.HwAddress, Helpers.percents2dbm(accesspoint.Strength)])
