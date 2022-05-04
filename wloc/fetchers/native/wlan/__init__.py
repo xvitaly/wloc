@@ -57,6 +57,22 @@ class WlanNativeAPI(NativeBackendCommon):
         return func(handle, None, ifaces)
 
     @staticmethod
+    def _wlan_scan(handle, iface_guid):
+        """
+        Python implementation of the WlanScan function from the Windows Native Wi-Fi API.
+
+        MSDN: https://docs.microsoft.com/en-us/windows/win32/api/wlanapi/nf-wlanapi-wlanscan
+        :param handle: The client's session handle.
+        :param iface_guid: A pointer to the WLAN_INTERFACE_INFO_LIST structure.
+        :return: Return ERROR_SUCCESS on success.
+        """
+        func = ctypes.windll.wlanapi.WlanScan
+        func.argtypes = [ctypes.wintypes.HANDLE, ctypes.POINTER(comtypes.GUID), ctypes.POINTER(structures.DOT11_SSID),
+                         ctypes.POINTER(structures.WLAN_RAW_DATA), ctypes.c_void_p]
+        func.restypes = [ctypes.wintypes.DWORD]
+        return func(handle, iface_guid, None, None, None)
+
+    @staticmethod
     def _wlan_get_available_network_list(handle, iface_guid, network_list) -> int:
         """
         Python implementation of the WlanGetAvailableNetworkList function from the Windows Native Wi-Fi API.
