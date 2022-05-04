@@ -123,6 +123,14 @@ class WlanNativeAPI(NativeBackendCommon):
             ifaces.append(iface)
         return ifaces
 
+    def _scan_networks(self, interface) -> None:
+        """
+        Forces scanning of available Wi-Fi networks on the specified network
+        interface.
+        :param interface: A physical network interface to use.
+        """
+        self._wlan_scan(self._handle, ctypes.byref(interface['guid']))
+
     def _get_networks(self, interface) -> list:
         """
         Gets the list of available Wi-Fi networks with their BSSID and signal strength
