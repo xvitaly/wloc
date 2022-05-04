@@ -11,8 +11,8 @@
 import ctypes.wintypes
 import comtypes
 
-__all__ = ['DOT11_SSID', 'WLAN_RATE_SET', 'WLAN_AVAILABLE_NETWORK', 'WLAN_AVAILABLE_NETWORK_LIST', 'WLAN_BSS_ENTRY',
-           'WLAN_BSS_LIST', 'WLAN_INTERFACE_INFO', 'WLAN_INTERFACE_INFO_LIST']
+__all__ = ['DOT11_SSID', 'WLAN_RAW_DATA', 'WLAN_RATE_SET', 'WLAN_AVAILABLE_NETWORK', 'WLAN_AVAILABLE_NETWORK_LIST',
+           'WLAN_BSS_ENTRY', 'WLAN_BSS_LIST', 'WLAN_INTERFACE_INFO', 'WLAN_INTERFACE_INFO_LIST']
 
 
 class DOT11_SSID(ctypes.Structure):
@@ -24,6 +24,19 @@ class DOT11_SSID(ctypes.Structure):
     """
     _fields_ = [('uSSIDLength', ctypes.c_ulong),
                 ('ucSSID', ctypes.c_char * 32)]
+
+
+class WLAN_RAW_DATA(ctypes.Structure):
+    """
+    Python prototype of the WLAN_RAW_DATA structure from the
+    Windows Native Wi-Fi API.
+
+    MSDN: https://docs.microsoft.com/en-us/windows/win32/api/wlanapi/
+    """
+    _fields_ = [
+        ("dwDataSize", ctypes.wintypes.DWORD),
+        ("DataBlob", ctypes.c_byte * 1)
+    ]
 
 
 class WLAN_RATE_SET(ctypes.Structure):
