@@ -10,6 +10,7 @@
 
 import ctypes
 import ctypes.wintypes
+import time
 import comtypes
 
 from . import structures
@@ -160,7 +161,12 @@ class WlanNativeAPI(NativeBackendCommon):
         networks into a special private field.
         """
         for interface in self._get_interfaces():
-            self._network_list += self._get_networks(interface)
+            networks = self._get_networks(interface)
+            if len(networks) < 2:
+                self._scan_networks(interface)
+                time.sleep(self._sleep_seconds)
+                networks = self._get_networks(interface)
+            self._network_list += networks
 
     def __init__(self) -> None:
         """
