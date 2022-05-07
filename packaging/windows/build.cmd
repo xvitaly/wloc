@@ -11,7 +11,7 @@ set GPGKEY=A989AAAA
 set PYTHONOPTIMIZE=1
 
 if [%CI_HASH%] == [] (
-    set PREFIX=hudman_%RELVER%
+    set PREFIX=wloc_%RELVER%
 ) else (
     set PREFIX=snapshot_%CI_HASH%
 )
