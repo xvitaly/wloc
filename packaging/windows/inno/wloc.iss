@@ -34,6 +34,7 @@ ShowLanguageDialog=auto
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 MinVersion=6.1sp1
+ChangesEnvironment=yes
 VersionInfoVersion={#VERSION}
 VersionInfoDescription=Wi-Fi geolocation tool
 VersionInfoCopyright=(c) 2015-2022 EasyCoding Team. All rights reserved.
