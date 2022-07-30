@@ -59,6 +59,9 @@ Name: "apikey\sysenv"; Description: "{cm:ComponentAPIKeySysEnvDescription}"; Typ
 Name: "apikey\launcher"; Description: "{cm:ComponentAPIKeyLauncherDescription}"; Types: standard; Flags: exclusive
 Name: "apikey\nokeys"; Description: "{cm:ComponentAPIKeyNoKeyDescription}"; Types: nokeys; Flags: exclusive
 
+[Tasks]
+Name: "addtopath"; Description: "{cm:TaskAddToPath}"; GroupDescription: "{cm:TaskCategoryAddToPath}"; Components: core
+
 [Files]
 Source: "{#BASEDIR}\wloc.exe"; DestDir: "{app}"; Flags: ignoreversion; Components: core
 Source: "{tmp}\wlocc.cmd"; DestDir: "{app}"; Flags: external; Components: apikey\launcher
@@ -71,6 +74,7 @@ Source: "{#BASEDIR}\wloc.exe.sig"; DestDir: "{app}"; Flags: ignoreversion; Compo
 Root: HKCU; Subkey: "Environment"; ValueType: string; ValueName: "APIKEY_GOOGLE"; ValueData: "{code:GetAPITokenGoogle}"; Flags: uninsdeletevalue; Components: "apikey\sysenv"
 Root: HKCU; Subkey: "Environment"; ValueType: string; ValueName: "APIKEY_MOZILLA"; ValueData: "{code:GetAPITokenMozilla}"; Flags: uninsdeletevalue; Components: "apikey\sysenv"
 Root: HKCU; Subkey: "Environment"; ValueType: string; ValueName: "APIKEY_YANDEX"; ValueData: "{code:GetAPITokenYandex}"; Flags: uninsdeletevalue; Components: "apikey\sysenv"
+Root: HKCU; Subkey: "Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{code:PathNewEntry|{app}}"; Tasks: addtopath; Check: PathIsClean(ExpandConstant('{app}'))
 
 [Code]
 var
@@ -143,6 +147,45 @@ begin
     Contents[6] := '';
     Contents[7] := '.\wloc.exe %*';
     Result := SaveStringsToFile(FileName, Contents, False)
+end;
+
+function PathIsClean(InstallPath: String): Boolean;
+var
+    CurrentPath: String;
+begin
+    if RegQueryStringValue(HKEY_CURRENT_USER, 'Environment', 'Path', CurrentPath) then
+        begin
+            Result := Pos(InstallPath, CurrentPath) = 0
+        end
+    else
+        begin
+            Result := True
+        end
+end;
+
+function PathNewEntry(InstallPath: String): String;
+var
+    CurrentPath: String;
+begin
+    if not RegQueryStringValue(HKEY_CURRENT_USER, 'Environment', 'Path', CurrentPath) then
+        begin
+            CurrentPath := ''
+        end;
+    if Length(CurrentPath) > 0 then
+        begin
+            if CompareStr(Copy(CurrentPath, Length(CurrentPath), 1), ';') = 0 then
+                begin
+                    Result := CurrentPath + InstallPath + ';'
+                end
+            else
+                begin
+                    Result := CurrentPath + ';' + InstallPath + ';'
+                end
+        end
+    else
+        begin
+            Result := InstallPath + ';'
+        end
 end;
 
 function ShouldSkipPage(CurPageID: Integer): Boolean;
