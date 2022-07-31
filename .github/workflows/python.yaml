@@ -36,15 +36,7 @@ jobs:
     - name: Installing dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
-        pip install -r requirements.txt
-    - name: Installing project
-      run: |
-        python setup.py install
-    - name: Running syntax check
-      run: |
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        python -m pip install tox
     - name: Decrypting tests suite file
       run: |
         gpg --quiet --batch --yes --decrypt --passphrase="$SUITE_KEY" \
@@ -53,7 +45,7 @@ jobs:
         SUITE_KEY: ${{ secrets.SUITE_KEY }}
     - name: Running tests
       run: |
-        python3 setup.py test
+        tox
       env:
         SUITE_FILENAME: .github/workflows/assets/wloc_tests.json
         APIKEY_GOOGLE: ${{ secrets.APIKEY_GOOGLE }}
