@@ -2,5 +2,5 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-include README.md COPYING requirements-dev.txt
+include README.md COPYING requirements.txt
 recursive-include tests *.py
