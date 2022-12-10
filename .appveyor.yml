@@ -9,13 +9,13 @@ branches:
   only:
   - master
 max_jobs: 1
-image: Visual Studio 2019
+image: Visual Studio 2022
 clone_depth: 1
 init:
 - cmd: git config --global core.autocrlf true
 install:
 - cmd: >-
-    set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
+    set PATH=C:\Python311-x64;C:\Python311-x64\Scripts;%PATH%
 
     pip3 install -r requirements.txt
 

@@ -30,6 +30,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Installing development packages
+        run: |
+          sudo apt-get -y install build-essential libdbus-1-dev
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
