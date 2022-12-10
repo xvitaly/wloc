@@ -1,16 +1,20 @@
-name: "CodeQL"
+# SPDX-FileCopyrightText: 2015-2022 EasyCoding Team
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+name: CodeQL
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+    - 'master'
   pull_request:
-    branches: [ "master" ]
-  schedule:
-    - cron: "13 21 * * 3"
+    branches:
+    - 'master'
 
 jobs:
   analyze:
-    name: Analyze
+    name: Analyze with CodeQL
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -20,21 +24,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ python ]
+        language:
+          - 'python'
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
-
+        with:
+        submodules: true
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
-
-      - name: Autobuild
+      - name: Perform automatic build
         uses: github/codeql-action/autobuild@v2
-
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
         with:
