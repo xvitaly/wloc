@@ -2,6 +2,6 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-include COPYING README.md requirements.txt tox.ini
+include COPYING README.md tox.ini
 recursive-include licenses *.txt
 recursive-include tests *.py
