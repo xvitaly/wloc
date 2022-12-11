@@ -35,6 +35,14 @@ repository = "https://github.com/xvitaly/wloc"
 [project.scripts]
 wloc = "wloc.app.run:main"
 
+[project.optional-dependencies]
+deploy = [
+    "pyinstaller>=5.7.0",
+]
+test = [
+    "tox>=3.27.0",
+]
+
 [build-system]
 requires = [
     "setuptools",
