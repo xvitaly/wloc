@@ -32,7 +32,7 @@ pyinstaller ^
     --version-file=assets\version.txt ^
     --manifest=assets\wloc.manifest ^
     --icon=assets\wloc.ico ^
-    ..\..\wloc\app\run.py
+    ..\..\src\wloc\app\run.py
 
 echo Signing binaries...
 if [%CI_HASH%] == [] (
