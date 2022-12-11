@@ -102,7 +102,9 @@ class App:
             self.__parser.print_usage()
         except NetworksNotFoundError:
             self.__logger.error('No wireless networks found! Please check Wi-Fi device status.')
-        except (Exception, BaseException):
+        except KeyboardInterrupt:
+            self.__logger.error('Interrupted by user.')
+        except (Exception, SystemExit):
             self.__logger.exception('An error occurred while running application.')
 
     def __init__(self) -> None:
