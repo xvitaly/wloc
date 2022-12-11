@@ -16,10 +16,21 @@ dependencies = [
     "requests>=2.22.0"
 ]
 authors = [
-    {name = "Vitaly Zaitsev", email="vitaly@easycoding.org"}
+    { name = "Vitaly Zaitsev", email="vitaly@easycoding.org" }
 ]
 description = "Simple Wi-Fi geolocation library and tool"
-keywords = ["geolocation", "wi-fi", "wi-fi-geolocation"]
+keywords = [
+    "api",
+    "application",
+    "geolocation",
+    "google-geolocation",
+    "library",
+    "mozilla-geolocation",
+    "tool",
+    "wi-fi",
+    "wi-fi-geolocation",
+    "yandex-geolocation"
+]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
@@ -37,10 +48,10 @@ wloc = "wloc.app.run:main"
 
 [project.optional-dependencies]
 deploy = [
-    "pyinstaller>=5.7.0",
+    "pyinstaller>=5.7.0"
 ]
 test = [
-    "tox>=3.27.0",
+    "tox>=3.27.0"
 ]
 
 [build-system]
