@@ -14,7 +14,7 @@ import time
 import comtypes
 
 from . import structures
-from ...native import NativeBackendCommon
+from ..native import NativeBackendCommon
 
 
 class WlanNativeAPI(NativeBackendCommon):

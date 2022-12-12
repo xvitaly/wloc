@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from ..native.termux import TermuxNativeAPI
+from .termux import TermuxNativeAPI
 from ...fetchers import FetcherCommon
 
 

@@ -9,8 +9,8 @@ import time
 from NetworkManager import NetworkManager, Wireless
 from dbus.mainloop.glib import DBusGMainLoop
 
-from ...native import NativeBackendCommon
-from ....helpers import Helpers
+from ..native import NativeBackendCommon
+from ...helpers import Helpers
 
 
 class NetworkManagerNativeAPI(NativeBackendCommon):
