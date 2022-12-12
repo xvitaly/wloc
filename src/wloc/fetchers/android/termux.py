@@ -7,8 +7,8 @@
 import json
 import subprocess
 
-from ...native import NativeBackendCommon
-from ....exceptions import FetcherError
+from ..native import NativeBackendCommon
+from ...exceptions import FetcherError
 
 
 class TermuxNativeAPI(NativeBackendCommon):

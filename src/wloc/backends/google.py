@@ -7,29 +7,29 @@
 import json
 import requests
 
-from ...backends import BackendCommon
+from ..backends import BackendCommon
 
 
-class BackendYandex(BackendCommon):
+class BackendGoogle(BackendCommon):
     """
-    Class for working with the Yandex Locator API.
+    Class for working with the Google Geolocation API.
     """
 
     def _execute(self, netlist: list) -> list:
         """
-        Internal implementation of Yandex Locator API fetcher.
+        Internal implementation of the Google Geolocation API fetcher.
         :param netlist: The list of available Wi-Fi networks.
         :return: Coordinates (float).
         """
         # Generating base JSON structure...
-        jdata = {'common': {'version': '1.0', 'api_key': self._apikey}, 'wifi_networks': []}
+        jdata = {'considerIp': 'false', 'wifiAccessPoints': []}
 
         # Retrieving available networks...
         for arr in netlist:
-            jdata['wifi_networks'].append({'mac': arr[0], 'signal_strength': arr[1], 'age': 0})
+            jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
 
         # Sending our JSON to API...
-        r = requests.post(self._uri, data={'json': json.dumps(jdata)}, headers={'content-type': 'application/json'})
+        r = requests.post(self._uri, data=json.dumps(jdata), headers={'content-type': 'application/json'})
 
         # Checking return code...
         self._check_response(r)
@@ -38,7 +38,7 @@ class BackendYandex(BackendCommon):
         result = json.loads(r.content)
 
         # Returning result...
-        return [float(result['position']['latitude']), float(result['position']['longitude'])]
+        return [result['location']['lat'], result['location']['lng']]
 
     @property
     def _uri(self) -> str:
@@ -46,12 +46,12 @@ class BackendYandex(BackendCommon):
         Gets fully-qualified geolocation API URI.
         :return: Fully-qualified geolocation API URI.
         """
-        return self._endpoint
+        return self._endpoint % self._apikey
 
-    def __init__(self, apikey: str):
+    def __init__(self, apikey: str) -> None:
         """
-        Main constructor of the BackendYandex class.
+        Main constructor of the BackendGoogle class.
         :param apikey: String with the API token (key).
         """
         super().__init__(apikey)
-        self._endpoint: str = 'https://api.lbs.yandex.net/geolocation'
+        self._endpoint: str = 'https://www.googleapis.com/geolocation/v1/geolocate?key=%s'
