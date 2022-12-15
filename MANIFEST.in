@@ -2,6 +2,6 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-include .bandit.yml COPYING README.md tox.ini
+include .bandit.yml LICENSE README.md tox.ini
 recursive-include licenses *.txt
 recursive-include tests *.py
