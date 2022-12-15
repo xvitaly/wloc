@@ -120,7 +120,7 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-INPUT                  = wloc \
+INPUT                  = src/wloc \
                          docs
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
