@@ -21,7 +21,7 @@ Locate user by using global Wi-Fi database (no GPS required). Supported backends
 Warning! Do not use `master` branch in production due to possible breaking changes. Always use [tagged versions](https://github.com/xvitaly/wloc/releases) instead.
 
 ## License
-[GNU General Public License version 3](COPYING). External libraries can use another compatible licenses.
+[GNU General Public License version 3](LICENSE). External libraries can use another compatible licenses.
 
 Icon for the Windows executable and installer from the [Noto Emoji](https://github.com/googlefonts/noto-emoji) font, licensed under the terms of the [Apache License 2.0](licenses/noto-emoji.LICENSE.txt).
 
