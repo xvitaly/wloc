@@ -20,7 +20,7 @@ install:
     pip3 install .[deploy]
 build_script:
 - cmd: >-
-    set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
+    set PATH=C:\Python311-x64;C:\Python311-x64\Scripts;%PATH%
 
     set CI_HASH=%APPVEYOR_REPO_COMMIT:~0,7%
 
