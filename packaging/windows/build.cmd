@@ -6,7 +6,7 @@ rem SPDX-License-Identifier: GPL-3.0-or-later
 
 title Building release binaries for Windows...
 
-set RELVER=100
+set RELVER=101
 set GPGKEY=A989AAAA
 set PYTHONOPTIMIZE=1
 
