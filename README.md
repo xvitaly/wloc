@@ -2,7 +2,8 @@
 
 [![GitHub version](https://img.shields.io/github/v/release/xvitaly/wloc?sort=semver&color=brightgreen&logo=git&logoColor=white)](https://github.com/xvitaly/wloc/releases)
 [![PyPi Version](https://img.shields.io/pypi/v/wloc.svg?logo=pypi&logoColor=white)](https://pypi.org/project/wloc/)
-[![GitHub CI status](https://github.com/xvitaly/wloc/workflows/Python%20CI/badge.svg?branch=dev)](https://github.com/xvitaly/wloc/actions)
+[![Python CI](https://github.com/xvitaly/wloc/actions/workflows/python.yaml/badge.svg)](https://github.com/xvitaly/wloc/actions/workflows/python.yaml)
+[![CodeQL](https://github.com/xvitaly/wloc/actions/workflows/codeql.yml/badge.svg)](https://github.com/xvitaly/wloc/actions/workflows/codeql.yml)
 [![AppVeyor CI status](https://ci.appveyor.com/api/projects/status/l7bmgfr9amvawty4?svg=true)](https://ci.appveyor.com/project/xvitaly/wloc)
 [![Codacy](https://app.codacy.com/project/badge/Grade/cfe76043f5c248e8b7c365bf9b49975d)](https://www.codacy.com/gh/xvitaly/wloc/dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/xvitaly/wloc/badge)](https://www.codefactor.io/repository/github/xvitaly/wloc)
