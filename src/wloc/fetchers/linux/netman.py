@@ -14,19 +14,18 @@ from ...helpers import Helpers
 
 class NetworkManagerNativeAPI(NativeBackendCommon):
     """
-    Class for working with Network Manager API using public D-Bus
-    methods.
+    Class for working with Network Manager using GObject API.
     """
 
     def _fetch_list(self):
         """
-        Fetches the list of available Wi-Fi networks using public
-        D-Bus methods.
+        Fetches the list of available Wi-Fi networks using GObject API
+        methods.
         """
         gi.require_version("NM", "1.0")
         from gi.repository import NM
 
-        # Using DBus to fetch the list of available networks...
+        # Using GObject API to fetch the list of available networks...
         nmclient = NM.Client.new()
         for nmdevice in nmclient.get_devices():
             if nmdevice.get_device_type() == NM.DeviceType.WIFI:
