@@ -4,34 +4,48 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import time
-
-from NetworkManager import NetworkManager, Wireless
-from dbus.mainloop.glib import DBusGMainLoop
+import gi
 
 from ..native import NativeBackendCommon
 from ...helpers import Helpers
 
+gi.require_version("NM", "1.0")
+from gi.repository import GLib, NM  # noqa: E402
+
 
 class NetworkManagerNativeAPI(NativeBackendCommon):
     """
-    Class for working with Network Manager API using public D-Bus
-    methods.
+    Class for working with Network Manager using GObject API.
     """
+
+    @staticmethod
+    def _scan_networks(device) -> None:
+        """
+        Forces scanning of available Wi-Fi networks on the specified
+        physical network device.
+        :param device: A physical network device to use.
+        """
+        loop = GLib.MainLoop()
+        device.request_scan_async(None)
+
+        ts = GLib.timeout_source_new(10000)
+        ts.set_callback(lambda x: loop.quit())
+        ts.attach(loop.get_context())
+        device.connect('notify', lambda x, y: loop.quit())
+
+        loop.run()
+        ts.destroy()
 
     def _fetch_list(self):
         """
-        Fetches the list of available Wi-Fi networks using public
-        D-Bus methods.
+        Fetches the list of available Wi-Fi networks using GObject API
+        methods.
         """
-        # Applying workaround to python-networkmanager#84...
-        DBusGMainLoop(set_as_default=True)
-
-        # Using DBus to fetch the list of available networks...
-        for nmdevice in NetworkManager.GetDevices():
-            if isinstance(nmdevice, Wireless):
-                if len(nmdevice.AccessPoints) < 2:
-                    nmdevice.RequestScan({})
-                    time.sleep(self._sleep_seconds)
-                for accesspoint in nmdevice.AccessPoints:
-                    self._network_list.append([accesspoint.HwAddress, Helpers.percents2dbm(accesspoint.Strength)])
+        nmclient = NM.Client.new()
+        for nmdevice in nmclient.get_devices():
+            if nmdevice.get_device_type() == NM.DeviceType.WIFI:
+                if (NM.utils_get_timestamp_msec() - nmdevice.get_last_scan()) / 1000.0 > 120:
+                    self._scan_networks(nmdevice)
+                for accesspoint in nmdevice.get_access_points():
+                    self._network_list.append(
+                        [accesspoint.get_bssid(), Helpers.percents2dbm(accesspoint.get_strength())])

@@ -29,7 +29,8 @@ class BackendGoogle(BackendCommon):
             jdata['wifiAccessPoints'].append({'macAddress': arr[0], 'signalStrength': arr[1], 'age': 0})
 
         # Sending our JSON to API...
-        r = requests.post(self._uri, data=json.dumps(jdata), headers={'content-type': 'application/json'})
+        r = requests.post(self._uri, data=json.dumps(jdata), headers={'content-type': 'application/json'},
+                          timeout=self._timeout)
 
         # Checking return code...
         self._check_response(r)

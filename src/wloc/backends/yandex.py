@@ -29,7 +29,8 @@ class BackendYandex(BackendCommon):
             jdata['wifi_networks'].append({'mac': arr[0], 'signal_strength': arr[1], 'age': 0})
 
         # Sending our JSON to API...
-        r = requests.post(self._uri, data={'json': json.dumps(jdata)}, headers={'content-type': 'application/json'})
+        r = requests.post(self._uri, data={'json': json.dumps(jdata)}, headers={'content-type': 'application/json'},
+                          timeout=self._timeout)
 
         # Checking return code...
         self._check_response(r)
