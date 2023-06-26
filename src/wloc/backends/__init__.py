@@ -66,3 +66,4 @@ class BackendCommon(metaclass=abc.ABCMeta):
         :param apikey: String with the API token (key).
         """
         self._apikey: str = apikey
+        self._timeout: int = 30
