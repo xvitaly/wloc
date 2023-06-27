@@ -1,4 +1,4 @@
-﻿; SPDX-FileCopyrightText: 2015-2022 EasyCoding Team
+﻿; SPDX-FileCopyrightText: 2015-2023 EasyCoding Team
 ;
 ; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -37,7 +37,7 @@ MinVersion=6.1sp1
 ChangesEnvironment=yes
 VersionInfoVersion={#VERSION}
 VersionInfoDescription=Wi-Fi geolocation tool
-VersionInfoCopyright=(c) 2015-2022 EasyCoding Team. All rights reserved.
+VersionInfoCopyright=(c) 2015-2023 EasyCoding Team. All rights reserved.
 VersionInfoCompany=EasyCoding Team
 
 [Messages]
