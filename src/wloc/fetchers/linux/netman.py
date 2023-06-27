@@ -9,7 +9,7 @@ import gi
 from ..native import NativeBackendCommon
 from ...helpers import Helpers
 
-gi.require_version("NM", "1.0")
+gi.require_version('NM', '1.0')
 from gi.repository import GLib, NM  # noqa: E402
 
 
