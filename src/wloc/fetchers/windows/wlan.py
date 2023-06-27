@@ -155,7 +155,7 @@ class WlanNativeAPI(NativeBackendCommon):
                         [':'.join([f'{bssid:02x}' for bssid in bsses[j].dot11Bssid[0:6]]), bsses[j].lRssi])
         return network_list
 
-    def _fetch_list(self):
+    def _fetch_list(self) -> None:
         """
         Gets available network interfaces and fetches available wireless
         networks into a special private field.

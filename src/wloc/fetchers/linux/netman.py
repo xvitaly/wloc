@@ -36,7 +36,7 @@ class NetworkManagerNativeAPI(NativeBackendCommon):
         loop.run()
         ts.destroy()
 
-    def _fetch_list(self):
+    def _fetch_list(self) -> None:
         """
         Fetches the list of available Wi-Fi networks using GObject API
         methods.

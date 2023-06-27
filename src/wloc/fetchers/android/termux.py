@@ -35,7 +35,7 @@ class TermuxNativeAPI(NativeBackendCommon):
         for network in networks:
             self._network_list.append([network['bssid'], network['rssi']])
 
-    def _fetch_list(self):
+    def _fetch_list(self) -> None:
         """
         Fetches the list of available Wi-Fi networks using public
         D-Bus methods.
