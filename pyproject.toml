@@ -11,6 +11,7 @@ license = { text = "GPL-3.0-or-later" }
 readme = "README.md"
 dependencies = [
     "comtypes>=1.1.8; sys_platform == 'win32'",
+    "pygobject>=3.42.0; sys_platform == 'linux'",
     "requests>=2.22.0"
 ]
 authors = [
