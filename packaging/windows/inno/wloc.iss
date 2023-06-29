@@ -80,6 +80,11 @@ Root: HKCU; Subkey: "Environment"; ValueType: expandsz; ValueName: "Path"; Value
 var
     APIKeyPage: TInputQueryWizardPage;
 
+function IsUpgrade(): Boolean;
+begin
+    Result := RegKeyExists(HKEY_CURRENT_USER, ExpandConstant('Software\Microsoft\Windows\CurrentVersion\Uninstall\{#SetupSetting("AppId")}_is1'))
+end;
+
 function GetEnvValue(EnvName: String): String;
 var
     EnvValue: String;
@@ -100,7 +105,7 @@ begin
     APIKeyPage.Add(CustomMessage('APIKeyPageInputFieldGoogleToken'), False)
     APIKeyPage.Add(CustomMessage('APIKeyPageInputFieldMozillaToken'), False)
     APIKeyPage.Add(CustomMessage('APIKeyPageInputFieldYandexToken'), False)
-    if WizardIsComponentSelected('apikey\sysenv') then
+    if IsUpgrade() and WizardIsComponentSelected('apikey\sysenv') then
         begin
             APIKeyPage.Values[0] := GetEnvValue('APIKEY_GOOGLE')
             APIKeyPage.Values[1] := GetEnvValue('APIKEY_MOZILLA')
