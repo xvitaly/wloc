@@ -18,8 +18,7 @@ class NetworkManagerNativeAPI(NativeBackendCommon):
     Class for working with Network Manager using GObject API.
     """
 
-    @staticmethod
-    def _scan_networks(device) -> None:
+    def _scan_networks(self, device) -> None:
         """
         Forces scanning of available Wi-Fi networks on the specified
         physical network device.
@@ -28,7 +27,7 @@ class NetworkManagerNativeAPI(NativeBackendCommon):
         loop = GLib.MainLoop()
         device.request_scan_async(None)
 
-        ts = GLib.timeout_source_new(10000)
+        ts = GLib.timeout_source_new(self._sleep_seconds * 2000)
         ts.set_callback(lambda x: loop.quit())
         ts.attach(loop.get_context())
         device.connect('notify', lambda x, y: loop.quit())
