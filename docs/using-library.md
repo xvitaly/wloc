@@ -12,7 +12,7 @@ locator = wloc.WiFiLocator(gg_apikey='SAMPLE', ya_apikey='SAMPLE', mm_apikey='SA
 locator.fetch_networks()
 
 # Using providers...
-result = locator.query_yandex()
+result = locator.query_google()
 
 # Printing result to stdout...
 print('Latitude: %.6f\nLongitude: %.6f\n' % (result[0], result[1]))

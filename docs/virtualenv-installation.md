@@ -7,16 +7,16 @@ git clone https://github.com/xvitaly/wloc.git wloc
 
 Create a new Python Virtual Environment:
 ```bash
-python3 -m venv wloc
+cd ecasbot
+python3 -m venv env
 ```
 
 Activate Virtual Environment:
 ```bash
-source wloc/bin/activate
+source env/bin/activate
 ```
 
 Install using Python 3 in Virtual Environment:
 ```bash
-cd wloc
-python3 setup.py install
+pip3 install .
 ```
